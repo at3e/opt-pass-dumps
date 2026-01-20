@@ -1,0 +1,9 @@
+../build/bin/mlir-opt test0.mlir --lower-affine --convert-scf-to-cf --flatten-memref --canonicalize > test1.mlir
+../build/bin/mlir-opt model.mlir --one-shot-bufferize > test.mlir
+../build/bin/mlir-opt model.mlir --allow-unregistered-dialect --one-shot-bufferize="bufferize-function-boundaries=1 allow-unknown-ops=1 function-boundary-type-conversion=identity-layout-map" > test.mlir
+../build/bin/mlir-opt test.mlir --convert-linalg-to-loops --canonicalize --cse > test0.mlir
+https://reviews.llvm.org/D132027
+../build/bin/mlir-opt test0.mlir --lower-affine --convert-scf-to-cf --flatten-memref --canonicalize > test1.mlir
+../build/bin/mlir-opt test1.mlir -lower-affine -canonicalize -cse  -o  test2.mlir
+
+mlir-opt test1gen_v2.mlir --lower-affine --convert-scf-to-cf --convert-memref-to-llvm --convert-arith-to-llvm --reconcile-unrealized-casts -o test2gen_v2.mlir
