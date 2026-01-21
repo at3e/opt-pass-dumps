@@ -1,3 +1,9 @@
+../build/bin/mlir-opt model.mlir --linalg-generalize-named-ops testgen.mlir
+../build/bin/mlir-opt testgen.mlir --allow-unregistered-dialect --one-shot-bufferize="bufferize-function-boundaries=1 allow-unknown-ops=1 function-boundary-type-conversion=identity-layout-map" > testgen_.mlir
+../build/bin/mlir-opt test0gen.mlir --lower-affine --convert-scf-to-cf --flatten-memref --canonicalize > test1gen.mlir
+
+
+
 ../build/bin/mlir-opt test0.mlir --lower-affine --convert-scf-to-cf --flatten-memref --canonicalize > test1.mlir
 ../build/bin/mlir-opt model.mlir --one-shot-bufferize > test.mlir
 ../build/bin/mlir-opt model.mlir --allow-unregistered-dialect --one-shot-bufferize="bufferize-function-boundaries=1 allow-unknown-ops=1 function-boundary-type-conversion=identity-layout-map" > test.mlir
