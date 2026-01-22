@@ -1,3 +1,12 @@
+#map = affine_map<()[s0, s1, s2, s3] -> (s0 * 21632 + s1 * 676 + s2 * 26 + s3)>
+#map1 = affine_map<()[s0, s1, s2, s3] -> (s0 * 784 + s1 * 784 + s2 * 28 + s3)>
+#map2 = affine_map<()[s0, s1, s2, s3] -> (s0 * 9 + s1 * 9 + s2 * 3 + s3)>
+#map3 = affine_map<()[s0, s1, s2, s3] -> (s0 * 36864 + s1 * 576 + s2 * 24 + s3)>
+#map4 = affine_map<()[s0, s1, s2, s3] -> (s0 * 288 + s1 * 9 + s2 * 3 + s3)>
+#map5 = affine_map<()[s0, s1, s2, s3] -> (s0 * 30976 + s1 * 484 + s2 * 22 + s3)>
+#map6 = affine_map<()[s0, s1, s2, s3] -> (s0 * 576 + s1 * 9 + s2 * 3 + s3)>
+#map7 = affine_map<()[s0, s1] -> (s0 * 30976 + s1)>
+#map8 = affine_map<()[s0, s1] -> (s0 * 10 + s1)>
 module {
   memref.global "private" constant @__constant_10xf32 : memref<10xf32> = dense_resource<torch_tensor_10_torch.float32> {alignment = 64 : i64}
   memref.global "private" constant @__constant_10x30976xf32 : memref<10x30976xf32> = dense_resource<torch_tensor_10_30976_torch.float32> {alignment = 64 : i64}
@@ -27,7 +36,7 @@ module {
     %5 = memref.get_global @__constant_64xf32_0 : memref<64xf32>
     %6 = memref.get_global @__constant_10x30976xf32 : memref<10x30976xf32>
     %7 = memref.get_global @__constant_10xf32 : memref<10xf32>
-    %alloc = memref.alloc() {alignment = 64 : i64} : memref<32x32x26x26xf32>
+    %alloc = memref.alloc() {alignment = 64 : i64} : memref<692224xf32, strided<[1]>>
     cf.br ^bb1(%c0 : index)
   ^bb1(%8: index):  // 2 preds: ^bb0, ^bb11
     %9 = arith.cmpi slt, %8, %c32 : index
@@ -49,478 +58,516 @@ module {
     cf.cond_br %15, ^bb8, ^bb9
   ^bb8:  // pred: ^bb7
     %16 = memref.load %0[%10] : memref<32xf32>
-    memref.store %16, %alloc[%8, %10, %12, %14] : memref<32x32x26x26xf32>
-    %17 = arith.addi %14, %c1 : index
-    cf.br ^bb7(%17 : index)
+    %17 = affine.apply #map()[%8, %10, %12, %14]
+    memref.store %16, %alloc[%17] : memref<692224xf32, strided<[1]>>
+    %18 = arith.addi %14, %c1 : index
+    cf.br ^bb7(%18 : index)
   ^bb9:  // pred: ^bb7
-    %18 = arith.addi %12, %c1 : index
-    cf.br ^bb5(%18 : index)
+    %19 = arith.addi %12, %c1 : index
+    cf.br ^bb5(%19 : index)
   ^bb10:  // pred: ^bb5
-    %19 = arith.addi %10, %c1 : index
-    cf.br ^bb3(%19 : index)
+    %20 = arith.addi %10, %c1 : index
+    cf.br ^bb3(%20 : index)
   ^bb11:  // pred: ^bb3
-    %20 = arith.addi %8, %c1 : index
-    cf.br ^bb1(%20 : index)
+    %21 = arith.addi %8, %c1 : index
+    cf.br ^bb1(%21 : index)
   ^bb12:  // pred: ^bb1
     cf.br ^bb13(%c0 : index)
-  ^bb13(%21: index):  // 2 preds: ^bb12, ^bb32
-    %22 = arith.cmpi slt, %21, %c32 : index
-    cf.cond_br %22, ^bb14, ^bb33
+  ^bb13(%22: index):  // 2 preds: ^bb12, ^bb32
+    %23 = arith.cmpi slt, %22, %c32 : index
+    cf.cond_br %23, ^bb14, ^bb33
   ^bb14:  // pred: ^bb13
     cf.br ^bb15(%c0 : index)
-  ^bb15(%23: index):  // 2 preds: ^bb14, ^bb31
-    %24 = arith.cmpi slt, %23, %c32 : index
-    cf.cond_br %24, ^bb16, ^bb32
+  ^bb15(%24: index):  // 2 preds: ^bb14, ^bb31
+    %25 = arith.cmpi slt, %24, %c32 : index
+    cf.cond_br %25, ^bb16, ^bb32
   ^bb16:  // pred: ^bb15
     cf.br ^bb17(%c0 : index)
-  ^bb17(%25: index):  // 2 preds: ^bb16, ^bb30
-    %26 = arith.cmpi slt, %25, %c26 : index
-    cf.cond_br %26, ^bb18, ^bb31
+  ^bb17(%26: index):  // 2 preds: ^bb16, ^bb30
+    %27 = arith.cmpi slt, %26, %c26 : index
+    cf.cond_br %27, ^bb18, ^bb31
   ^bb18:  // pred: ^bb17
     cf.br ^bb19(%c0 : index)
-  ^bb19(%27: index):  // 2 preds: ^bb18, ^bb29
-    %28 = arith.cmpi slt, %27, %c26 : index
-    cf.cond_br %28, ^bb20, ^bb30
+  ^bb19(%28: index):  // 2 preds: ^bb18, ^bb29
+    %29 = arith.cmpi slt, %28, %c26 : index
+    cf.cond_br %29, ^bb20, ^bb30
   ^bb20:  // pred: ^bb19
     cf.br ^bb21(%c0 : index)
-  ^bb21(%29: index):  // 2 preds: ^bb20, ^bb28
-    %30 = arith.cmpi slt, %29, %c1 : index
-    cf.cond_br %30, ^bb22, ^bb29
+  ^bb21(%30: index):  // 2 preds: ^bb20, ^bb28
+    %31 = arith.cmpi slt, %30, %c1 : index
+    cf.cond_br %31, ^bb22, ^bb29
   ^bb22:  // pred: ^bb21
     cf.br ^bb23(%c0 : index)
-  ^bb23(%31: index):  // 2 preds: ^bb22, ^bb27
-    %32 = arith.cmpi slt, %31, %c3 : index
-    cf.cond_br %32, ^bb24, ^bb28
+  ^bb23(%32: index):  // 2 preds: ^bb22, ^bb27
+    %33 = arith.cmpi slt, %32, %c3 : index
+    cf.cond_br %33, ^bb24, ^bb28
   ^bb24:  // pred: ^bb23
     cf.br ^bb25(%c0 : index)
-  ^bb25(%33: index):  // 2 preds: ^bb24, ^bb26
-    %34 = arith.cmpi slt, %33, %c3 : index
-    cf.cond_br %34, ^bb26, ^bb27
+  ^bb25(%34: index):  // 2 preds: ^bb24, ^bb26
+    %35 = arith.cmpi slt, %34, %c3 : index
+    cf.cond_br %35, ^bb26, ^bb27
   ^bb26:  // pred: ^bb25
-    %35 = arith.addi %25, %31 : index
-    %36 = arith.addi %27, %33 : index
-    %37 = memref.load %arg0[%21, %29, %35, %36] : memref<32x1x28x28xf32>
-    %38 = memref.load %1[%23, %29, %31, %33] : memref<32x1x3x3xf32>
-    %39 = memref.load %alloc[%21, %23, %25, %27] : memref<32x32x26x26xf32>
-    %40 = arith.mulf %37, %38 : f32
-    %41 = arith.addf %39, %40 : f32
-    memref.store %41, %alloc[%21, %23, %25, %27] : memref<32x32x26x26xf32>
-    %42 = arith.addi %33, %c1 : index
-    cf.br ^bb25(%42 : index)
+    %36 = arith.addi %26, %32 : index
+    %37 = arith.addi %28, %34 : index
+    %38 = affine.apply #map1()[%22, %30, %36, %37]
+    %reinterpret_cast = memref.reinterpret_cast %arg0 to offset: [0], sizes: [25088], strides: [1] : memref<32x1x28x28xf32> to memref<25088xf32, strided<[1]>>
+    %39 = memref.load %reinterpret_cast[%38] : memref<25088xf32, strided<[1]>>
+    %40 = affine.apply #map2()[%24, %30, %32, %34]
+    %reinterpret_cast_0 = memref.reinterpret_cast %1 to offset: [0], sizes: [288], strides: [1] : memref<32x1x3x3xf32> to memref<288xf32, strided<[1]>>
+    %41 = memref.load %reinterpret_cast_0[%40] : memref<288xf32, strided<[1]>>
+    %42 = affine.apply #map()[%22, %24, %26, %28]
+    %43 = memref.load %alloc[%42] : memref<692224xf32, strided<[1]>>
+    %44 = arith.mulf %39, %41 : f32
+    %45 = arith.addf %43, %44 : f32
+    %46 = affine.apply #map()[%22, %24, %26, %28]
+    memref.store %45, %alloc[%46] : memref<692224xf32, strided<[1]>>
+    %47 = arith.addi %34, %c1 : index
+    cf.br ^bb25(%47 : index)
   ^bb27:  // pred: ^bb25
-    %43 = arith.addi %31, %c1 : index
-    cf.br ^bb23(%43 : index)
+    %48 = arith.addi %32, %c1 : index
+    cf.br ^bb23(%48 : index)
   ^bb28:  // pred: ^bb23
-    %44 = arith.addi %29, %c1 : index
-    cf.br ^bb21(%44 : index)
+    %49 = arith.addi %30, %c1 : index
+    cf.br ^bb21(%49 : index)
   ^bb29:  // pred: ^bb21
-    %45 = arith.addi %27, %c1 : index
-    cf.br ^bb19(%45 : index)
+    %50 = arith.addi %28, %c1 : index
+    cf.br ^bb19(%50 : index)
   ^bb30:  // pred: ^bb19
-    %46 = arith.addi %25, %c1 : index
-    cf.br ^bb17(%46 : index)
+    %51 = arith.addi %26, %c1 : index
+    cf.br ^bb17(%51 : index)
   ^bb31:  // pred: ^bb17
-    %47 = arith.addi %23, %c1 : index
-    cf.br ^bb15(%47 : index)
+    %52 = arith.addi %24, %c1 : index
+    cf.br ^bb15(%52 : index)
   ^bb32:  // pred: ^bb15
-    %48 = arith.addi %21, %c1 : index
-    cf.br ^bb13(%48 : index)
+    %53 = arith.addi %22, %c1 : index
+    cf.br ^bb13(%53 : index)
   ^bb33:  // pred: ^bb13
     cf.br ^bb34(%c0 : index)
-  ^bb34(%49: index):  // 2 preds: ^bb33, ^bb44
-    %50 = arith.cmpi slt, %49, %c32 : index
-    cf.cond_br %50, ^bb35, ^bb45
+  ^bb34(%54: index):  // 2 preds: ^bb33, ^bb44
+    %55 = arith.cmpi slt, %54, %c32 : index
+    cf.cond_br %55, ^bb35, ^bb45
   ^bb35:  // pred: ^bb34
     cf.br ^bb36(%c0 : index)
-  ^bb36(%51: index):  // 2 preds: ^bb35, ^bb43
-    %52 = arith.cmpi slt, %51, %c32 : index
-    cf.cond_br %52, ^bb37, ^bb44
+  ^bb36(%56: index):  // 2 preds: ^bb35, ^bb43
+    %57 = arith.cmpi slt, %56, %c32 : index
+    cf.cond_br %57, ^bb37, ^bb44
   ^bb37:  // pred: ^bb36
     cf.br ^bb38(%c0 : index)
-  ^bb38(%53: index):  // 2 preds: ^bb37, ^bb42
-    %54 = arith.cmpi slt, %53, %c26 : index
-    cf.cond_br %54, ^bb39, ^bb43
+  ^bb38(%58: index):  // 2 preds: ^bb37, ^bb42
+    %59 = arith.cmpi slt, %58, %c26 : index
+    cf.cond_br %59, ^bb39, ^bb43
   ^bb39:  // pred: ^bb38
     cf.br ^bb40(%c0 : index)
-  ^bb40(%55: index):  // 2 preds: ^bb39, ^bb41
-    %56 = arith.cmpi slt, %55, %c26 : index
-    cf.cond_br %56, ^bb41, ^bb42
+  ^bb40(%60: index):  // 2 preds: ^bb39, ^bb41
+    %61 = arith.cmpi slt, %60, %c26 : index
+    cf.cond_br %61, ^bb41, ^bb42
   ^bb41:  // pred: ^bb40
-    %57 = memref.load %alloc[%49, %51, %53, %55] : memref<32x32x26x26xf32>
-    %58 = arith.cmpf ugt, %57, %cst : f32
-    %59 = arith.select %58, %57, %cst : f32
-    memref.store %59, %alloc[%49, %51, %53, %55] : memref<32x32x26x26xf32>
-    %60 = arith.addi %55, %c1 : index
-    cf.br ^bb40(%60 : index)
+    %62 = affine.apply #map()[%54, %56, %58, %60]
+    %63 = memref.load %alloc[%62] : memref<692224xf32, strided<[1]>>
+    %64 = arith.cmpf ugt, %63, %cst : f32
+    %65 = arith.select %64, %63, %cst : f32
+    %66 = affine.apply #map()[%54, %56, %58, %60]
+    memref.store %65, %alloc[%66] : memref<692224xf32, strided<[1]>>
+    %67 = arith.addi %60, %c1 : index
+    cf.br ^bb40(%67 : index)
   ^bb42:  // pred: ^bb40
-    %61 = arith.addi %53, %c1 : index
-    cf.br ^bb38(%61 : index)
+    %68 = arith.addi %58, %c1 : index
+    cf.br ^bb38(%68 : index)
   ^bb43:  // pred: ^bb38
-    %62 = arith.addi %51, %c1 : index
-    cf.br ^bb36(%62 : index)
+    %69 = arith.addi %56, %c1 : index
+    cf.br ^bb36(%69 : index)
   ^bb44:  // pred: ^bb36
-    %63 = arith.addi %49, %c1 : index
-    cf.br ^bb34(%63 : index)
+    %70 = arith.addi %54, %c1 : index
+    cf.br ^bb34(%70 : index)
   ^bb45:  // pred: ^bb34
-    %alloc_0 = memref.alloc() {alignment = 64 : i64} : memref<32x64x24x24xf32>
+    %alloc_1 = memref.alloc() {alignment = 64 : i64} : memref<1179648xf32, strided<[1]>>
     cf.br ^bb46(%c0 : index)
-  ^bb46(%64: index):  // 2 preds: ^bb45, ^bb56
-    %65 = arith.cmpi slt, %64, %c32 : index
-    cf.cond_br %65, ^bb47, ^bb57
+  ^bb46(%71: index):  // 2 preds: ^bb45, ^bb56
+    %72 = arith.cmpi slt, %71, %c32 : index
+    cf.cond_br %72, ^bb47, ^bb57
   ^bb47:  // pred: ^bb46
     cf.br ^bb48(%c0 : index)
-  ^bb48(%66: index):  // 2 preds: ^bb47, ^bb55
-    %67 = arith.cmpi slt, %66, %c64 : index
-    cf.cond_br %67, ^bb49, ^bb56
+  ^bb48(%73: index):  // 2 preds: ^bb47, ^bb55
+    %74 = arith.cmpi slt, %73, %c64 : index
+    cf.cond_br %74, ^bb49, ^bb56
   ^bb49:  // pred: ^bb48
     cf.br ^bb50(%c0 : index)
-  ^bb50(%68: index):  // 2 preds: ^bb49, ^bb54
-    %69 = arith.cmpi slt, %68, %c24 : index
-    cf.cond_br %69, ^bb51, ^bb55
+  ^bb50(%75: index):  // 2 preds: ^bb49, ^bb54
+    %76 = arith.cmpi slt, %75, %c24 : index
+    cf.cond_br %76, ^bb51, ^bb55
   ^bb51:  // pred: ^bb50
     cf.br ^bb52(%c0 : index)
-  ^bb52(%70: index):  // 2 preds: ^bb51, ^bb53
-    %71 = arith.cmpi slt, %70, %c24 : index
-    cf.cond_br %71, ^bb53, ^bb54
+  ^bb52(%77: index):  // 2 preds: ^bb51, ^bb53
+    %78 = arith.cmpi slt, %77, %c24 : index
+    cf.cond_br %78, ^bb53, ^bb54
   ^bb53:  // pred: ^bb52
-    %72 = memref.load %3[%66] : memref<64xf32>
-    memref.store %72, %alloc_0[%64, %66, %68, %70] : memref<32x64x24x24xf32>
-    %73 = arith.addi %70, %c1 : index
-    cf.br ^bb52(%73 : index)
+    %79 = memref.load %3[%73] : memref<64xf32>
+    %80 = affine.apply #map3()[%71, %73, %75, %77]
+    memref.store %79, %alloc_1[%80] : memref<1179648xf32, strided<[1]>>
+    %81 = arith.addi %77, %c1 : index
+    cf.br ^bb52(%81 : index)
   ^bb54:  // pred: ^bb52
-    %74 = arith.addi %68, %c1 : index
-    cf.br ^bb50(%74 : index)
+    %82 = arith.addi %75, %c1 : index
+    cf.br ^bb50(%82 : index)
   ^bb55:  // pred: ^bb50
-    %75 = arith.addi %66, %c1 : index
-    cf.br ^bb48(%75 : index)
+    %83 = arith.addi %73, %c1 : index
+    cf.br ^bb48(%83 : index)
   ^bb56:  // pred: ^bb48
-    %76 = arith.addi %64, %c1 : index
-    cf.br ^bb46(%76 : index)
+    %84 = arith.addi %71, %c1 : index
+    cf.br ^bb46(%84 : index)
   ^bb57:  // pred: ^bb46
     cf.br ^bb58(%c0 : index)
-  ^bb58(%77: index):  // 2 preds: ^bb57, ^bb77
-    %78 = arith.cmpi slt, %77, %c32 : index
-    cf.cond_br %78, ^bb59, ^bb78
+  ^bb58(%85: index):  // 2 preds: ^bb57, ^bb77
+    %86 = arith.cmpi slt, %85, %c32 : index
+    cf.cond_br %86, ^bb59, ^bb78
   ^bb59:  // pred: ^bb58
     cf.br ^bb60(%c0 : index)
-  ^bb60(%79: index):  // 2 preds: ^bb59, ^bb76
-    %80 = arith.cmpi slt, %79, %c64 : index
-    cf.cond_br %80, ^bb61, ^bb77
+  ^bb60(%87: index):  // 2 preds: ^bb59, ^bb76
+    %88 = arith.cmpi slt, %87, %c64 : index
+    cf.cond_br %88, ^bb61, ^bb77
   ^bb61:  // pred: ^bb60
     cf.br ^bb62(%c0 : index)
-  ^bb62(%81: index):  // 2 preds: ^bb61, ^bb75
-    %82 = arith.cmpi slt, %81, %c24 : index
-    cf.cond_br %82, ^bb63, ^bb76
+  ^bb62(%89: index):  // 2 preds: ^bb61, ^bb75
+    %90 = arith.cmpi slt, %89, %c24 : index
+    cf.cond_br %90, ^bb63, ^bb76
   ^bb63:  // pred: ^bb62
     cf.br ^bb64(%c0 : index)
-  ^bb64(%83: index):  // 2 preds: ^bb63, ^bb74
-    %84 = arith.cmpi slt, %83, %c24 : index
-    cf.cond_br %84, ^bb65, ^bb75
+  ^bb64(%91: index):  // 2 preds: ^bb63, ^bb74
+    %92 = arith.cmpi slt, %91, %c24 : index
+    cf.cond_br %92, ^bb65, ^bb75
   ^bb65:  // pred: ^bb64
     cf.br ^bb66(%c0 : index)
-  ^bb66(%85: index):  // 2 preds: ^bb65, ^bb73
-    %86 = arith.cmpi slt, %85, %c32 : index
-    cf.cond_br %86, ^bb67, ^bb74
+  ^bb66(%93: index):  // 2 preds: ^bb65, ^bb73
+    %94 = arith.cmpi slt, %93, %c32 : index
+    cf.cond_br %94, ^bb67, ^bb74
   ^bb67:  // pred: ^bb66
     cf.br ^bb68(%c0 : index)
-  ^bb68(%87: index):  // 2 preds: ^bb67, ^bb72
-    %88 = arith.cmpi slt, %87, %c3 : index
-    cf.cond_br %88, ^bb69, ^bb73
+  ^bb68(%95: index):  // 2 preds: ^bb67, ^bb72
+    %96 = arith.cmpi slt, %95, %c3 : index
+    cf.cond_br %96, ^bb69, ^bb73
   ^bb69:  // pred: ^bb68
     cf.br ^bb70(%c0 : index)
-  ^bb70(%89: index):  // 2 preds: ^bb69, ^bb71
-    %90 = arith.cmpi slt, %89, %c3 : index
-    cf.cond_br %90, ^bb71, ^bb72
+  ^bb70(%97: index):  // 2 preds: ^bb69, ^bb71
+    %98 = arith.cmpi slt, %97, %c3 : index
+    cf.cond_br %98, ^bb71, ^bb72
   ^bb71:  // pred: ^bb70
-    %91 = arith.addi %81, %87 : index
-    %92 = arith.addi %83, %89 : index
-    %93 = memref.load %alloc[%77, %85, %91, %92] : memref<32x32x26x26xf32>
-    %94 = memref.load %2[%79, %85, %87, %89] : memref<64x32x3x3xf32>
-    %95 = memref.load %alloc_0[%77, %79, %81, %83] : memref<32x64x24x24xf32>
-    %96 = arith.mulf %93, %94 : f32
-    %97 = arith.addf %95, %96 : f32
-    memref.store %97, %alloc_0[%77, %79, %81, %83] : memref<32x64x24x24xf32>
-    %98 = arith.addi %89, %c1 : index
-    cf.br ^bb70(%98 : index)
+    %99 = arith.addi %89, %95 : index
+    %100 = arith.addi %91, %97 : index
+    %101 = affine.apply #map()[%85, %93, %99, %100]
+    %102 = memref.load %alloc[%101] : memref<692224xf32, strided<[1]>>
+    %103 = affine.apply #map4()[%87, %93, %95, %97]
+    %reinterpret_cast_2 = memref.reinterpret_cast %2 to offset: [0], sizes: [18432], strides: [1] : memref<64x32x3x3xf32> to memref<18432xf32, strided<[1]>>
+    %104 = memref.load %reinterpret_cast_2[%103] : memref<18432xf32, strided<[1]>>
+    %105 = affine.apply #map3()[%85, %87, %89, %91]
+    %106 = memref.load %alloc_1[%105] : memref<1179648xf32, strided<[1]>>
+    %107 = arith.mulf %102, %104 : f32
+    %108 = arith.addf %106, %107 : f32
+    %109 = affine.apply #map3()[%85, %87, %89, %91]
+    memref.store %108, %alloc_1[%109] : memref<1179648xf32, strided<[1]>>
+    %110 = arith.addi %97, %c1 : index
+    cf.br ^bb70(%110 : index)
   ^bb72:  // pred: ^bb70
-    %99 = arith.addi %87, %c1 : index
-    cf.br ^bb68(%99 : index)
+    %111 = arith.addi %95, %c1 : index
+    cf.br ^bb68(%111 : index)
   ^bb73:  // pred: ^bb68
-    %100 = arith.addi %85, %c1 : index
-    cf.br ^bb66(%100 : index)
+    %112 = arith.addi %93, %c1 : index
+    cf.br ^bb66(%112 : index)
   ^bb74:  // pred: ^bb66
-    %101 = arith.addi %83, %c1 : index
-    cf.br ^bb64(%101 : index)
+    %113 = arith.addi %91, %c1 : index
+    cf.br ^bb64(%113 : index)
   ^bb75:  // pred: ^bb64
-    %102 = arith.addi %81, %c1 : index
-    cf.br ^bb62(%102 : index)
+    %114 = arith.addi %89, %c1 : index
+    cf.br ^bb62(%114 : index)
   ^bb76:  // pred: ^bb62
-    %103 = arith.addi %79, %c1 : index
-    cf.br ^bb60(%103 : index)
+    %115 = arith.addi %87, %c1 : index
+    cf.br ^bb60(%115 : index)
   ^bb77:  // pred: ^bb60
-    %104 = arith.addi %77, %c1 : index
-    cf.br ^bb58(%104 : index)
+    %116 = arith.addi %85, %c1 : index
+    cf.br ^bb58(%116 : index)
   ^bb78:  // pred: ^bb58
     cf.br ^bb79(%c0 : index)
-  ^bb79(%105: index):  // 2 preds: ^bb78, ^bb89
-    %106 = arith.cmpi slt, %105, %c32 : index
-    cf.cond_br %106, ^bb80, ^bb90
+  ^bb79(%117: index):  // 2 preds: ^bb78, ^bb89
+    %118 = arith.cmpi slt, %117, %c32 : index
+    cf.cond_br %118, ^bb80, ^bb90
   ^bb80:  // pred: ^bb79
     cf.br ^bb81(%c0 : index)
-  ^bb81(%107: index):  // 2 preds: ^bb80, ^bb88
-    %108 = arith.cmpi slt, %107, %c64 : index
-    cf.cond_br %108, ^bb82, ^bb89
+  ^bb81(%119: index):  // 2 preds: ^bb80, ^bb88
+    %120 = arith.cmpi slt, %119, %c64 : index
+    cf.cond_br %120, ^bb82, ^bb89
   ^bb82:  // pred: ^bb81
     cf.br ^bb83(%c0 : index)
-  ^bb83(%109: index):  // 2 preds: ^bb82, ^bb87
-    %110 = arith.cmpi slt, %109, %c24 : index
-    cf.cond_br %110, ^bb84, ^bb88
+  ^bb83(%121: index):  // 2 preds: ^bb82, ^bb87
+    %122 = arith.cmpi slt, %121, %c24 : index
+    cf.cond_br %122, ^bb84, ^bb88
   ^bb84:  // pred: ^bb83
     cf.br ^bb85(%c0 : index)
-  ^bb85(%111: index):  // 2 preds: ^bb84, ^bb86
-    %112 = arith.cmpi slt, %111, %c24 : index
-    cf.cond_br %112, ^bb86, ^bb87
+  ^bb85(%123: index):  // 2 preds: ^bb84, ^bb86
+    %124 = arith.cmpi slt, %123, %c24 : index
+    cf.cond_br %124, ^bb86, ^bb87
   ^bb86:  // pred: ^bb85
-    %113 = memref.load %alloc_0[%105, %107, %109, %111] : memref<32x64x24x24xf32>
-    %114 = arith.cmpf ugt, %113, %cst : f32
-    %115 = arith.select %114, %113, %cst : f32
-    memref.store %115, %alloc_0[%105, %107, %109, %111] : memref<32x64x24x24xf32>
-    %116 = arith.addi %111, %c1 : index
-    cf.br ^bb85(%116 : index)
+    %125 = affine.apply #map3()[%117, %119, %121, %123]
+    %126 = memref.load %alloc_1[%125] : memref<1179648xf32, strided<[1]>>
+    %127 = arith.cmpf ugt, %126, %cst : f32
+    %128 = arith.select %127, %126, %cst : f32
+    %129 = affine.apply #map3()[%117, %119, %121, %123]
+    memref.store %128, %alloc_1[%129] : memref<1179648xf32, strided<[1]>>
+    %130 = arith.addi %123, %c1 : index
+    cf.br ^bb85(%130 : index)
   ^bb87:  // pred: ^bb85
-    %117 = arith.addi %109, %c1 : index
-    cf.br ^bb83(%117 : index)
+    %131 = arith.addi %121, %c1 : index
+    cf.br ^bb83(%131 : index)
   ^bb88:  // pred: ^bb83
-    %118 = arith.addi %107, %c1 : index
-    cf.br ^bb81(%118 : index)
+    %132 = arith.addi %119, %c1 : index
+    cf.br ^bb81(%132 : index)
   ^bb89:  // pred: ^bb81
-    %119 = arith.addi %105, %c1 : index
-    cf.br ^bb79(%119 : index)
+    %133 = arith.addi %117, %c1 : index
+    cf.br ^bb79(%133 : index)
   ^bb90:  // pred: ^bb79
-    %alloc_1 = memref.alloc() {alignment = 64 : i64} : memref<32x64x22x22xf32>
+    %alloc_3 = memref.alloc() {alignment = 64 : i64} : memref<991232xf32, strided<[1]>>
+    %reinterpret_cast_4 = memref.reinterpret_cast %alloc_3 to offset: [0], sizes: [32, 64, 22, 22], strides: [30976, 484, 22, 1] : memref<991232xf32, strided<[1]>> to memref<32x64x22x22xf32>
     cf.br ^bb91(%c0 : index)
-  ^bb91(%120: index):  // 2 preds: ^bb90, ^bb101
-    %121 = arith.cmpi slt, %120, %c32 : index
-    cf.cond_br %121, ^bb92, ^bb102
+  ^bb91(%134: index):  // 2 preds: ^bb90, ^bb101
+    %135 = arith.cmpi slt, %134, %c32 : index
+    cf.cond_br %135, ^bb92, ^bb102
   ^bb92:  // pred: ^bb91
     cf.br ^bb93(%c0 : index)
-  ^bb93(%122: index):  // 2 preds: ^bb92, ^bb100
-    %123 = arith.cmpi slt, %122, %c64 : index
-    cf.cond_br %123, ^bb94, ^bb101
+  ^bb93(%136: index):  // 2 preds: ^bb92, ^bb100
+    %137 = arith.cmpi slt, %136, %c64 : index
+    cf.cond_br %137, ^bb94, ^bb101
   ^bb94:  // pred: ^bb93
     cf.br ^bb95(%c0 : index)
-  ^bb95(%124: index):  // 2 preds: ^bb94, ^bb99
-    %125 = arith.cmpi slt, %124, %c22 : index
-    cf.cond_br %125, ^bb96, ^bb100
+  ^bb95(%138: index):  // 2 preds: ^bb94, ^bb99
+    %139 = arith.cmpi slt, %138, %c22 : index
+    cf.cond_br %139, ^bb96, ^bb100
   ^bb96:  // pred: ^bb95
     cf.br ^bb97(%c0 : index)
-  ^bb97(%126: index):  // 2 preds: ^bb96, ^bb98
-    %127 = arith.cmpi slt, %126, %c22 : index
-    cf.cond_br %127, ^bb98, ^bb99
+  ^bb97(%140: index):  // 2 preds: ^bb96, ^bb98
+    %141 = arith.cmpi slt, %140, %c22 : index
+    cf.cond_br %141, ^bb98, ^bb99
   ^bb98:  // pred: ^bb97
-    %128 = memref.load %5[%122] : memref<64xf32>
-    memref.store %128, %alloc_1[%120, %122, %124, %126] : memref<32x64x22x22xf32>
-    %129 = arith.addi %126, %c1 : index
-    cf.br ^bb97(%129 : index)
+    %142 = memref.load %5[%136] : memref<64xf32>
+    %143 = affine.apply #map5()[%134, %136, %138, %140]
+    memref.store %142, %alloc_3[%143] : memref<991232xf32, strided<[1]>>
+    %144 = arith.addi %140, %c1 : index
+    cf.br ^bb97(%144 : index)
   ^bb99:  // pred: ^bb97
-    %130 = arith.addi %124, %c1 : index
-    cf.br ^bb95(%130 : index)
+    %145 = arith.addi %138, %c1 : index
+    cf.br ^bb95(%145 : index)
   ^bb100:  // pred: ^bb95
-    %131 = arith.addi %122, %c1 : index
-    cf.br ^bb93(%131 : index)
+    %146 = arith.addi %136, %c1 : index
+    cf.br ^bb93(%146 : index)
   ^bb101:  // pred: ^bb93
-    %132 = arith.addi %120, %c1 : index
-    cf.br ^bb91(%132 : index)
+    %147 = arith.addi %134, %c1 : index
+    cf.br ^bb91(%147 : index)
   ^bb102:  // pred: ^bb91
     cf.br ^bb103(%c0 : index)
-  ^bb103(%133: index):  // 2 preds: ^bb102, ^bb122
-    %134 = arith.cmpi slt, %133, %c32 : index
-    cf.cond_br %134, ^bb104, ^bb123
+  ^bb103(%148: index):  // 2 preds: ^bb102, ^bb122
+    %149 = arith.cmpi slt, %148, %c32 : index
+    cf.cond_br %149, ^bb104, ^bb123
   ^bb104:  // pred: ^bb103
     cf.br ^bb105(%c0 : index)
-  ^bb105(%135: index):  // 2 preds: ^bb104, ^bb121
-    %136 = arith.cmpi slt, %135, %c64 : index
-    cf.cond_br %136, ^bb106, ^bb122
+  ^bb105(%150: index):  // 2 preds: ^bb104, ^bb121
+    %151 = arith.cmpi slt, %150, %c64 : index
+    cf.cond_br %151, ^bb106, ^bb122
   ^bb106:  // pred: ^bb105
     cf.br ^bb107(%c0 : index)
-  ^bb107(%137: index):  // 2 preds: ^bb106, ^bb120
-    %138 = arith.cmpi slt, %137, %c22 : index
-    cf.cond_br %138, ^bb108, ^bb121
+  ^bb107(%152: index):  // 2 preds: ^bb106, ^bb120
+    %153 = arith.cmpi slt, %152, %c22 : index
+    cf.cond_br %153, ^bb108, ^bb121
   ^bb108:  // pred: ^bb107
     cf.br ^bb109(%c0 : index)
-  ^bb109(%139: index):  // 2 preds: ^bb108, ^bb119
-    %140 = arith.cmpi slt, %139, %c22 : index
-    cf.cond_br %140, ^bb110, ^bb120
+  ^bb109(%154: index):  // 2 preds: ^bb108, ^bb119
+    %155 = arith.cmpi slt, %154, %c22 : index
+    cf.cond_br %155, ^bb110, ^bb120
   ^bb110:  // pred: ^bb109
     cf.br ^bb111(%c0 : index)
-  ^bb111(%141: index):  // 2 preds: ^bb110, ^bb118
-    %142 = arith.cmpi slt, %141, %c64 : index
-    cf.cond_br %142, ^bb112, ^bb119
+  ^bb111(%156: index):  // 2 preds: ^bb110, ^bb118
+    %157 = arith.cmpi slt, %156, %c64 : index
+    cf.cond_br %157, ^bb112, ^bb119
   ^bb112:  // pred: ^bb111
     cf.br ^bb113(%c0 : index)
-  ^bb113(%143: index):  // 2 preds: ^bb112, ^bb117
-    %144 = arith.cmpi slt, %143, %c3 : index
-    cf.cond_br %144, ^bb114, ^bb118
+  ^bb113(%158: index):  // 2 preds: ^bb112, ^bb117
+    %159 = arith.cmpi slt, %158, %c3 : index
+    cf.cond_br %159, ^bb114, ^bb118
   ^bb114:  // pred: ^bb113
     cf.br ^bb115(%c0 : index)
-  ^bb115(%145: index):  // 2 preds: ^bb114, ^bb116
-    %146 = arith.cmpi slt, %145, %c3 : index
-    cf.cond_br %146, ^bb116, ^bb117
+  ^bb115(%160: index):  // 2 preds: ^bb114, ^bb116
+    %161 = arith.cmpi slt, %160, %c3 : index
+    cf.cond_br %161, ^bb116, ^bb117
   ^bb116:  // pred: ^bb115
-    %147 = arith.addi %137, %143 : index
-    %148 = arith.addi %139, %145 : index
-    %149 = memref.load %alloc_0[%133, %141, %147, %148] : memref<32x64x24x24xf32>
-    %150 = memref.load %4[%135, %141, %143, %145] : memref<64x64x3x3xf32>
-    %151 = memref.load %alloc_1[%133, %135, %137, %139] : memref<32x64x22x22xf32>
-    %152 = arith.mulf %149, %150 : f32
-    %153 = arith.addf %151, %152 : f32
-    memref.store %153, %alloc_1[%133, %135, %137, %139] : memref<32x64x22x22xf32>
-    %154 = arith.addi %145, %c1 : index
-    cf.br ^bb115(%154 : index)
+    %162 = arith.addi %152, %158 : index
+    %163 = arith.addi %154, %160 : index
+    %164 = affine.apply #map3()[%148, %156, %162, %163]
+    %165 = memref.load %alloc_1[%164] : memref<1179648xf32, strided<[1]>>
+    %166 = affine.apply #map6()[%150, %156, %158, %160]
+    %reinterpret_cast_5 = memref.reinterpret_cast %4 to offset: [0], sizes: [36864], strides: [1] : memref<64x64x3x3xf32> to memref<36864xf32, strided<[1]>>
+    %167 = memref.load %reinterpret_cast_5[%166] : memref<36864xf32, strided<[1]>>
+    %168 = affine.apply #map5()[%148, %150, %152, %154]
+    %169 = memref.load %alloc_3[%168] : memref<991232xf32, strided<[1]>>
+    %170 = arith.mulf %165, %167 : f32
+    %171 = arith.addf %169, %170 : f32
+    %172 = affine.apply #map5()[%148, %150, %152, %154]
+    memref.store %171, %alloc_3[%172] : memref<991232xf32, strided<[1]>>
+    %173 = arith.addi %160, %c1 : index
+    cf.br ^bb115(%173 : index)
   ^bb117:  // pred: ^bb115
-    %155 = arith.addi %143, %c1 : index
-    cf.br ^bb113(%155 : index)
+    %174 = arith.addi %158, %c1 : index
+    cf.br ^bb113(%174 : index)
   ^bb118:  // pred: ^bb113
-    %156 = arith.addi %141, %c1 : index
-    cf.br ^bb111(%156 : index)
+    %175 = arith.addi %156, %c1 : index
+    cf.br ^bb111(%175 : index)
   ^bb119:  // pred: ^bb111
-    %157 = arith.addi %139, %c1 : index
-    cf.br ^bb109(%157 : index)
+    %176 = arith.addi %154, %c1 : index
+    cf.br ^bb109(%176 : index)
   ^bb120:  // pred: ^bb109
-    %158 = arith.addi %137, %c1 : index
-    cf.br ^bb107(%158 : index)
+    %177 = arith.addi %152, %c1 : index
+    cf.br ^bb107(%177 : index)
   ^bb121:  // pred: ^bb107
-    %159 = arith.addi %135, %c1 : index
-    cf.br ^bb105(%159 : index)
+    %178 = arith.addi %150, %c1 : index
+    cf.br ^bb105(%178 : index)
   ^bb122:  // pred: ^bb105
-    %160 = arith.addi %133, %c1 : index
-    cf.br ^bb103(%160 : index)
+    %179 = arith.addi %148, %c1 : index
+    cf.br ^bb103(%179 : index)
   ^bb123:  // pred: ^bb103
     cf.br ^bb124(%c0 : index)
-  ^bb124(%161: index):  // 2 preds: ^bb123, ^bb134
-    %162 = arith.cmpi slt, %161, %c32 : index
-    cf.cond_br %162, ^bb125, ^bb135
+  ^bb124(%180: index):  // 2 preds: ^bb123, ^bb134
+    %181 = arith.cmpi slt, %180, %c32 : index
+    cf.cond_br %181, ^bb125, ^bb135
   ^bb125:  // pred: ^bb124
     cf.br ^bb126(%c0 : index)
-  ^bb126(%163: index):  // 2 preds: ^bb125, ^bb133
-    %164 = arith.cmpi slt, %163, %c64 : index
-    cf.cond_br %164, ^bb127, ^bb134
+  ^bb126(%182: index):  // 2 preds: ^bb125, ^bb133
+    %183 = arith.cmpi slt, %182, %c64 : index
+    cf.cond_br %183, ^bb127, ^bb134
   ^bb127:  // pred: ^bb126
     cf.br ^bb128(%c0 : index)
-  ^bb128(%165: index):  // 2 preds: ^bb127, ^bb132
-    %166 = arith.cmpi slt, %165, %c22 : index
-    cf.cond_br %166, ^bb129, ^bb133
+  ^bb128(%184: index):  // 2 preds: ^bb127, ^bb132
+    %185 = arith.cmpi slt, %184, %c22 : index
+    cf.cond_br %185, ^bb129, ^bb133
   ^bb129:  // pred: ^bb128
     cf.br ^bb130(%c0 : index)
-  ^bb130(%167: index):  // 2 preds: ^bb129, ^bb131
-    %168 = arith.cmpi slt, %167, %c22 : index
-    cf.cond_br %168, ^bb131, ^bb132
+  ^bb130(%186: index):  // 2 preds: ^bb129, ^bb131
+    %187 = arith.cmpi slt, %186, %c22 : index
+    cf.cond_br %187, ^bb131, ^bb132
   ^bb131:  // pred: ^bb130
-    %169 = memref.load %alloc_1[%161, %163, %165, %167] : memref<32x64x22x22xf32>
-    %170 = arith.cmpf ugt, %169, %cst : f32
-    %171 = arith.select %170, %169, %cst : f32
-    memref.store %171, %alloc_1[%161, %163, %165, %167] : memref<32x64x22x22xf32>
-    %172 = arith.addi %167, %c1 : index
-    cf.br ^bb130(%172 : index)
+    %188 = affine.apply #map5()[%180, %182, %184, %186]
+    %189 = memref.load %alloc_3[%188] : memref<991232xf32, strided<[1]>>
+    %190 = arith.cmpf ugt, %189, %cst : f32
+    %191 = arith.select %190, %189, %cst : f32
+    %192 = affine.apply #map5()[%180, %182, %184, %186]
+    memref.store %191, %alloc_3[%192] : memref<991232xf32, strided<[1]>>
+    %193 = arith.addi %186, %c1 : index
+    cf.br ^bb130(%193 : index)
   ^bb132:  // pred: ^bb130
-    %173 = arith.addi %165, %c1 : index
-    cf.br ^bb128(%173 : index)
+    %194 = arith.addi %184, %c1 : index
+    cf.br ^bb128(%194 : index)
   ^bb133:  // pred: ^bb128
-    %174 = arith.addi %163, %c1 : index
-    cf.br ^bb126(%174 : index)
+    %195 = arith.addi %182, %c1 : index
+    cf.br ^bb126(%195 : index)
   ^bb134:  // pred: ^bb126
-    %175 = arith.addi %161, %c1 : index
-    cf.br ^bb124(%175 : index)
+    %196 = arith.addi %180, %c1 : index
+    cf.br ^bb124(%196 : index)
   ^bb135:  // pred: ^bb124
-    %collapse_shape = memref.collapse_shape %alloc_1 [[0], [1, 2, 3]] : memref<32x64x22x22xf32> into memref<32x30976xf32>
-    %alloc_2 = memref.alloc() {alignment = 64 : i64} : memref<30976x10xf32>
+    %collapse_shape = memref.collapse_shape %reinterpret_cast_4 [[0], [1, 2, 3]] : memref<32x64x22x22xf32> into memref<32x30976xf32>
+    %alloc_6 = memref.alloc() {alignment = 64 : i64} : memref<309760xf32, strided<[1]>>
     cf.br ^bb136(%c0 : index)
-  ^bb136(%176: index):  // 2 preds: ^bb135, ^bb140
-    %177 = arith.cmpi slt, %176, %c30976 : index
-    cf.cond_br %177, ^bb137, ^bb141
+  ^bb136(%197: index):  // 2 preds: ^bb135, ^bb140
+    %198 = arith.cmpi slt, %197, %c30976 : index
+    cf.cond_br %198, ^bb137, ^bb141
   ^bb137:  // pred: ^bb136
     cf.br ^bb138(%c0 : index)
-  ^bb138(%178: index):  // 2 preds: ^bb137, ^bb139
-    %179 = arith.cmpi slt, %178, %c10 : index
-    cf.cond_br %179, ^bb139, ^bb140
+  ^bb138(%199: index):  // 2 preds: ^bb137, ^bb139
+    %200 = arith.cmpi slt, %199, %c10 : index
+    cf.cond_br %200, ^bb139, ^bb140
   ^bb139:  // pred: ^bb138
-    %180 = memref.load %6[%178, %176] : memref<10x30976xf32>
-    memref.store %180, %alloc_2[%176, %178] : memref<30976x10xf32>
-    %181 = arith.addi %178, %c1 : index
-    cf.br ^bb138(%181 : index)
+    %201 = affine.apply #map7()[%199, %197]
+    %reinterpret_cast_7 = memref.reinterpret_cast %6 to offset: [0], sizes: [309760], strides: [1] : memref<10x30976xf32> to memref<309760xf32, strided<[1]>>
+    %202 = memref.load %reinterpret_cast_7[%201] : memref<309760xf32, strided<[1]>>
+    %203 = affine.apply #map8()[%197, %199]
+    memref.store %202, %alloc_6[%203] : memref<309760xf32, strided<[1]>>
+    %204 = arith.addi %199, %c1 : index
+    cf.br ^bb138(%204 : index)
   ^bb140:  // pred: ^bb138
-    %182 = arith.addi %176, %c1 : index
-    cf.br ^bb136(%182 : index)
+    %205 = arith.addi %197, %c1 : index
+    cf.br ^bb136(%205 : index)
   ^bb141:  // pred: ^bb136
-    %alloc_3 = memref.alloc() {alignment = 64 : i64} : memref<32x10xf32>
+    %alloc_8 = memref.alloc() {alignment = 64 : i64} : memref<320xf32, strided<[1]>>
+    %reinterpret_cast_9 = memref.reinterpret_cast %alloc_8 to offset: [0], sizes: [32, 10], strides: [10, 1] : memref<320xf32, strided<[1]>> to memref<32x10xf32>
     cf.br ^bb142(%c0 : index)
-  ^bb142(%183: index):  // 2 preds: ^bb141, ^bb146
-    %184 = arith.cmpi slt, %183, %c32 : index
-    cf.cond_br %184, ^bb143, ^bb147
+  ^bb142(%206: index):  // 2 preds: ^bb141, ^bb146
+    %207 = arith.cmpi slt, %206, %c32 : index
+    cf.cond_br %207, ^bb143, ^bb147
   ^bb143:  // pred: ^bb142
     cf.br ^bb144(%c0 : index)
-  ^bb144(%185: index):  // 2 preds: ^bb143, ^bb145
-    %186 = arith.cmpi slt, %185, %c10 : index
-    cf.cond_br %186, ^bb145, ^bb146
+  ^bb144(%208: index):  // 2 preds: ^bb143, ^bb145
+    %209 = arith.cmpi slt, %208, %c10 : index
+    cf.cond_br %209, ^bb145, ^bb146
   ^bb145:  // pred: ^bb144
-    memref.store %cst, %alloc_3[%183, %185] : memref<32x10xf32>
-    %187 = arith.addi %185, %c1 : index
-    cf.br ^bb144(%187 : index)
+    %210 = affine.apply #map8()[%206, %208]
+    memref.store %cst, %alloc_8[%210] : memref<320xf32, strided<[1]>>
+    %211 = arith.addi %208, %c1 : index
+    cf.br ^bb144(%211 : index)
   ^bb146:  // pred: ^bb144
-    %188 = arith.addi %183, %c1 : index
-    cf.br ^bb142(%188 : index)
+    %212 = arith.addi %206, %c1 : index
+    cf.br ^bb142(%212 : index)
   ^bb147:  // pred: ^bb142
     cf.br ^bb148(%c0 : index)
-  ^bb148(%189: index):  // 2 preds: ^bb147, ^bb155
-    %190 = arith.cmpi slt, %189, %c32 : index
-    cf.cond_br %190, ^bb149, ^bb156
+  ^bb148(%213: index):  // 2 preds: ^bb147, ^bb155
+    %214 = arith.cmpi slt, %213, %c32 : index
+    cf.cond_br %214, ^bb149, ^bb156
   ^bb149:  // pred: ^bb148
     cf.br ^bb150(%c0 : index)
-  ^bb150(%191: index):  // 2 preds: ^bb149, ^bb154
-    %192 = arith.cmpi slt, %191, %c10 : index
-    cf.cond_br %192, ^bb151, ^bb155
+  ^bb150(%215: index):  // 2 preds: ^bb149, ^bb154
+    %216 = arith.cmpi slt, %215, %c10 : index
+    cf.cond_br %216, ^bb151, ^bb155
   ^bb151:  // pred: ^bb150
     cf.br ^bb152(%c0 : index)
-  ^bb152(%193: index):  // 2 preds: ^bb151, ^bb153
-    %194 = arith.cmpi slt, %193, %c30976 : index
-    cf.cond_br %194, ^bb153, ^bb154
+  ^bb152(%217: index):  // 2 preds: ^bb151, ^bb153
+    %218 = arith.cmpi slt, %217, %c30976 : index
+    cf.cond_br %218, ^bb153, ^bb154
   ^bb153:  // pred: ^bb152
-    %195 = memref.load %collapse_shape[%189, %193] : memref<32x30976xf32>
-    %196 = memref.load %alloc_2[%193, %191] : memref<30976x10xf32>
-    %197 = memref.load %alloc_3[%189, %191] : memref<32x10xf32>
-    %198 = arith.mulf %195, %196 : f32
-    %199 = arith.addf %197, %198 : f32
-    memref.store %199, %alloc_3[%189, %191] : memref<32x10xf32>
-    %200 = arith.addi %193, %c1 : index
-    cf.br ^bb152(%200 : index)
+    %219 = affine.apply #map7()[%213, %217]
+    %reinterpret_cast_10 = memref.reinterpret_cast %collapse_shape to offset: [0], sizes: [991232], strides: [1] : memref<32x30976xf32> to memref<991232xf32, strided<[1]>>
+    %220 = memref.load %reinterpret_cast_10[%219] : memref<991232xf32, strided<[1]>>
+    %221 = affine.apply #map8()[%217, %215]
+    %222 = memref.load %alloc_6[%221] : memref<309760xf32, strided<[1]>>
+    %223 = affine.apply #map8()[%213, %215]
+    %224 = memref.load %alloc_8[%223] : memref<320xf32, strided<[1]>>
+    %225 = arith.mulf %220, %222 : f32
+    %226 = arith.addf %224, %225 : f32
+    %227 = affine.apply #map8()[%213, %215]
+    memref.store %226, %alloc_8[%227] : memref<320xf32, strided<[1]>>
+    %228 = arith.addi %217, %c1 : index
+    cf.br ^bb152(%228 : index)
   ^bb154:  // pred: ^bb152
-    %201 = arith.addi %191, %c1 : index
-    cf.br ^bb150(%201 : index)
+    %229 = arith.addi %215, %c1 : index
+    cf.br ^bb150(%229 : index)
   ^bb155:  // pred: ^bb150
-    %202 = arith.addi %189, %c1 : index
-    cf.br ^bb148(%202 : index)
+    %230 = arith.addi %213, %c1 : index
+    cf.br ^bb148(%230 : index)
   ^bb156:  // pred: ^bb148
     cf.br ^bb157(%c0 : index)
-  ^bb157(%203: index):  // 2 preds: ^bb156, ^bb161
-    %204 = arith.cmpi slt, %203, %c32 : index
-    cf.cond_br %204, ^bb158, ^bb162
+  ^bb157(%231: index):  // 2 preds: ^bb156, ^bb161
+    %232 = arith.cmpi slt, %231, %c32 : index
+    cf.cond_br %232, ^bb158, ^bb162
   ^bb158:  // pred: ^bb157
     cf.br ^bb159(%c0 : index)
-  ^bb159(%205: index):  // 2 preds: ^bb158, ^bb160
-    %206 = arith.cmpi slt, %205, %c10 : index
-    cf.cond_br %206, ^bb160, ^bb161
+  ^bb159(%233: index):  // 2 preds: ^bb158, ^bb160
+    %234 = arith.cmpi slt, %233, %c10 : index
+    cf.cond_br %234, ^bb160, ^bb161
   ^bb160:  // pred: ^bb159
-    %207 = memref.load %alloc_3[%203, %205] : memref<32x10xf32>
-    %208 = memref.load %7[%205] : memref<10xf32>
-    %209 = arith.addf %207, %208 : f32
-    memref.store %209, %alloc_3[%203, %205] : memref<32x10xf32>
-    %210 = arith.addi %205, %c1 : index
-    cf.br ^bb159(%210 : index)
+    %235 = affine.apply #map8()[%231, %233]
+    %236 = memref.load %alloc_8[%235] : memref<320xf32, strided<[1]>>
+    %237 = memref.load %7[%233] : memref<10xf32>
+    %238 = arith.addf %236, %237 : f32
+    %239 = affine.apply #map8()[%231, %233]
+    memref.store %238, %alloc_8[%239] : memref<320xf32, strided<[1]>>
+    %240 = arith.addi %233, %c1 : index
+    cf.br ^bb159(%240 : index)
   ^bb161:  // pred: ^bb159
-    %211 = arith.addi %203, %c1 : index
-    cf.br ^bb157(%211 : index)
+    %241 = arith.addi %231, %c1 : index
+    cf.br ^bb157(%241 : index)
   ^bb162:  // pred: ^bb157
-    return %alloc_3 : memref<32x10xf32>
+    return %reinterpret_cast_9 : memref<32x10xf32>
   }
 }
 
