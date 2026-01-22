@@ -1,0 +1,37 @@
+root@fbeaeec38d84:/home/thoth/mldoa/CNN-example# ../build/bin/circt-opt test0gen.mlir --flatten-memref  > test1gen_.mlir
+PLEASE submit a bug report to https://github.com/llvm/circt and include the crash backtrace.
+Stack dump:
+0.	Program arguments: ../build/bin/circt-opt test0gen.mlir --flatten-memref
+ #0 0x000055bc16e28510 llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) (../build/bin/circt-opt+0x244b510)
+ #1 0x000055bc16e251cf llvm::sys::RunSignalHandlers() (../build/bin/circt-opt+0x24481cf)
+ #2 0x000055bc16e25322 SignalHandler(int, siginfo_t*, void*) Signals.cpp:0:0
+ #3 0x00007f070b3cd520 (/lib/x86_64-linux-gnu/libc.so.6+0x42520)
+ #4 0x000055bc189c7f40 mlir::DenseElementsAttr::getNumElements() const (../build/bin/circt-opt+0x3feaf40)
+ #5 0x000055bc1892f126 (anonymous namespace)::GlobalOpConversion::matchAndRewrite(mlir::memref::GlobalOp, mlir::memref::GlobalOpAdaptor, mlir::ConversionPatternRewriter&) const FlattenMemRefs.cpp:0:0
+ #6 0x000055bc18930a2f llvm::LogicalResult mlir::ConversionPattern::dispatchTo1To1<mlir::OpConversionPattern<mlir::memref::GlobalOp>, mlir::memref::GlobalOp>(mlir::OpConversionPattern<mlir::memref::GlobalOp> const&, mlir::memref::GlobalOp, mlir::memref::GlobalOp::GenericAdaptor<llvm::ArrayRef<mlir::ValueRange>>, mlir::ConversionPatternRewriter&) (../build/bin/circt-opt+0x3f53a2f)
+ #7 0x000055bc18930c9d mlir::OpConversionPattern<mlir::memref::GlobalOp>::matchAndRewrite(mlir::Operation*, llvm::ArrayRef<mlir::ValueRange>, mlir::ConversionPatternRewriter&) const FlattenMemRefs.cpp:0:0
+ #8 0x000055bc19681dff mlir::ConversionPattern::matchAndRewrite(mlir::Operation*, mlir::PatternRewriter&) const (../build/bin/circt-opt+0x4ca4dff)
+ #9 0x000055bc196c9d81 mlir::PatternApplicator::matchAndRewrite(mlir::Operation*, mlir::PatternRewriter&, llvm::function_ref<bool (mlir::Pattern const&)>, llvm::function_ref<void (mlir::Pattern const&)>, llvm::function_ref<llvm::LogicalResult (mlir::Pattern const&)>)::'lambda'()::operator()() const PatternApplicator.cpp:0:0
+#10 0x000055bc196cb1a7 mlir::PatternApplicator::matchAndRewrite(mlir::Operation*, mlir::PatternRewriter&, llvm::function_ref<bool (mlir::Pattern const&)>, llvm::function_ref<void (mlir::Pattern const&)>, llvm::function_ref<llvm::LogicalResult (mlir::Pattern const&)>) (../build/bin/circt-opt+0x4cee1a7)
+#11 0x000055bc1967b96b (anonymous namespace)::OperationLegalizer::legalize(mlir::Operation*) DialectConversion.cpp:0:0
+#12 0x000055bc1967be24 mlir::OperationConverter::convert(mlir::Operation*, bool) (../build/bin/circt-opt+0x4c9ee24)
+#13 0x000055bc19686b16 mlir::OperationConverter::applyConversion(llvm::ArrayRef<mlir::Operation*>) (../build/bin/circt-opt+0x4ca9b16)
+#14 0x000055bc19689087 applyConversion(llvm::ArrayRef<mlir::Operation*>, mlir::ConversionTarget const&, mlir::FrozenRewritePatternSet const&, mlir::ConversionConfig, (anonymous namespace)::OpConversionMode) DialectConversion.cpp:0:0
+#15 0x000055bc19689246 mlir::applyPartialConversion(mlir::Operation*, mlir::ConversionTarget const&, mlir::FrozenRewritePatternSet const&, mlir::ConversionConfig) (../build/bin/circt-opt+0x4cac246)
+#16 0x000055bc1892d967 (anonymous namespace)::FlattenMemRefPass::runOnOperation() FlattenMemRefs.cpp:0:0
+#17 0x000055bc197f6d39 mlir::detail::OpToOpPassAdaptor::run(mlir::Pass*, mlir::Operation*, mlir::AnalysisManager, bool, unsigned int) (../build/bin/circt-opt+0x4e19d39)
+#18 0x000055bc197f7094 mlir::detail::OpToOpPassAdaptor::runPipeline(mlir::OpPassManager&, mlir::Operation*, mlir::AnalysisManager, bool, unsigned int, mlir::PassInstrumentor*, mlir::PassInstrumentation::PipelineParentInfo const*) (../build/bin/circt-opt+0x4e1a094)
+#19 0x000055bc197f8f82 mlir::PassManager::runPasses(mlir::Operation*, mlir::AnalysisManager) (../build/bin/circt-opt+0x4e1bf82)
+#20 0x000055bc197f9cca mlir::PassManager::run(mlir::Operation*) (../build/bin/circt-opt+0x4e1ccca)
+#21 0x000055bc18fc3397 performActions(llvm::raw_ostream&, std::shared_ptr<llvm::SourceMgr> const&, mlir::MLIRContext*, mlir::MlirOptMainConfig const&) MlirOptMain.cpp:0:0
+#22 0x000055bc18fc3d53 processBuffer(llvm::raw_ostream&, std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::MemoryBufferRef, mlir::MlirOptMainConfig const&, mlir::DialectRegistry&, mlir::SourceMgrDiagnosticVerifierHandler*, llvm::ThreadPoolInterface*) MlirOptMain.cpp:0:0
+#23 0x000055bc18fc4061 llvm::LogicalResult llvm::function_ref<llvm::LogicalResult (std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::MemoryBufferRef const&, llvm::raw_ostream&)>::callback_fn<mlir::MlirOptMain(llvm::raw_ostream&, std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, mlir::DialectRegistry&, mlir::MlirOptMainConfig const&)::'lambda'(std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::MemoryBufferRef, llvm::raw_ostream&)>(long, std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::MemoryBufferRef const&, llvm::raw_ostream&) MlirOptMain.cpp:0:0
+#24 0x000055bc18ff9d4d mlir::splitAndProcessBuffer(std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::function_ref<llvm::LogicalResult (std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::MemoryBufferRef const&, llvm::raw_ostream&)>, llvm::raw_ostream&, llvm::StringRef, llvm::StringRef) (../build/bin/circt-opt+0x461cd4d)
+#25 0x000055bc18fbf72a mlir::MlirOptMain(llvm::raw_ostream&, std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, mlir::DialectRegistry&, mlir::MlirOptMainConfig const&) (.part.0) MlirOptMain.cpp:0:0
+#26 0x000055bc18fc4608 mlir::MlirOptMain(int, char**, llvm::StringRef, llvm::StringRef, mlir::DialectRegistry&) (../build/bin/circt-opt+0x45e7608)
+#27 0x000055bc18fc4864 mlir::MlirOptMain(int, char**, llvm::StringRef, mlir::DialectRegistry&) (../build/bin/circt-opt+0x45e7864)
+#28 0x000055bc16d63cc1 main (../build/bin/circt-opt+0x2386cc1)
+#29 0x00007f070b3b4d90 (/lib/x86_64-linux-gnu/libc.so.6+0x29d90)
+#30 0x00007f070b3b4e40 __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29e40)
+#31 0x000055bc16d51915 _start (../build/bin/circt-opt+0x2374915)
+Segmentation fault
