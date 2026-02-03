@@ -1,0 +1,242 @@
+root@78bebd281214:/data/workspace# gdb --args llvm-project/build/bin/mlir-opt test1gen.mlir --flatten-memref
+GNU gdb (Ubuntu 12.1-0ubuntu1~22.04.2) 12.1
+Copyright (C) 2022 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from llvm-project/build/bin/mlir-opt...
+(gdb) break llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:262
+Breakpoint 1 at 0x872ab60: file /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp, line 262.
+(gdb) step
+The program is not being run.
+(gdb) run
+Starting program: /data/workspace/llvm-project/build/bin/mlir-opt test1gen.mlir --flatten-memref
+warning: Error disabling address space randomization: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, (anonymous namespace)::FlattenMemrefsPass::runOnOperation (this=0x5621a298f1c0) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:262
+262	  void runOnOperation() override {
+(gdb) step
+263	    RewritePatternSet patterns(&getContext());
+(gdb) step
+mlir::Pass::getContext (this=0x5621a298f1c0) at /data/workspace/llvm-project/mlir/include/mlir/Pass/Pass.h:178
+178	  MLIRContext &getContext() { return *getOperation()->getContext(); }
+(gdb) step
+mlir::Pass::getOperation (this=0x5621a298f1c0) at /data/workspace/llvm-project/mlir/include/mlir/Pass/Pass.h:221
+221	    return getPassState().irAndPassFailed.getPointer();
+(gdb) step
+mlir::Pass::getPassState (this=0x5621a298f1c0) at /usr/include/c++/11/optional:432
+432	      constexpr bool _M_is_engaged() const noexcept
+(gdb) step
+mlir::Pass::getOperation (this=<optimized out>) at /data/workspace/llvm-project/mlir/include/mlir/Pass/Pass.h:221
+221	    return getPassState().irAndPassFailed.getPointer();
+(gdb) step
+llvm::PointerIntPair<mlir::Operation*, 1u, bool, llvm::PointerLikeTypeTraits<mlir::Operation*>, llvm::PointerIntPairInfo<mlir::Operation*, 1u, llvm::PointerLikeTypeTraits<mlir::Operation*> > >::getPointer (this=<optimized out>) at /data/workspace/llvm-project/llvm/include/llvm/ADT/PointerIntPair.h:94
+94	  PointerTy getPointer() const { return Info::getPointer(Value); }
+(gdb) step
+llvm::PointerIntPairInfo<mlir::Operation*, 1u, llvm::PointerLikeTypeTraits<mlir::Operation*> >::getPointer (Value=<optimized out>) at /data/workspace/llvm-project/mlir/include/mlir/IR/Operation.h:216
+216	  MLIRContext *getContext() { return location->getContext(); }
+(gdb) step
+265	    memref::populateFlattenMemrefsPatterns(patterns);
+(gdb) print patterns
+$1 = {context = 0x5621a299f570, nativePatterns = std::vector of length 4, capacity 5 = {std::unique_ptr<mlir::RewritePattern> = {
+      get() = 0x5621694ad670 <mlir::detail::TypeIDResolver<mlir::BFloat16Type, void>::id>}, std::unique_ptr<mlir::RewritePattern> = {get() = 0x10}, std::unique_ptr<mlir::RewritePattern> = {
+      get() = 0x5621694ad6c8 <mlir::detail::TypeIDResolver<mlir::Float8E5M2Type, void>::id>}, std::unique_ptr<mlir::RewritePattern> = {get() = 0x8}}, pdlPatterns = {pdlModule = {
+      op = {<mlir::Op<mlir::ModuleOp, mlir::OpTrait::OneRegion, mlir::OpTrait::ZeroResults, mlir::OpTrait::ZeroSuccessors, mlir::OpTrait::ZeroOperands, mlir::OpTrait::NoRegionArguments, mlir::OpTrait::NoTerminator, mlir::OpTrait::SingleBlock, mlir::OpTrait::OpInvariants, mlir::BytecodeOpInterface::Trait, mlir::OpTrait::AffineScope, mlir::OpTrait::IsIsolatedFromAbove, mlir::OpTrait::SymbolTable, mlir::SymbolOpInterface::Trait, mlir::OpAsmOpInterface::Trait, mlir::RegionKindInterface::Trait, mlir::OpTrait::HasOnlyGraphRegion>> = {<mlir::OpState> = {
+            state = 0x5621a299f588}, <mlir::OpTrait::OneRegion<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::OneRegion>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroResults<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroResults>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroSuccessors<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroSuccessors>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroOperands<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroOperands>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::NoRegionArguments<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::NoRegionArguments>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::NoTerminator<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::NoTerminator>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::SingleBlock<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::SingleBlock>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::OpInvariants<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::OpInvariants>> = {<No data fields>}, <No data fields>}, <mlir::BytecodeOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::BytecodeOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::BytecodeOpInterface, mlir::Operation*, mlir::detail::BytecodeOpInterfaceInterfaceTraits, mlir::Op<mlir::BytecodeOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::BytecodeOpInterface, mlir::Operation*, mlir::detail::BytecodeOpInterfaceInterfaceTraits, mlir::Op<mlir::BytecodeOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpTrait::AffineScope<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::AffineScope>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::IsIsolatedFromAbove<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::IsIsolatedFromAbove>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::SymbolTable<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::SymbolTable>> = {<No data fields>}, <No data fields>}, <mlir::SymbolOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::SymbolOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::SymbolOpInterface, mlir::Operation*, mlir::detail::SymbolOpInterfaceInterfaceTraits, mlir::Op<mlir::SymbolOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::SymbolOpInterface, mlir::Operation*, mlir::detail::SymbolOpInterfaceInterfaceTraits, mlir::Op<mlir::SymbolOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpAsmOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::OpAsmOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::OpAsmOpInterface, mlir::Operation*, mlir::detail::OpAsmOpInterfaceInterfaceTraits, mlir::Op<mlir::OpAsmOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::OpAsmOpInterface, mlir::Operation*, mlir::detail::OpAsmOpInterfaceInterfaceTraits, mlir::Op<mlir::OpAsmOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::RegionKindInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::RegionKindInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::RegionKindInterface, mlir::Operation*, mlir::detail::RegionKindInterfaceInterfaceTraits, mlir::Op<mlir::RegionKindInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::RegionKindInterface, mlir::Operation*, mlir::detail::RegionKindInterfaceInterfaceTraits, mlir::Op<mlir::RegionKindInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpTrait::HasOnlyGraphRegion<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::HasOnlyGraphRegion>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}}, 
+    configs = {<llvm::SmallVectorImpl<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> > >> = {<llvm::SmallVectorTemplateBase<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, false>> = {<llvm::SmallVectorTemplateCommon<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, void>> = {<llvm::SmallVectorBase<unsigned int>> = {BeginX = 0x5621a299f590, Size = 2727998872, Capacity = 22049}, <No data fields>}, 
+          static TakesParamByValue = <error reading variable: Missing ELF symbol "_ZN4llvm23SmallVectorTemplateBaseISt10unique_ptrIN4mlir19PDLPatternConfigSetESt14default_deleteIS3_EELb0EE17TakesParamByValueE".>}, <No data fields>}, <llvm::SmallVectorStorage<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, 6>> = {
+        InlineElts = "\240\365\231\242!V\000\000\250\365\231\242!V\000\000\260\365\231\242!V\000\000\270\365\231\242!V\000\000\300\365\231\242!V\000\000\310\365\231\242!V\000"}, <No data fields>}, 
+    configMap = {<llvm::DenseMapBase<llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >, mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >> = {<llvm::DebugEpochBase> = {Epoch = 94702461908432}, <No data fields>}, Buckets = 0x0, NumEntries = 1657369344, NumTombstones = 1475274411, NumBuckets = 1766511888}, constraintFunctions = {<llvm::StringMapImpl> = {
+        TheTable = 0x5621693ec948 <mlir::detail::TypeIDResolver<mlir::OpTrait::IsIsolatedFromAbove<mlir::TypeID::get<mlir::OpTrait::IsIsolatedFromAbove>()::Empty>, void>::resolveTypeID()::id>, 
+        NumBuckets = 2708806848, NumItems = 32765, NumTombstones = 1765722440, ItemSize = 22049, 
+        static TombstoneIntVal = 18446744073709551608}, <llvm::detail::AllocatorHolder<llvm::MallocAllocator>> = {<llvm::MallocAllocator> = {<llvm::AllocatorBase<llvm::MallocAllocator>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, rewriteFunctions = {<llvm::StringMapImpl> = {TheTable = 0x7ffda1751cc0, NumBuckets = 1685169680, NumItems = 22049, 
+        NumTombstones = 1684922624, ItemSize = 22049, 
+        static TombstoneIntVal = 18446744073709551608}, <llvm::detail::AllocatorHolder<llvm::MallocAllocator>> = {<llvm::MallocAllocator> = {<llvm::AllocatorBase<llvm::MallocAllocator>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}}}
+(gdb) step
+mlir::memref::populateFlattenMemrefsPatterns (patterns=...) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:294
+294	  populateFlattenMemrefOpsPatterns(patterns);
+(gdb) step
+0x0000562162fafb9e in mlir::memref::populateFlattenMemrefOpsPatterns (patterns=...) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:289
+289	                  MemRefRewritePattern<memref::AllocaOp>>(
+(gdb) next
+263	    RewritePatternSet patterns(&getContext());
+(gdb) print patterns
+$2 = {context = 0x5621a299f570, nativePatterns = std::vector of length 4, capacity 5 = {std::unique_ptr<mlir::RewritePattern> = {
+      get() = 0x5621694ad670 <mlir::detail::TypeIDResolver<mlir::BFloat16Type, void>::id>}, std::unique_ptr<mlir::RewritePattern> = {get() = 0x10}, std::unique_ptr<mlir::RewritePattern> = {
+      get() = 0x5621694ad6c8 <mlir::detail::TypeIDResolver<mlir::Float8E5M2Type, void>::id>}, std::unique_ptr<mlir::RewritePattern> = {get() = 0x8}}, pdlPatterns = {pdlModule = {
+      op = {<mlir::Op<mlir::ModuleOp, mlir::OpTrait::OneRegion, mlir::OpTrait::ZeroResults, mlir::OpTrait::ZeroSuccessors, mlir::OpTrait::ZeroOperands, mlir::OpTrait::NoRegionArguments, mlir::OpTrait::NoTerminator, mlir::OpTrait::SingleBlock, mlir::OpTrait::OpInvariants, mlir::BytecodeOpInterface::Trait, mlir::OpTrait::AffineScope, mlir::OpTrait::IsIsolatedFromAbove, mlir::OpTrait::SymbolTable, mlir::SymbolOpInterface::Trait, mlir::OpAsmOpInterface::Trait, mlir::RegionKindInterface::Trait, mlir::OpTrait::HasOnlyGraphRegion>> = {<mlir::OpState> = {
+            state = 0x5621a299f588}, <mlir::OpTrait::OneRegion<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::OneRegion>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroResults<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroResults>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroSuccessors<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroSuccessors>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroOperands<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroOperands>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::NoRegionArguments<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::NoRegionArguments>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::NoTerminator<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::NoTerminator>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::SingleBlock<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::SingleBlock>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::OpInvariants<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::OpInvariants>> = {<No data fields>}, <No data fields>}, <mlir::BytecodeOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::BytecodeOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::BytecodeOpInterface, mlir::Operation*, mlir::detail::BytecodeOpInterfaceInterfaceTraits, mlir::Op<mlir::BytecodeOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::BytecodeOpInterface, mlir::Operation*, mlir::detail::BytecodeOpInterfaceInterfaceTraits, mlir::Op<mlir::BytecodeOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpTrait::AffineScope<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::AffineScope>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::IsIsolatedFromAbove<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::IsIsolatedFromAbove>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::SymbolTable<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::SymbolTable>> = {<No data fields>}, <No data fields>}, <mlir::SymbolOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::SymbolOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::SymbolOpInterface, mlir::Operation*, mlir::detail::SymbolOpInterfaceInterfaceTraits, mlir::Op<mlir::SymbolOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::SymbolOpInterface, mlir::Operation*, mlir::detail::SymbolOpInterfaceInterfaceTraits, mlir::Op<mlir::SymbolOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpAsmOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::OpAsmOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::OpAsmOpInterface, mlir::Operation*, mlir::detail::OpAsmOpInterfaceInterfaceTraits, mlir::Op<mlir::OpAsmOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::OpAsmOpInterface, mlir::Operation*, mlir::detail::OpAsmOpInterfaceInterfaceTraits, mlir::Op<mlir::OpAsmOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::RegionKindInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::RegionKindInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::RegionKindInterface, mlir::Operation*, mlir::detail::RegionKindInterfaceInterfaceTraits, mlir::Op<mlir::RegionKindInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::RegionKindInterface, mlir::Operation*, mlir::detail::RegionKindInterfaceInterfaceTraits, mlir::Op<mlir::RegionKindInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpTrait::HasOnlyGraphRegion<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::HasOnlyGraphRegion>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}}, 
+    configs = {<llvm::SmallVectorImpl<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> > >> = {<llvm::SmallVectorTemplateBase<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, false>> = {<llvm::SmallVectorTemplateCommon<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, void>> = {<llvm::SmallVectorBase<unsigned int>> = {BeginX = 0x5621a299f590, Size = 2727998872, Capacity = 22049}, <No data fields>}, 
+          static TakesParamByValue = <error reading variable: Missing ELF symbol "_ZN4llvm23SmallVectorTemplateBaseISt10unique_ptrIN4mlir19PDLPatternConfigSetESt14default_deleteIS3_EELb0EE17TakesParamByValueE".>}, <No data fields>}, <llvm::SmallVectorStorage<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, 6>> = {
+        InlineElts = "\240\365\231\242!V\000\000\250\365\231\242!V\000\000\260\365\231\242!V\000\000\270\365\231\242!V\000\000\300\365\231\242!V\000\000\310\365\231\242!V\000"}, <No data fields>}, 
+    configMap = {<llvm::DenseMapBase<llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >, mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >> = {<llvm::DebugEpochBase> = {Epoch = 94702461908432}, <No data fields>}, Buckets = 0x0, NumEntries = 1657369344, NumTombstones = 1475274411, NumBuckets = 1766511888}, constraintFunctions = {<llvm::StringMapImpl> = {
+        TheTable = 0x5621693ec948 <mlir::detail::TypeIDResolver<mlir::OpTrait::IsIsolatedFromAbove<mlir::TypeID::get<mlir::OpTrait::IsIsolatedFromAbove>()::Empty>, void>::resolveTypeID()::id>, 
+        NumBuckets = 2708806848, NumItems = 32765, NumTombstones = 1765722440, ItemSize = 22049, 
+        static TombstoneIntVal = 18446744073709551608}, <llvm::detail::AllocatorHolder<llvm::MallocAllocator>> = {<llvm::MallocAllocator> = {<llvm::AllocatorBase<llvm::MallocAllocator>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, rewriteFunctions = {<llvm::StringMapImpl> = {TheTable = 0x7ffda1751cc0, NumBuckets = 1685169680, NumItems = 22049, 
+        NumTombstones = 1684922624, ItemSize = 22049, 
+        static TombstoneIntVal = 18446744073709551608}, <llvm::detail::AllocatorHolder<llvm::MallocAllocator>> = {<llvm::MallocAllocator> = {<llvm::AllocatorBase<llvm::MallocAllocator>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}}}
+(gdb) step
+mlir::RewritePatternSet::RewritePatternSet (context=0x7ffda1752948, this=0x7ffda1751c10) at /data/workspace/llvm-project/mlir/include/mlir/IR/PatternMatch.h:826
+826	  RewritePatternSet(MLIRContext *context) : context(context) {}
+(gdb) step
+mlir::PDLPatternModule::PDLPatternModule (this=<optimized out>) at /data/workspace/llvm-project/mlir/include/mlir/IR/PDLPatternMatch.h.inc:813
+813	  PDLPatternModule() = default;
+(gdb) step
+llvm::SmallVector<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, 6u>::SmallVector (this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:1207
+1207	  SmallVector() : SmallVectorImpl<T>(N) {}
+(gdb) step
+llvm::SmallVectorImpl<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> > >::SmallVectorImpl (N=<optimized out>, this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:591
+591	      : SmallVectorTemplateBase<T>(N) {}
+(gdb) step
+llvm::SmallVectorTemplateBase<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, false>::SmallVectorTemplateBase (Size=<optimized out>, this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:342
+342	  SmallVectorTemplateBase(size_t Size) : SmallVectorTemplateCommon<T>(Size) {}
+(gdb) step
+llvm::SmallVectorTemplateCommon<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, void>::SmallVectorTemplateCommon (Size=<optimized out>, this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:137
+137	  SmallVectorTemplateCommon(size_t Size) : Base(getFirstEl(), Size) {}
+(gdb) step
+llvm::SmallVectorBase<unsigned int>::SmallVectorBase (TotalCapacity=<optimized out>, FirstEl=<optimized out>, this=<optimized out>) at /data/workspace/llvm-project/mlir/include/mlir/IR/PatternMatch.h:826
+826	  RewritePatternSet(MLIRContext *context) : context(context) {}
+(gdb) step
+0x0000562162fafbc8 in llvm::SmallVectorBase<unsigned int>::SmallVectorBase (TotalCapacity=<optimized out>, FirstEl=<optimized out>, this=<optimized out>) at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:66
+66	      : BeginX(FirstEl), Capacity(static_cast<Size_T>(TotalCapacity)) {}
+(gdb) step
+813	  PDLPatternModule() = default;
+(gdb) step
+llvm::SmallVector<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, 6u>::SmallVector (this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:1207
+1207	  SmallVector() : SmallVectorImpl<T>(N) {}
+(gdb) step
+llvm::SmallVectorImpl<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> > >::SmallVectorImpl (N=<optimized out>, this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:591
+591	      : SmallVectorTemplateBase<T>(N) {}
+(gdb) step
+llvm::SmallVectorTemplateBase<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, false>::SmallVectorTemplateBase (Size=<optimized out>, this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:342
+342	  SmallVectorTemplateBase(size_t Size) : SmallVectorTemplateCommon<T>(Size) {}
+(gdb) step\
+llvm::SmallVectorTemplateCommon<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, void>::SmallVectorTemplateCommon (Size=<optimized out>, this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:137
+137	  SmallVectorTemplateCommon(size_t Size) : Base(getFirstEl(), Size) {}
+(gdb) step
+0x0000562162fafbda in llvm::SmallVectorBase<unsigned int>::SmallVectorBase (TotalCapacity=<optimized out>, FirstEl=<optimized out>, this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/SmallVector.h:66
+66	      : BeginX(FirstEl), Capacity(static_cast<Size_T>(TotalCapacity)) {}
+(gdb) step
+(anonymous namespace)::FlattenMemrefsPass::runOnOperation (this=0x5621a298f1c0) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:265
+265	    memref::populateFlattenMemrefsPatterns(patterns);
+(gdb) print patterns
+$3 = {context = 0x7ffda1752948, nativePatterns = std::vector of length 4, capacity 5 = {std::unique_ptr<mlir::RewritePattern> = {
+      get() = 0x5621694ad670 <mlir::detail::TypeIDResolver<mlir::BFloat16Type, void>::id>}, std::unique_ptr<mlir::RewritePattern> = {get() = 0x10}, std::unique_ptr<mlir::RewritePattern> = {
+      get() = 0x5621694ad6c8 <mlir::detail::TypeIDResolver<mlir::Float8E5M2Type, void>::id>}, std::unique_ptr<mlir::RewritePattern> = {get() = 0x8}}, pdlPatterns = {pdlModule = {
+      op = {<mlir::Op<mlir::ModuleOp, mlir::OpTrait::OneRegion, mlir::OpTrait::ZeroResults, mlir::OpTrait::ZeroSuccessors, mlir::OpTrait::ZeroOperands, mlir::OpTrait::NoRegionArguments, mlir::OpTrait::NoTerminator, mlir::OpTrait::SingleBlock, mlir::OpTrait::OpInvariants, mlir::BytecodeOpInterface::Trait, mlir::OpTrait::AffineScope, mlir::OpTrait::IsIsolatedFromAbove, mlir::OpTrait::SymbolTable, mlir::SymbolOpInterface::Trait, mlir::OpAsmOpInterface::Trait, mlir::RegionKindInterface::Trait, mlir::OpTrait::HasOnlyGraphRegion>> = {<mlir::OpState> = {
+            state = 0x5621a299f588}, <mlir::OpTrait::OneRegion<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::OneRegion>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroResults<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroResults>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroSuccessors<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroSuccessors>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::ZeroOperands<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::ZeroOperands>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::NoRegionArguments<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::NoRegionArguments>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::NoTerminator<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::NoTerminator>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::SingleBlock<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::SingleBlock>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::OpInvariants<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::OpInvariants>> = {<No data fields>}, <No data fields>}, <mlir::BytecodeOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::BytecodeOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::BytecodeOpInterface, mlir::Operation*, mlir::detail::BytecodeOpInterfaceInterfaceTraits, mlir::Op<mlir::BytecodeOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::BytecodeOpInterface, mlir::Operation*, mlir::detail::BytecodeOpInterfaceInterfaceTraits, mlir::Op<mlir::BytecodeOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpTrait::AffineScope<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::AffineScope>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::IsIsolatedFromAbove<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::IsIsolatedFromAbove>> = {<No data fields>}, <No data fields>}, <mlir::OpTrait::SymbolTable<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::SymbolTable>> = {<No data fields>}, <No data fields>}, <mlir::SymbolOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::SymbolOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::SymbolOpInterface, mlir::Operation*, mlir::detail::SymbolOpInterfaceInterfaceTraits, mlir::Op<mlir::SymbolOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::SymbolOpInterface, mlir::Operation*, mlir::detail::SymbolOpInterfaceInterfaceTraits, mlir::Op<mlir::SymbolOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpAsmOpInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::OpAsmOpInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::OpAsmOpInterface, mlir::Operation*, mlir::detail::OpAsmOpInterfaceInterfaceTraits, mlir::Op<mlir::OpAsmOpInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::OpAsmOpInterface, mlir::Operation*, mlir::detail::OpAsmOpInterfaceInterfaceTraits, mlir::Op<mlir::OpAsmOpInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::RegionKindInterface::Trait<mlir::ModuleOp>> = {<mlir::detail::RegionKindInterfaceTrait<mlir::ModuleOp>> = {<mlir::detail::Interface<mlir::RegionKindInterface, mlir::Operation*, mlir::detail::RegionKindInterfaceInterfaceTraits, mlir::Op<mlir::RegionKindInterface>, mlir::OpTrait::TraitBase>::Trait<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::detail::Interface<mlir::RegionKindInterface, mlir::Operation*, mlir::detail::RegionKindInterfaceInterfaceTraits, mlir::Op<mlir::RegionKindInterface>, mlir::OpTrait::TraitBase>::Trait>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <mlir::OpTrait::HasOnlyGraphRegion<mlir::ModuleOp>> = {<mlir::OpTrait::TraitBase<mlir::ModuleOp, mlir::OpTrait::HasOnlyGraphRegion>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}}, 
+    configs = {<llvm::SmallVectorImpl<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> > >> = {<llvm::SmallVectorTemplateBase<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, false>> = {<llvm::SmallVectorTemplateCommon<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, void>> = {<llvm::SmallVectorBase<unsigned int>> = {BeginX = 0x7ffda1751c48, Size = 0, Capacity = 6}, <No data fields>}, 
+          static TakesParamByValue = <error reading variable: Missing ELF symbol "_ZN4llvm23SmallVectorTemplateBaseISt10unique_ptrIN4mlir19PDLPatternConfigSetESt14default_deleteIS3_EELb0EE17TakesParamByValueE".>}, <No data fields>}, <llvm::SmallVectorStorage<std::unique_ptr<mlir::PDLPatternConfigSet, std::default_delete<mlir::PDLPatternConfigSet> >, 6>> = {
+        InlineElts = "\240\365\231\242!V\000\000\250\365\231\242!V\000\000\260\365\231\242!V\000\000\270\365\231\242!V\000\000\300\365\231\242!V\000\000\310\365\231\242!V\000"}, <No data fields>}, 
+    configMap = {<llvm::DenseMapBase<llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >, mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >> = {<llvm::DebugEpochBase> = {Epoch = 94702461908432}, <No data fields>}, Buckets = 0x0, NumEntries = 1657369344, NumTombstones = 1475274411, NumBuckets = 1766511888}, constraintFunctions = {<llvm::StringMapImpl> = {
+        TheTable = 0x5621693ec948 <mlir::detail::TypeIDResolver<mlir::OpTrait::IsIsolatedFromAbove<mlir::TypeID::get<mlir::OpTrait::IsIsolatedFromAbove>()::Empty>, void>::resolveTypeID()::id>, 
+        NumBuckets = 2708806848, NumItems = 32765, NumTombstones = 0, ItemSize = 40, 
+        static TombstoneIntVal = 18446744073709551608}, <llvm::detail::AllocatorHolder<llvm::MallocAllocator>> = {<llvm::MallocAllocator> = {<llvm::AllocatorBase<llvm::MallocAllocator>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, rewriteFunctions = {<llvm::StringMapImpl> = {TheTable = 0x7ffda1751cc0, NumBuckets = 1685169680, NumItems = 22049, NumTombstones = 0, 
+        ItemSize = 40, 
+        static TombstoneIntVal = 18446744073709551608}, <llvm::detail::AllocatorHolder<llvm::MallocAllocator>> = {<llvm::MallocAllocator> = {<llvm::AllocatorBase<llvm::MallocAllocator>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}}}
+(gdb) step
+mlir::memref::populateFlattenMemrefsPatterns (patterns=...) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:294
+294	  populateFlattenMemrefOpsPatterns(patterns);
+(gdb) patterns
+Undefined command: "patterns".  Try "help".
+(gdb) print patterns
+$4 = <optimized out>
+(gdb) step
+mlir::memref::populateFlattenMemrefOpsPatterns (patterns=...) at /usr/include/c++/11/bits/stl_vector.h:97
+97		_Vector_impl_data() _GLIBCXX_NOEXCEPT
+(gdb) step
+0x0000562162fafc05 in std::_Vector_base<std::unique_ptr<mlir::RewritePattern, std::default_delete<mlir::RewritePattern> >, std::allocator<std::unique_ptr<mlir::RewritePattern, std::default_delete<mlir::RewritePattern> > > >::_Vector_impl_data::_Vector_impl_data (this=0x7ffda1751c18) at /usr/include/c++/11/bits/stl_vector.h:98
+98		: _M_start(), _M_finish(), _M_end_of_storage()
+(gdb) step
+mlir::RewritePatternSet::RewritePatternSet (context=0x7ffda1752948, this=0x7ffda1751c10) at /data/workspace/llvm-project/mlir/include/mlir/IR/PatternMatch.h:826
+826	  RewritePatternSet(MLIRContext *context) : context(context) {}
+(gdb) print context 
+$5 = (mlir::MLIRContext *) 0x7ffda1752948
+(gdb) print *context
+$6 = {impl = std::unique_ptr<mlir::MLIRContextImpl> = {get() = 0x5621a29d4f40}}
+(gdb) print &context
+Address requested for identifier "context" which is in register $rax
+(gdb) print **context
+No symbol "operator*" in current context.
+(gdb) step
+mlir::PDLPatternModule::PDLPatternModule (this=0x7ffda1751c30) at /data/workspace/llvm-project/mlir/include/mlir/IR/PDLPatternMatch.h.inc:813
+813	  PDLPatternModule() = default;
+(gdb) step
+mlir::OwningOpRef<mlir::ModuleOp>::OwningOpRef(decltype(nullptr)) (this=0x7ffda1751c30) at /data/workspace/llvm-project/mlir/include/mlir/IR/OwningOpRef.h:34
+34	  OwningOpRef(std::nullptr_t = nullptr) : op(nullptr) {}
+(gdb) step
+mlir::ModuleOp::Op(decltype(nullptr)) (this=0x7ffda1751c30) at /data/workspace/llvm-project/build/tools/mlir/include/mlir/IR/BuiltinOps.h.inc:201
+201	  using Op::Op;
+(gdb) step
+mlir::Op<mlir::ModuleOp, mlir::OpTrait::OneRegion, mlir::OpTrait::ZeroResults, mlir::OpTrait::ZeroSuccessors, mlir::OpTrait::ZeroOperands, mlir::OpTrait::NoRegionArguments, mlir::OpTrait::NoTerminator, mlir::OpTrait::SingleBlock, mlir::OpTrait::OpInvariants, mlir::BytecodeOpInterface::Trait, mlir::OpTrait::AffineScope, mlir::OpTrait::IsIsolatedFromAbove, mlir::OpTrait::SymbolTable, mlir::SymbolOpInterface::Trait, mlir::OpAsmOpInterface::Trait, mlir::RegionKindInterface::Trait, mlir::OpTrait::HasOnlyGraphRegion>::Op(decltype(nullptr)) (this=0x7ffda1751c30)
+    at /data/workspace/llvm-project/mlir/include/mlir/IR/OpDefinition.h:1722
+1722	  Op(std::nullptr_t) : OpState(nullptr) {}
+(gdb) step
+mlir::OpState::OpState (state=0x0, this=0x7ffda1751c30) at /data/workspace/llvm-project/mlir/include/mlir/IR/OpDefinition.h:244
+244	  explicit OpState(Operation *state) : state(state) {}
+(gdb) step
+mlir::PDLPatternModule::PDLPatternModule (this=0x7ffda1751c30) at /data/workspace/llvm-project/mlir/include/mlir/IR/PDLPatternMatch.h.inc:813
+813	  PDLPatternModule() = default;
+(gdb) step
+llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >::DenseMap (
+    NumElementsToReserve=0, this=0x7ffda1751c78) at /data/workspace/llvm-project/llvm/include/llvm/ADT/DenseMap.h:768
+768	                 typename BaseT::ExactBucketCount{}) {}
+(gdb) step
+llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >::DenseMap (
+    NumBuckets=0, this=0x7ffda1751c78) at /data/workspace/llvm-project/llvm/include/llvm/ADT/DenseMap.h:759
+759	  explicit DenseMap(unsigned NumBuckets, typename BaseT::ExactBucketCount) {
+(gdb) step
+llvm::DenseMapBase<llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >, mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >::DenseMapBase (this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/DenseMap.h:378
+378	  DenseMapBase() = default;
+(gdb) step
+llvm::DebugEpochBase::DebugEpochBase (this=<optimized out>) at /data/workspace/llvm-project/llvm/include/llvm/ADT/DenseMap.h:829
+829	  bool allocateBuckets(unsigned Num) {
+(gdb) step
+760	    this->initWithExactBucketCount(NumBuckets);
+(gdb) step
+llvm::DenseMapBase<llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >, mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >::initWithExactBucketCount (
+    NewNumBuckets=0, this=0x7ffda1751c78) at /data/workspace/llvm-project/llvm/include/llvm/ADT/DenseMap.h:383
+383	    if (derived().allocateBuckets(NewNumBuckets)) {
+(gdb) step
+0x0000562162fafc47 in llvm::DenseMap<mlir::Operation*, mlir::PDLPatternConfigSet*, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, mlir::PDLPatternConfigSet*> >::allocateBuckets (Num=<optimized out>, this=<optimized out>) at /data/workspace/llvm-project/llvm/include/llvm/ADT/DenseMap.h:830
+830	    NumBuckets = Num;
+(gdb) step
+mlir::PDLPatternModule::PDLPatternModule (this=<optimized out>) at /data/workspace/llvm-project/mlir/include/mlir/IR/PDLPatternMatch.h.inc:813
+813	  PDLPatternModule() = default;
+(gdb) step
+llvm::StringMap<std::function<llvm::LogicalResult (mlir::PatternRewriter&, mlir::PDLResultList&, llvm::ArrayRef<mlir::PDLValue>)>, llvm::MallocAllocator>::StringMap() (this=<optimized out>)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/StringMap.h:139
+139	  StringMap() : StringMapImpl(static_cast<unsigned>(sizeof(MapEntryTy))) {}
+(gdb) step
+llvm::StringMapImpl::StringMapImpl (itemSize=<optimized out>, this=<optimized out>) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:286
+286	  patterns.insert<MemRefRewritePattern<memref::LoadOp>,
+(gdb) step
+0x0000562162fafc76 in llvm::StringMapImpl::StringMapImpl (itemSize=<optimized out>, this=<optimized out>) at /data/workspace/llvm-project/llvm/include/llvm/ADT/StringMap.h:45
+45	  explicit StringMapImpl(unsigned itemSize) : ItemSize(itemSize) {}
+(gdb) step
+mlir::RewritePatternSet::insert<(anonymous namespace)::MemRefRewritePattern<mlir::memref::LoadOp>, (anonymous namespace)::MemRefRewritePattern<mlir::memref::StoreOp>, (anonymous namespace)::MemRefRewritePattern<mlir::memref::AllocOp>, (anonymous namespace)::MemRefRewritePattern<mlir::memref::AllocaOp>, mlir::MLIRContext*> (this=this@entry=0x7ffda1751c10, arg=@0x7ffda1751bd0: 0x7ffda1752948) at /data/workspace/llvm-project/mlir/include/mlir/IR/PatternMatch.h:946
+946	  RewritePatternSet &insert(ConstructorArg &&arg, ConstructorArgs &&...args) {
+(gdb) step
+949	    (addImpl<Ts>(/*debugLabels=*/{}, std::forward<ConstructorArg>(arg),
