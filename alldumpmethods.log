@@ -1,0 +1,1256 @@
+(gdb) info functions dump
+All functions matching regular expression "dump":
+
+File /data/workspace/llvm-project/build/lib/Target/AMDGPU/AMDGPUGenSubtargetInfo.inc:
+286:	bool llvm::AMDGPUSubtarget::dumpCode() const;
+286:	bool llvm::GCNSubtarget::dumpCode() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/ADT/CoalescingBitVector.h:
+386:	void llvm::CoalescingBitVector<unsigned long>::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/ADT/DenseMap.h:
+650:	bool llvm::DenseMapBase<llvm::DenseMap<llvm::minidump::StreamType, unsigned long, llvm::DenseMapInfo<llvm::minidump::StreamType, void>, llvm::detail::DenseMapPair<llvm::minidump::StreamType, unsigned long> >, llvm::minidump::StreamType, unsigned long, llvm::DenseMapInfo<llvm::minidump::StreamType, void>, llvm::detail::DenseMapPair<llvm::minidump::StreamType, unsigned long> >::LookupBucketFor<llvm::minidump::StreamType>(llvm::minidump::StreamType const&, llvm::detail::DenseMapPair<llvm::minidump::StreamType, unsigned long>*&);
+567:	void llvm::DenseMapBase<llvm::DenseMap<llvm::minidump::StreamType, unsigned long, llvm::DenseMapInfo<llvm::minidump::StreamType, void>, llvm::detail::DenseMapPair<llvm::minidump::StreamType, unsigned long> >, llvm::minidump::StreamType, unsigned long, llvm::DenseMapInfo<llvm::minidump::StreamType, void>, llvm::detail::DenseMapPair<llvm::minidump::StreamType, unsigned long> >::grow(unsigned int);
+
+File /data/workspace/llvm-project/llvm/include/llvm/ADT/GenericCycleInfo.h:
+313:	void llvm::GenericCycleInfo<llvm::GenericSSAContext<llvm::Function> >::dump() const;
+313:	void llvm::GenericCycleInfo<llvm::GenericSSAContext<llvm::MachineFunction> >::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/ADT/STLFunctionalExtras.h:
+45:	static bool llvm::function_ref<bool(const llvm::DWARFLocationEntry&)>::callback_fn<llvm::DWARFLocationTable::dumpLocationList(uint64_t*, llvm::raw_ostream&, std::optional<llvm::object::SectionedAddress>, const llvm::DWARFObject&, llvm::DWARFUnit*, llvm::DIDumpOptions, unsigned int) const::<lambda(const llvm::DWARFLocationEntry&)> >(intptr_t, const llvm::DWARFLocationEntry &);
+45:	static std::optional<llvm::object::SectionedAddress> llvm::function_ref<std::optional<llvm::object::SectionedAddress>(unsigned int)>::callback_fn<llvm::DWARFContext::dump(llvm::raw_ostream&, llvm::DIDumpOptions, std::array<std::optional<long unsigned int>, 28>)::<lambda(uint32_t)> >(intptr_t, unsigned int);
+45:	static void llvm::function_ref<void()>::callback_fn<dumpFunctionProfileJson(const llvm::sampleprof::FunctionSamples&, llvm::json::OStream&, bool)::<lambda()> >(intptr_t);
+45:	static void llvm::function_ref<void()>::callback_fn<dumpFunctionProfileJson(const llvm::sampleprof::FunctionSamples&, llvm::json::OStream&, bool)::<lambda()>::<lambda()> >(intptr_t);
+45:	static void llvm::function_ref<void()>::callback_fn<dumpFunctionProfileJson(const llvm::sampleprof::FunctionSamples&, llvm::json::OStream&, bool)::<lambda(const BodySampleMap&)>::<lambda()> >(intptr_t);
+45:	static void llvm::function_ref<void()>::callback_fn<dumpFunctionProfileJson(const llvm::sampleprof::FunctionSamples&, llvm::json::OStream&, bool)::<lambda(const BodySampleMap&)>::<lambda()>::<lambda()> >(intptr_t);
+45:	static void llvm::function_ref<void()>::callback_fn<dumpFunctionProfileJson(const llvm::sampleprof::FunctionSamples&, llvm::json::OStream&, bool)::<lambda(const BodySampleMap&)>::<lambda()>::<lambda()>::<lambda()> >(intptr_t);
+45:	static void llvm::function_ref<void()>::callback_fn<dumpFunctionProfileJson(const llvm::sampleprof::FunctionSamples&, llvm::json::OStream&, bool)::<lambda(const CallsiteSampleMap&)>::<lambda()> >(intptr_t);
+45:	static void llvm::function_ref<void()>::callback_fn<dumpFunctionProfileJson(const llvm::sampleprof::FunctionSamples&, llvm::json::OStream&, bool)::<lambda(const CallsiteSampleMap&)>::<lambda()>::<lambda()> >(intptr_t);
+
+File /data/workspace/llvm-project/llvm/include/llvm/ADT/iterator_range.h:
+70:	llvm::iterator_range<llvm::fallible_iterator<llvm::object::MinidumpFile::Memory64Iterator> > llvm::make_range<llvm::fallible_iterator<llvm::object::MinidumpFile::Memory64Iterator> >(llvm::fallible_iterator<llvm::object::MinidumpFile::Memory64Iterator>, llvm::fallible_iterator<llvm::object::MinidumpFile::Memory64Iterator>);
+
+File /data/workspace/llvm-project/llvm/include/llvm/Analysis/DominanceFrontierImpl.h:
+71:	void llvm::DominanceFrontierBase<llvm::BasicBlock, false>::dump() const;
+71:	void llvm::DominanceFrontierBase<llvm::BasicBlock, true>::dump() const;
+71:	void llvm::DominanceFrontierBase<llvm::MachineBasicBlock, false>::dump() const;
+71:	void llvm::DominanceFrontierBase<llvm::MachineBasicBlock, true>::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/Analysis/GenericDomTreeUpdaterImpl.h:
+171:	void llvm::GenericDomTreeUpdater<llvm::DomTreeUpdater, llvm::DominatorTree, llvm::PostDominatorTree>::dump() const;
+171:	void llvm::GenericDomTreeUpdater<llvm::MachineDomTreeUpdater, llvm::MachineDominatorTree, llvm::MachinePostDominatorTree>::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/Analysis/RegionInfoImpl.h:
+500:	void llvm::RegionBase<llvm::RegionTraits<llvm::Function> >::dump() const;
+--Type <RET> for more, q to quit, c to continue without paging--c
+500:	void llvm::RegionBase<llvm::RegionTraits<llvm::MachineFunction> >::dump() const;
+759:	void llvm::RegionInfoBase<llvm::RegionTraits<llvm::Function> >::dump() const;
+759:	void llvm::RegionInfoBase<llvm::RegionTraits<llvm::MachineFunction> >::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/CodeGen/MachineScheduler.h:
+257:	void llvm::MachineSchedStrategy::dumpPolicy() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/CodeGen/ScheduleDAG.h:
+563:	void llvm::SchedulingPriorityQueue::dump(llvm::ScheduleDAG*) const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/DebugInfo/DWARF/DWARFContext.h:
+158:	void llvm::DWARFContext::dump(llvm::raw_ostream&, llvm::DIDumpOptions);
+
+File /data/workspace/llvm-project/llvm/include/llvm/MC/MCELFObjectWriter.h:
+50:	void llvm::ELFRelocationEntry::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/Object/Minidump.h:
+25:	void llvm::object::MinidumpFile::~MinidumpFile();
+
+File /data/workspace/llvm-project/llvm/include/llvm/ProfileData/SampleProfReader.h:
+500:	bool llvm::sampleprof::SampleProfileReader::dumpSectionInfo(llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/include/llvm/SandboxIR/Constant.h:
+484:	void llvm::sandboxir::ConstantAggregateZero::dumpOS(llvm::raw_ostream&) const;
+339:	void llvm::sandboxir::ConstantFP::dumpOS(llvm::raw_ostream&) const;
+251:	void llvm::sandboxir::ConstantInt::dumpOS(llvm::raw_ostream&) const;
+789:	void llvm::sandboxir::ConstantPointerNull::dumpOS(llvm::raw_ostream&) const;
+1513:	void llvm::sandboxir::ConstantTokenNone::dumpOS(llvm::raw_ostream&) const;
+1482:	void llvm::sandboxir::DSOLocalEquivalent::dumpOS(llvm::raw_ostream&) const;
+1114:	void llvm::sandboxir::GlobalIFunc::dumpOS(llvm::raw_ostream&) const;
+1282:	void llvm::sandboxir::GlobalVariable::dumpOS(llvm::raw_ostream&) const;
+1351:	void llvm::sandboxir::NoCFIValue::dumpOS(llvm::raw_ostream&) const;
+880:	void llvm::sandboxir::PoisonValue::dumpOS(llvm::raw_ostream&) const;
+841:	void llvm::sandboxir::UndefValue::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/SandboxIR/Instruction.h:
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::AtomicCmpXchgInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::AtomicRMWInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::BinaryOperator>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::BranchInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::CallBase>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::CatchReturnInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::CatchSwitchInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::CleanupReturnInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::ExtractElementInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::FenceInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::FuncletPadInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::GetElementPtrInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::InsertElementInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::InsertValueInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::Instruction>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::LandingPadInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::PHINode>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::ResumeInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::ReturnInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::SelectInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::ShuffleVectorInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::StoreInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::SwitchInst>::dumpOS(llvm::raw_ostream&) const;
+405:	void llvm::sandboxir::SingleLLVMInstructionImpl<llvm::UnaryInstruction>::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/SandboxIR/PassManager.h:
+192:	void llvm::sandboxir::PassManager<llvm::sandboxir::FunctionPass, llvm::sandboxir::FunctionPass>::dump() const;
+192:	void llvm::sandboxir::PassManager<llvm::sandboxir::RegionPass, llvm::sandboxir::RegionPass>::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/SandboxIR/Tracker.h:
+342:	void llvm::sandboxir::CatchSwitchAddHandler::dump() const;
+341:	void llvm::sandboxir::CatchSwitchAddHandler::dump(llvm::raw_ostream&) const;
+192:	void llvm::sandboxir::CmpSwapOperands::dump(llvm::raw_ostream&) const;
+421:	void llvm::sandboxir::CreateAndInsertInst::dump(llvm::raw_ostream&) const;
+238:	void llvm::sandboxir::EraseFromParent::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AllocaInst::getAlign() const), &llvm::sandboxir::AllocaInst::setAlignment>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AllocaInst::getAlign() const), &llvm::sandboxir::AllocaInst::setAlignment>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AllocaInst::getAllocatedType() const), &llvm::sandboxir::AllocaInst::setAllocatedType>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AllocaInst::getAllocatedType() const), &llvm::sandboxir::AllocaInst::setAllocatedType>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AllocaInst::isUsedWithInAlloca() const), &llvm::sandboxir::AllocaInst::setUsedWithInAlloca>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AllocaInst::isUsedWithInAlloca() const), &llvm::sandboxir::AllocaInst::setUsedWithInAlloca>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getAlign() const), &llvm::sandboxir::AtomicCmpXchgInst::setAlignment>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getAlign() const), &llvm::sandboxir::AtomicCmpXchgInst::setAlignment>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getFailureOrdering() const), &llvm::sandboxir::AtomicCmpXchgInst::setFailureOrdering>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getFailureOrdering() const), &llvm::sandboxir::AtomicCmpXchgInst::setFailureOrdering>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getSuccessOrdering() const), &llvm::sandboxir::AtomicCmpXchgInst::setSuccessOrdering>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getSuccessOrdering() const), &llvm::sandboxir::AtomicCmpXchgInst::setSuccessOrdering>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getSyncScopeID() const), &llvm::sandboxir::AtomicCmpXchgInst::setSyncScopeID>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::getSyncScopeID() const), &llvm::sandboxir::AtomicCmpXchgInst::setSyncScopeID>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::isVolatile() const), &llvm::sandboxir::AtomicCmpXchgInst::setVolatile>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::isVolatile() const), &llvm::sandboxir::AtomicCmpXchgInst::setVolatile>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::isWeak() const), &llvm::sandboxir::AtomicCmpXchgInst::setWeak>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicCmpXchgInst::isWeak() const), &llvm::sandboxir::AtomicCmpXchgInst::setWeak>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::getAlign() const), &llvm::sandboxir::AtomicRMWInst::setAlignment>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::getAlign() const), &llvm::sandboxir::AtomicRMWInst::setAlignment>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::getOrdering() const), &llvm::sandboxir::AtomicRMWInst::setOrdering>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::getOrdering() const), &llvm::sandboxir::AtomicRMWInst::setOrdering>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::getSyncScopeID() const), &llvm::sandboxir::AtomicRMWInst::setSyncScopeID>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::getSyncScopeID() const), &llvm::sandboxir::AtomicRMWInst::setSyncScopeID>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::isVolatile() const), &llvm::sandboxir::AtomicRMWInst::setVolatile>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::AtomicRMWInst::isVolatile() const), &llvm::sandboxir::AtomicRMWInst::setVolatile>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CallBrInst::getDefaultDest() const), &llvm::sandboxir::CallBrInst::setDefaultDest>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CallBrInst::getDefaultDest() const), &llvm::sandboxir::CallBrInst::setDefaultDest>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchReturnInst::getCatchPad() const), &llvm::sandboxir::CatchReturnInst::setCatchPad>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchReturnInst::getCatchPad() const), &llvm::sandboxir::CatchReturnInst::setCatchPad>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchReturnInst::getSuccessor() const), &llvm::sandboxir::CatchReturnInst::setSuccessor>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchReturnInst::getSuccessor() const), &llvm::sandboxir::CatchReturnInst::setSuccessor>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchSwitchInst::getParentPad() const), &llvm::sandboxir::CatchSwitchInst::setParentPad>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchSwitchInst::getParentPad() const), &llvm::sandboxir::CatchSwitchInst::setParentPad>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchSwitchInst::getUnwindDest() const), &llvm::sandboxir::CatchSwitchInst::setUnwindDest>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CatchSwitchInst::getUnwindDest() const), &llvm::sandboxir::CatchSwitchInst::setUnwindDest>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CleanupReturnInst::getCleanupPad() const), &llvm::sandboxir::CleanupReturnInst::setCleanupPad>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CleanupReturnInst::getCleanupPad() const), &llvm::sandboxir::CleanupReturnInst::setCleanupPad>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CleanupReturnInst::getUnwindDest() const), &llvm::sandboxir::CleanupReturnInst::setUnwindDest>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CleanupReturnInst::getUnwindDest() const), &llvm::sandboxir::CleanupReturnInst::setUnwindDest>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CmpInst::getPredicate() const), &llvm::sandboxir::CmpInst::setPredicate>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::CmpInst::getPredicate() const), &llvm::sandboxir::CmpInst::setPredicate>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::FenceInst::getOrdering() const), &llvm::sandboxir::FenceInst::setOrdering>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::FenceInst::getOrdering() const), &llvm::sandboxir::FenceInst::setOrdering>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::FenceInst::getSyncScopeID() const), &llvm::sandboxir::FenceInst::setSyncScopeID>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::FenceInst::getSyncScopeID() const), &llvm::sandboxir::FenceInst::setSyncScopeID>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::FuncletPadInst::getParentPad() const), &llvm::sandboxir::FuncletPadInst::setParentPad>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::FuncletPadInst::getParentPad() const), &llvm::sandboxir::FuncletPadInst::setParentPad>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Function::getAlign() const), &llvm::sandboxir::Function::setAlignment>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Function::getAlign() const), &llvm::sandboxir::Function::setAlignment>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalAlias::getAliasee() const), &llvm::sandboxir::GlobalAlias::setAliasee>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalAlias::getAliasee() const), &llvm::sandboxir::GlobalAlias::setAliasee>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalIFunc::getResolver() const), &llvm::sandboxir::GlobalIFunc::setResolver>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalIFunc::getResolver() const), &llvm::sandboxir::GlobalIFunc::setResolver>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalObject::getSection() const), &llvm::sandboxir::GlobalObject::setSection>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalObject::getSection() const), &llvm::sandboxir::GlobalObject::setSection>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalValue::getUnnamedAddr() const), &llvm::sandboxir::GlobalValue::setUnnamedAddr>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalValue::getUnnamedAddr() const), &llvm::sandboxir::GlobalValue::setUnnamedAddr>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalValue::getVisibility() const), &llvm::sandboxir::GlobalValue::setVisibility>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalValue::getVisibility() const), &llvm::sandboxir::GlobalValue::setVisibility>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::getAlign() const), &llvm::sandboxir::GlobalVariable::setAlignment>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::getAlign() const), &llvm::sandboxir::GlobalVariable::setAlignment>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::getInitializer() const), &llvm::sandboxir::GlobalVariable::setInitializer>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::getInitializer() const), &llvm::sandboxir::GlobalVariable::setInitializer>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::isConstant() const), &llvm::sandboxir::GlobalVariable::setConstant>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::isConstant() const), &llvm::sandboxir::GlobalVariable::setConstant>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::isExternallyInitialized() const), &llvm::sandboxir::GlobalVariable::setExternallyInitialized>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::GlobalVariable::isExternallyInitialized() const), &llvm::sandboxir::GlobalVariable::setExternallyInitialized>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::getFastMathFlags() const), &llvm::sandboxir::Instruction::copyFastMathFlags>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::getFastMathFlags() const), &llvm::sandboxir::Instruction::copyFastMathFlags>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasAllowContract() const), &llvm::sandboxir::Instruction::setHasAllowContract>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasAllowContract() const), &llvm::sandboxir::Instruction::setHasAllowContract>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasAllowReassoc() const), &llvm::sandboxir::Instruction::setHasAllowReassoc>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasAllowReassoc() const), &llvm::sandboxir::Instruction::setHasAllowReassoc>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasAllowReciprocal() const), &llvm::sandboxir::Instruction::setHasAllowReciprocal>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasAllowReciprocal() const), &llvm::sandboxir::Instruction::setHasAllowReciprocal>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasApproxFunc() const), &llvm::sandboxir::Instruction::setHasApproxFunc>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasApproxFunc() const), &llvm::sandboxir::Instruction::setHasApproxFunc>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoInfs() const), &llvm::sandboxir::Instruction::setHasNoInfs>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoInfs() const), &llvm::sandboxir::Instruction::setHasNoInfs>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoNaNs() const), &llvm::sandboxir::Instruction::setHasNoNaNs>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoNaNs() const), &llvm::sandboxir::Instruction::setHasNoNaNs>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoSignedWrap() const), &llvm::sandboxir::Instruction::setHasNoSignedWrap>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoSignedWrap() const), &llvm::sandboxir::Instruction::setHasNoSignedWrap>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoSignedZeros() const), &llvm::sandboxir::Instruction::setHasNoSignedZeros>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoSignedZeros() const), &llvm::sandboxir::Instruction::setHasNoSignedZeros>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoUnsignedWrap() const), &llvm::sandboxir::Instruction::setHasNoUnsignedWrap>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::hasNoUnsignedWrap() const), &llvm::sandboxir::Instruction::setHasNoUnsignedWrap>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::isExact() const), &llvm::sandboxir::Instruction::setIsExact>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::isExact() const), &llvm::sandboxir::Instruction::setIsExact>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::isFast() const), &llvm::sandboxir::Instruction::setFast>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::Instruction::isFast() const), &llvm::sandboxir::Instruction::setFast>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::LandingPadInst::isCleanup() const), &llvm::sandboxir::LandingPadInst::setCleanup>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::LandingPadInst::isCleanup() const), &llvm::sandboxir::LandingPadInst::setCleanup>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::LoadInst::isVolatile() const), &llvm::sandboxir::LoadInst::setVolatile>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::LoadInst::isVolatile() const), &llvm::sandboxir::LoadInst::setVolatile>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::PossiblyDisjointInst::isDisjoint() const), &llvm::sandboxir::PossiblyDisjointInst::setIsDisjoint>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::PossiblyDisjointInst::isDisjoint() const), &llvm::sandboxir::PossiblyDisjointInst::setIsDisjoint>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::PossiblyNonNegInst::hasNonNeg() const), &llvm::sandboxir::PossiblyNonNegInst::setNonNeg>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::PossiblyNonNegInst::hasNonNeg() const), &llvm::sandboxir::PossiblyNonNegInst::setNonNeg>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::StoreInst::isVolatile() const), &llvm::sandboxir::StoreInst::setVolatile>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::StoreInst::isVolatile() const), &llvm::sandboxir::StoreInst::setVolatile>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::SwitchInst::getCondition() const), &llvm::sandboxir::SwitchInst::setCondition>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::SwitchInst::getCondition() const), &llvm::sandboxir::SwitchInst::setCondition>::dump(llvm::raw_ostream&) const;
+295:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::SwitchInst::getDefaultDest() const), &llvm::sandboxir::SwitchInst::setDefaultDest>::dump() const;
+294:	void llvm::sandboxir::GenericSetter<&(llvm::sandboxir::SwitchInst::getDefaultDest() const), &llvm::sandboxir::SwitchInst::setDefaultDest>::dump(llvm::raw_ostream&) const;
+325:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::CallBrInst::getIndirectDest(unsigned int) const), &llvm::sandboxir::CallBrInst::setIndirectDest>::dump() const;
+324:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::CallBrInst::getIndirectDest(unsigned int) const), &llvm::sandboxir::CallBrInst::setIndirectDest>::dump(llvm::raw_ostream&) const;
+325:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::FuncletPadInst::getArgOperand(unsigned int) const), &llvm::sandboxir::FuncletPadInst::setArgOperand>::dump() const;
+324:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::FuncletPadInst::getArgOperand(unsigned int) const), &llvm::sandboxir::FuncletPadInst::setArgOperand>::dump(llvm::raw_ostream&) const;
+325:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::PHINode::getIncomingBlock(unsigned int) const), &llvm::sandboxir::PHINode::setIncomingBlock>::dump() const;
+324:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::PHINode::getIncomingBlock(unsigned int) const), &llvm::sandboxir::PHINode::setIncomingBlock>::dump(llvm::raw_ostream&) const;
+325:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::PHINode::getIncomingValue(unsigned int) const), &llvm::sandboxir::PHINode::setIncomingValue>::dump() const;
+324:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::PHINode::getIncomingValue(unsigned int) const), &llvm::sandboxir::PHINode::setIncomingValue>::dump(llvm::raw_ostream&) const;
+325:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::SwitchInst::getSuccessor(unsigned int) const), &llvm::sandboxir::SwitchInst::setSuccessor>::dump() const;
+324:	void llvm::sandboxir::GenericSetterWithIdx<&(llvm::sandboxir::SwitchInst::getSuccessor(unsigned int) const), &llvm::sandboxir::SwitchInst::setSuccessor>::dump(llvm::raw_ostream&) const;
+408:	void llvm::sandboxir::InsertIntoBB::dump(llvm::raw_ostream&) const;
+395:	void llvm::sandboxir::MoveInstr::dump(llvm::raw_ostream&) const;
+179:	void llvm::sandboxir::PHIAddIncoming::dump(llvm::raw_ostream&) const;
+165:	void llvm::sandboxir::PHIRemoveIncoming::dump(llvm::raw_ostream&) const;
+259:	void llvm::sandboxir::RemoveFromParent::dump(llvm::raw_ostream&) const;
+435:	void llvm::sandboxir::ShuffleVectorSetMask::dump(llvm::raw_ostream&) const;
+359:	void llvm::sandboxir::SwitchAddCase::dump(llvm::raw_ostream&) const;
+378:	void llvm::sandboxir::SwitchRemoveCase::dump(llvm::raw_ostream&) const;
+149:	void llvm::sandboxir::UseSet::dump(llvm::raw_ostream&) const;
+210:	void llvm::sandboxir::UseSwap::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/SandboxIR/User.h:
+143:	void llvm::sandboxir::User::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/SandboxIR/Value.h:
+307:	void llvm::sandboxir::OpaqueValue::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/Support/CFGDiff.h:
+170:	void llvm::GraphDiff<llvm::BasicBlock*, false>::dump() const;
+170:	void llvm::GraphDiff<llvm::BasicBlock*, true>::dump() const;
+170:	void llvm::GraphDiff<llvm::MachineBasicBlock*, false>::dump() const;
+170:	void llvm::GraphDiff<llvm::MachineBasicBlock*, true>::dump() const;
+170:	void llvm::GraphDiff<llvm::VPBlockBase*, false>::dump() const;
+170:	void llvm::GraphDiff<mlir::Block*, false>::dump() const;
+170:	void llvm::GraphDiff<mlir::Block*, true>::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/Support/CFGUpdate.h:
+52:	void llvm::cfg::Update<llvm::BasicBlock*>::dump() const;
+52:	void llvm::cfg::Update<llvm::MachineBasicBlock*>::dump() const;
+52:	void llvm::cfg::Update<llvm::VPBlockBase*>::dump() const;
+52:	void llvm::cfg::Update<mlir::Block*>::dump() const;
+
+File /data/workspace/llvm-project/llvm/include/llvm/Support/Error.h:
+713:	void llvm::Expected<llvm::ArrayRef<llvm::minidump::Directory> >::fatalUncheckedExpected() const;
+685:	llvm::Expected<llvm::ArrayRef<llvm::minidump::Directory> >::storage_type *llvm::Expected<llvm::ArrayRef<llvm::minidump::Directory> >::getStorage();
+713:	void llvm::Expected<llvm::ArrayRef<llvm::minidump::Header> >::fatalUncheckedExpected() const;
+713:	void llvm::Expected<llvm::ArrayRef<llvm::minidump::MemoryDescriptor_64> >::fatalUncheckedExpected() const;
+685:	llvm::Expected<llvm::ArrayRef<llvm::minidump::MemoryDescriptor_64> >::storage_type *llvm::Expected<llvm::ArrayRef<llvm::minidump::MemoryDescriptor_64> >::getStorage();
+713:	void llvm::Expected<llvm::ArrayRef<llvm::minidump::MemoryInfoListHeader> >::fatalUncheckedExpected() const;
+713:	void llvm::Expected<llvm::minidump::Memory64ListHeader const&>::fatalUncheckedExpected() const;
+713:	void llvm::Expected<llvm::minidump::Memory64ListHeader>::fatalUncheckedExpected() const;
+685:	llvm::Expected<llvm::minidump::Memory64ListHeader>::storage_type *llvm::Expected<llvm::minidump::Memory64ListHeader>::getStorage();
+713:	void llvm::Expected<std::unique_ptr<llvm::object::MinidumpFile, std::default_delete<llvm::object::MinidumpFile> > >::fatalUncheckedExpected() const;
+951:	static llvm::Error llvm::handleErrorImpl<llvm::DWARFDebugNames::NameIndex::dumpEntry(llvm::ScopedPrinter&, uint64_t*) const::<lambda(const llvm::DWARFDebugNames::SentinelError&)>, llvm::DWARFDebugNames::NameIndex::dumpEntry(llvm::ScopedPrinter&, uint64_t*) const::<lambda(const llvm::ErrorInfoBase&)> >(std::unique_ptr<llvm::ErrorInfoBase, std::default_delete<llvm::ErrorInfoBase> >, struct {...} &&, struct {...} &&);
+
+File /data/workspace/llvm-project/llvm/include/llvm/Support/GraphWriter.h:
+432:	void llvm::dumpDotGraphToFile<llvm::SelectionDAG*>(llvm::SelectionDAG* const&, llvm::Twine const&, llvm::Twine const&, bool, llvm::Twine const&);
+
+File /data/workspace/llvm-project/llvm/include/llvm/Transforms/Vectorize/SandboxVectorizer/SeedCollector.h:
+126:	void llvm::sandboxir::SeedBundle::dump() const;
+116:	void llvm::sandboxir::SeedBundle::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/AliasSetTracker.cpp:
+561:	void llvm::AliasSet::dump() const;
+562:	void llvm::AliasSetTracker::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/BlockFrequencyInfoImpl.cpp:
+72:	void llvm::bfi_detail::BlockMass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/CallGraph.cpp:
+137:	void llvm::CallGraph::dump() const;
+192:	void llvm::CallGraphNode::dump() const;
+330:	void llvm::CallGraphWrapperPass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/CallGraphSCCPass.cpp:
+89:	static void (anonymous namespace)::CGPassManager::dumpPassStructure(unsigned int);
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/ConstraintSystem.cpp:
+180:	void llvm::ConstraintSystem::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/DXILMetadataAnalysis.cpp:
+155:	void llvm::DXILMetadataAnalysisWrapperPass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/DXILResource.cpp:
+1169:	void llvm::DXILResourceWrapperPass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/DependenceAnalysis.cpp:
+777:	void llvm::Dependence::dump(llvm::raw_ostream&) const;
+809:	void llvm::Dependence::dumpImp(llvm::raw_ostream&, bool) const;
+478:	static void dumpExampleDependence(llvm::raw_ostream&, llvm::DependenceInfo*, llvm::ScalarEvolution&, llvm::LoopInfo&, bool);
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/DomTreeUpdater.cpp:
+106:	void llvm::DomTreeUpdater::dump() const;
+	void llvm::GenericDomTreeUpdater<llvm::DomTreeUpdater, llvm::DominatorTree, llvm::PostDominatorTree>::dump() const::{lambda(llvm::BasicBlock*, llvm::StringRef)#1}::operator()(llvm::BasicBlock*, llvm::StringRef) const;
+	void llvm::GenericDomTreeUpdater<llvm::DomTreeUpdater, llvm::DominatorTree, llvm::PostDominatorTree>::dump() const::{lambda(llvm::GenericDomTreeUpdater<llvm::DomTreeUpdater, llvm::DominatorTree, llvm::PostDominatorTree>::DomTreeUpdate const*, llvm::GenericDomTreeUpdater<llvm::DomTreeUpdater, llvm::DominatorTree, llvm::PostDominatorTree>::DomTreeUpdate const*)#2}::operator()(llvm::GenericDomTreeUpdater<llvm::DomTreeUpdater, llvm::DominatorTree, llvm::PostDominatorTree>::DomTreeUpdate const*, llvm::GenericDomTreeUpdater<llvm::DomTreeUpdater, llvm::DominatorTree, llvm::PostDominatorTree>::DomTreeUpdate const*) const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/DominanceFrontier.cpp:
+61:	void llvm::DominanceFrontierWrapperPass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/HashRecognize.cpp:
+138:	void RecurrenceInfo::dump() const;
+532:	void llvm::CRCTable::dump() const;
+572:	void llvm::HashRecognize::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/IVUsers.cpp:
+292:	void llvm::IVUsers::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/ImportedFunctionsInliningStatistics.cpp:
+98:	void llvm::ImportedFunctionsInliningStatistics::dump(bool);
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/InlineCost.cpp:
+3076:	static void (anonymous namespace)::InlineCostCallAnalyzer::dump();
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/LazyCallGraph.cpp:
+141:	void llvm::LazyCallGraph::Node::dump() const;
+336:	void llvm::LazyCallGraph::RefSCC::dump() const;
+244:	void llvm::LazyCallGraph::SCC::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/LoopInfo.cpp:
+679:	void llvm::Loop::dump() const;
+681:	void llvm::Loop::dumpVerbose() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/LoopPass.cpp:
+292:	void llvm::LPPassManager::dumpPassStructure(unsigned int);
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/MemorySSA.cpp:
+2272:	void llvm::MemoryAccess::dump() const;
+1902:	void llvm::MemorySSA::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/PHITransAddr.cpp:
+41:	void llvm::PHITransAddr::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/RegionInfo.cpp:
+154:	void llvm::RegionInfoPass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/RegionPass.cpp:
+165:	void llvm::RGPassManager::dumpPassStructure(unsigned int);
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/ScalarEvolution.cpp:
+266:	void llvm::SCEV::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/StackLifetime.cpp:
+265:	void llvm::StackLifetime::dumpAllocas() const;
+271:	void llvm::StackLifetime::dumpBlockLiveness() const;
+284:	void llvm::StackLifetime::dumpLiveRanges() const;
+
+File /data/workspace/llvm-project/llvm/lib/Analysis/StackSafetyAnalysis.cpp:
+1030:	void llvm::StackSafetyGlobalInfo::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Bitcode/Writer/ValueEnumerator.cpp:
+542:	void llvm::ValueEnumerator::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/AsmPrinter/DIE.cpp:
+261:	void llvm::DIE::dump() const;
+122:	void llvm::DIEAbbrev::dump() const;
+353:	void llvm::DIEValue::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/AsmPrinter/DbgEntityHistoryCalculator.cpp:
+572:	void llvm::DbgValueHistoryMap::dump(llvm::StringRef) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/AsmPrinter/DebugLocEntry.h:
+172:	void llvm::DbgValueLoc::dump() const;
+95:	void llvm::DbgValueLocEntry::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/AssignmentTrackingAnalysis.cpp:
+1036:	static void (anonymous namespace)::AssignmentTrackingLowering::Assignment::dump(llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/BranchRelaxation.cpp:
+176:	static void (anonymous namespace)::BranchRelaxation::dumpBBs();
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/CodeGenPrepare.cpp:
+3296:	static void (anonymous namespace)::ExtAddrMode::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/ComplexDeinterleavingPass.cpp:
+216:	static void (anonymous namespace)::ComplexDeinterleavingCompositeNode::dump(llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/GlobalISel/RegBankSelect.cpp:
+1099:	void llvm::RegBankSelect::MappingCost::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/InlineSpiller.cpp:
+892:	static void dumpMachineInstrRangeWithSlotIndex(llvm::MachineBasicBlock::iterator, llvm::MachineBasicBlock::iterator, llvm::LiveIntervals const&, char const*, llvm::Register);
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LatencyPriorityQueue.cpp:
+139:	void llvm::LatencyPriorityQueue::dump(llvm::ScheduleDAG*) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LexicalScopes.cpp:
+345:	void llvm::LexicalScope::dump(unsigned int) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LiveDebugValues/InstrRefBasedImpl.cpp:
+998:	void LiveDebugValues::DbgOp::dump(LiveDebugValues::MLocTracker const*) const;
+1005:	void LiveDebugValues::DbgOpID::dump(LiveDebugValues::MLocTracker const*, LiveDebugValues::DbgOpIDMap const*) const;
+1012:	void LiveDebugValues::DbgValue::dump(LiveDebugValues::MLocTracker const*, LiveDebugValues::DbgOpIDMap const*) const;
+3449:	void LiveDebugValues::InstrRefBasedLDV::dump_mloc_transfer(llvm::SmallDenseMap<LiveDebugValues::LocIdx, LiveDebugValues::ValueIDNum, 4u, llvm::DenseMapInfo<LiveDebugValues::LocIdx, void>, llvm::detail::DenseMapPair<LiveDebugValues::LocIdx, LiveDebugValues::ValueIDNum> > const&) const;
+1187:	void LiveDebugValues::MLocTracker::dump();
+1195:	void LiveDebugValues::MLocTracker::dump_mloc_map();
+991:	void LiveDebugValues::ResolvedDbgOp::dump(LiveDebugValues::MLocTracker const*) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LiveDebugValues/VarLocBasedImpl.cpp:
+716:	static void (anonymous namespace)::VarLocBasedLDV::VarLoc::dump(llvm::TargetRegisterInfo const*, llvm::TargetInstrInfo const*, llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LiveDebugVariables.cpp:
+2008:	void llvm::LiveDebugVariables::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LiveInterval.cpp:
+1054:	void llvm::LiveInterval::SubRange::dump() const;
+1058:	void llvm::LiveInterval::dump() const;
+994:	void llvm::LiveRange::Segment::dump() const;
+1052:	void llvm::LiveRange::dump() const;
+1179:	void llvm::LiveRangeUpdater::dump() const;
+1050:	void llvm::VNInfo::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LiveIntervals.cpp:
+219:	void llvm::LiveIntervals::dump() const;
+213:	void llvm::LiveIntervals::dumpInstrs() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LivePhysRegs.cpp:
+136:	void llvm::LivePhysRegs::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/LiveVariables.cpp:
+110:	void llvm::LiveVariables::VarInfo::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineBasicBlock.cpp:
+299:	void llvm::MachineBasicBlock::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineBlockPlacement.cpp:
+349:	static void (anonymous namespace)::BlockChain::dump();
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineDomTreeUpdater.cpp:
+	void llvm::GenericDomTreeUpdater<llvm::MachineDomTreeUpdater, llvm::MachineDominatorTree, llvm::MachinePostDominatorTree>::dump() const::{lambda(llvm::GenericDomTreeUpdater<llvm::MachineDomTreeUpdater, llvm::MachineDominatorTree, llvm::MachinePostDominatorTree>::DomTreeUpdate const*, llvm::GenericDomTreeUpdater<llvm::MachineDomTreeUpdater, llvm::MachineDominatorTree, llvm::MachinePostDominatorTree>::DomTreeUpdate const*)#2}::operator()(llvm::GenericDomTreeUpdater<llvm::MachineDomTreeUpdater, llvm::MachineDominatorTree, llvm::MachinePostDominatorTree>::DomTreeUpdate const*, llvm::GenericDomTreeUpdater<llvm::MachineDomTreeUpdater, llvm::MachineDominatorTree, llvm::MachinePostDominatorTree>::DomTreeUpdate const*) const;
+	void llvm::GenericDomTreeUpdater<llvm::MachineDomTreeUpdater, llvm::MachineDominatorTree, llvm::MachinePostDominatorTree>::dump() const::{lambda(llvm::MachineBasicBlock*, llvm::StringRef)#1}::operator()(llvm::MachineBasicBlock*, llvm::StringRef) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineFrameInfo.cpp:
+266:	void llvm::MachineFrameInfo::dump(llvm::MachineFunction const&) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineFunction.cpp:
+1628:	void llvm::MachineConstantPool::dump() const;
+640:	void llvm::MachineFunction::dump() const;
+1449:	void llvm::MachineJumpTableInfo::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineInstr.cpp:
+1767:	void llvm::MachineInstr::dump() const;
+1797:	void llvm::MachineInstr::dumpr(llvm::MachineRegisterInfo const&, unsigned int) const;
+1772:	void llvm::MachineInstr::dumprImpl(llvm::MachineRegisterInfo const&, unsigned int, unsigned int, llvm::SmallPtrSetImpl<llvm::MachineInstr const*>&) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineLoopInfo.cpp:
+291:	void llvm::MachineLoop::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineOperand.cpp:
+1057:	void llvm::MachineOperand::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachinePipeliner.cpp:
+4385:	void llvm::LoopCarriedEdges::dump(llvm::SUnit*, llvm::TargetRegisterInfo const*, llvm::MachineRegisterInfo const*) const;
+3917:	void llvm::NodeSet::dump() const;
+3919:	void llvm::ResourceManager::dumpMRT() const;
+3916:	void llvm::SMSchedule::dump() const;
+1553:	static void (anonymous namespace)::HighRegisterPressureDetector::dumpPSet(llvm::Register) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineRegionInfo.cpp:
+123:	void llvm::MachineRegionInfoPass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineRegisterInfo.cpp:
+523:	void llvm::MachineRegisterInfo::dumpUses(llvm::Register) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/MachineScheduler.cpp:
+3723:	void llvm::GenericScheduler::dumpPolicy() const;
+902:	void llvm::ReadyQueue::dump() const;
+3185:	void llvm::SchedBoundary::dumpReservedCycles() const;
+3211:	void llvm::SchedBoundary::dumpScheduledState() const;
+1383:	void llvm::ScheduleDAGMI::dumpSchedule() const;
+1300:	void llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const;
+1219:	void llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const;
+1659:	void llvm::ScheduleDAGMILive::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/PostRASchedulerList.cpp:
+257:	static void (anonymous namespace)::SchedulePostRATDList::dumpSchedule() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/RegAllocFast.cpp:
+1306:	static void (anonymous namespace)::RegAllocFastImpl::dumpState() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/RegisterBank.cpp:
+66:	void llvm::RegisterBank::dump(llvm::TargetRegisterInfo const*) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/RegisterBankInfo.cpp:
+645:	void llvm::RegisterBankInfo::InstructionMapping::dump() const;
+768:	void llvm::RegisterBankInfo::OperandsMapper::dump() const;
+516:	void llvm::RegisterBankInfo::PartialMapping::dump() const;
+586:	void llvm::RegisterBankInfo::ValueMapping::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/RegisterPressure.cpp:
+137:	void llvm::PressureChange::dump() const;
+124:	void llvm::PressureDiff::dump(llvm::TargetRegisterInfo const&) const;
+141:	void llvm::RegPressureDelta::dump() const;
+115:	void llvm::RegPressureTracker::dump() const;
+93:	void llvm::RegisterPressure::dump(llvm::TargetRegisterInfo const*) const;
+82:	void llvm::dumpRegSetPressure(llvm::ArrayRef<unsigned int>, llvm::TargetRegisterInfo const*);
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/ScheduleDAG.cpp:
+74:	void llvm::SDep::dump(llvm::TargetRegisterInfo const*) const;
+343:	void llvm::SUnit::dumpAttributes() const;
+365:	void llvm::ScheduleDAG::dumpNodeAll(llvm::SUnit const&) const;
+356:	void llvm::ScheduleDAG::dumpNodeName(llvm::SUnit const&) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/ScheduleDAGInstrs.cpp:
+1550:	void llvm::ILPValue::dump() const;
+1057:	void llvm::ScheduleDAGInstrs::Value2SUsMap::dump();
+1206:	void llvm::ScheduleDAGInstrs::dump() const;
+1195:	void llvm::ScheduleDAGInstrs::dumpNode(llvm::SUnit const&) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/ScoreboardHazardRecognizer.cpp:
+86:	void llvm::ScoreboardHazardRecognizer::Scoreboard::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SelectionDAG/ScheduleDAGRRList.cpp:
+2082:	static void (anonymous namespace)::RegReductionPQBase::dumpRegPressure() const;
+1911:	static void (anonymous namespace)::RegReductionPriorityQueue<(anonymous namespace)::bu_ls_rr_sort>::dump(llvm::ScheduleDAG*) const;
+1911:	static void (anonymous namespace)::RegReductionPriorityQueue<(anonymous namespace)::hybrid_ls_rr_sort>::dump(llvm::ScheduleDAG*) const;
+1911:	static void (anonymous namespace)::RegReductionPriorityQueue<(anonymous namespace)::ilp_ls_rr_sort>::dump(llvm::ScheduleDAG*) const;
+1911:	static void (anonymous namespace)::RegReductionPriorityQueue<(anonymous namespace)::src_ls_rr_sort>::dump(llvm::ScheduleDAG*) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SelectionDAG/ScheduleDAGSDNodes.cpp:
+696:	void llvm::ScheduleDAGSDNodes::dump() const;
+672:	void llvm::ScheduleDAGSDNodes::dumpNode(llvm::SUnit const&) const;
+708:	void llvm::ScheduleDAGSDNodes::dumpSchedule() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SelectionDAG/SelectionDAGAddressAnalysis.cpp:
+313:	void llvm::BaseIndexOffset::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SelectionDAG/SelectionDAGDumper.cpp:
+1049:	void llvm::SDDbgValue::dump() const;
+672:	void llvm::SDNode::dump() const;
+674:	void llvm::SDNode::dump(llvm::SelectionDAG const*) const;
+1176:	void llvm::SDNode::dumpr() const;
+1181:	void llvm::SDNode::dumpr(llvm::SelectionDAG const*) const;
+1225:	void llvm::SDNode::dumprFull(llvm::SelectionDAG const*) const;
+1221:	void llvm::SDNode::dumprWithDepth(llvm::SelectionDAG const*, unsigned int) const;
+1082:	void llvm::SelectionDAG::dump(bool) const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SelectionDAG/SelectionDAGPrinter.cpp:
+171:	void llvm::SelectionDAG::dumpDotGraph(llvm::Twine const&, llvm::Twine const&);
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SlotIndexes.cpp:
+293:	void llvm::SlotIndex::dump() const;
+280:	void llvm::SlotIndexes::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SpillPlacement.cpp:
+427:	void llvm::SpillPlacement::BlockConstraint::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/SplitKit.cpp:
+1938:	void llvm::SplitAnalysis::BlockInfo::dump() const;
+382:	void llvm::SplitEditor::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/StackColoring.cpp:
+554:	static void (anonymous namespace)::StackColoring::dump() const;
+543:	static void (anonymous namespace)::StackColoring::dumpBB(llvm::MachineBasicBlock*) const;
+535:	static void (anonymous namespace)::StackColoring::dumpBV(char const*, llvm::BitVector const&) const;
+562:	static void (anonymous namespace)::StackColoring::dumpIntervals() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/TargetRegisterInfo.cpp:
+711:	void llvm::TargetRegisterInfo::dumpReg(llvm::Register, unsigned int, llvm::TargetRegisterInfo const*);
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/ValueTypes.cpp:
+209:	void llvm::EVT::dump() const;
+337:	void llvm::MVT::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGen/VirtRegMap.cpp:
+168:	void llvm::VirtRegMap::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/CodeGenTypes/LowLevelType.cpp:
+52:	void llvm::LLT::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFAbbreviationDeclaration.cpp:
+148:	void llvm::DWARFAbbreviationDeclaration::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFAcceleratorTable.cpp:
+148:	void llvm::AppleAcceleratorTable::Header::dump(llvm::ScopedPrinter&) const;
+213:	void llvm::AppleAcceleratorTable::dump(llvm::raw_ostream&) const;
+175:	bool llvm::AppleAcceleratorTable::dumpName(llvm::ScopedPrinter&, llvm::SmallVectorImpl<llvm::DWARFFormValue>&, unsigned long*) const;
+491:	void llvm::DWARFDebugNames::Abbrev::dump(llvm::ScopedPrinter&) const;
+734:	void llvm::DWARFDebugNames::Entry::dump(llvm::ScopedPrinter&) const;
+716:	void llvm::DWARFDebugNames::Entry::dumpParentIdx(llvm::ScopedPrinter&, llvm::DWARFFormValue const&) const;
+443:	void llvm::DWARFDebugNames::Header::dump(llvm::ScopedPrinter&) const;
+931:	void llvm::DWARFDebugNames::NameIndex::dump(llvm::ScopedPrinter&) const;
+897:	void llvm::DWARFDebugNames::NameIndex::dumpAbbreviations(llvm::ScopedPrinter&) const;
+909:	void llvm::DWARFDebugNames::NameIndex::dumpBucket(llvm::ScopedPrinter&, unsigned int) const;
+870:	void llvm::DWARFDebugNames::NameIndex::dumpCUs(llvm::ScopedPrinter&) const;
+840:	bool llvm::DWARFDebugNames::NameIndex::dumpEntry(llvm::ScopedPrinter&, unsigned long*) const;
+886:	void llvm::DWARFDebugNames::NameIndex::dumpForeignTUs(llvm::ScopedPrinter&) const;
+876:	void llvm::DWARFDebugNames::NameIndex::dumpLocalTUs(llvm::ScopedPrinter&) const;
+855:	void llvm::DWARFDebugNames::NameIndex::dumpName(llvm::ScopedPrinter&, llvm::DWARFDebugNames::NameTableEntry const&, std::optional<unsigned int>) const;
+967:	void llvm::DWARFDebugNames::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFAddressRange.cpp:
+16:	void llvm::DWARFAddressRange::dump(llvm::raw_ostream&, unsigned int, llvm::DIDumpOptions, llvm::DWARFObject const*) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFCompileUnit.cpp:
+18:	void llvm::DWARFCompileUnit::dump(llvm::raw_ostream&, llvm::DIDumpOptions);
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFContext.cpp:
+985:	void llvm::DWARFContext::dump(llvm::raw_ostream&, llvm::DIDumpOptions, std::array<std::optional<unsigned long>, 28ul>);
+946:	static void dumpLoclistsSection(llvm::raw_ostream&, llvm::DIDumpOptions, llvm::DWARFDataExtractor, llvm::DWARFObject const&, std::optional<unsigned long>);
+978:	static void dumpPubTableSection(llvm::raw_ostream&, llvm::DIDumpOptions, llvm::DWARFDataExtractor, bool);
+922:	static void dumpRnglistsSection(llvm::raw_ostream &, llvm::DWARFDataExtractor &, llvm::function_ref<std::optional<llvm::object::SectionedAddress>(unsigned int)>, llvm::DIDumpOptions);
+826:	static void dumpStringOffsetsSection(llvm::raw_ostream&, llvm::DIDumpOptions, llvm::StringRef, llvm::DWARFObject const&, llvm::DWARFSection const&, llvm::StringRef, llvm::DWARFContext::unit_iterator_range, bool);
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugAbbrev.cpp:
+55:	void llvm::DWARFAbbreviationDeclarationSet::dump(llvm::raw_ostream&) const;
+127:	void llvm::DWARFDebugAbbrev::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugAddr.cpp:
+136:	void llvm::DWARFDebugAddrTable::dump(llvm::raw_ostream&, llvm::DIDumpOptions) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugArangeSet.cpp:
+23:	void llvm::DWARFDebugArangeSet::Descriptor::dump(llvm::raw_ostream&, unsigned int) const;
+165:	void llvm::DWARFDebugArangeSet::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugFrame.cpp:
+402:	void llvm::DWARFDebugFrame::dump(llvm::raw_ostream&, llvm::DIDumpOptions, std::optional<unsigned long>) const;
+101:	void llvm::dwarf::CIE::dump(llvm::raw_ostream&, llvm::DIDumpOptions) const;
+150:	void llvm::dwarf::FDE::dump(llvm::raw_ostream&, llvm::DIDumpOptions) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugLine.cpp:
+540:	void llvm::DWARFDebugLine::LineTable::dump(llvm::raw_ostream&, llvm::DIDumpOptions) const;
+118:	void llvm::DWARFDebugLine::Prologue::dump(llvm::raw_ostream&, llvm::DIDumpOptions) const;
+517:	void llvm::DWARFDebugLine::Row::dump(llvm::raw_ostream&) const;
+508:	void llvm::DWARFDebugLine::Row::dumpTableHeader(llvm::raw_ostream&, unsigned int);
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugLoc.cpp:
+186:	void llvm::DWARFDebugLoc::dump(llvm::raw_ostream&, llvm::DWARFObject const&, llvm::DIDumpOptions, std::optional<unsigned long>) const;
+249:	void llvm::DWARFDebugLoc::dumpRawEntry(llvm::DWARFLocationEntry const&, llvm::raw_ostream&, unsigned int, llvm::DIDumpOptions, llvm::DWARFObject const&) const;
+388:	void llvm::DWARFDebugLoclists::dumpRange(unsigned long, unsigned long, llvm::raw_ostream&, llvm::DWARFObject const&, llvm::DIDumpOptions);
+342:	void llvm::DWARFDebugLoclists::dumpRawEntry(llvm::DWARFLocationEntry const&, llvm::raw_ostream&, unsigned int, llvm::DIDumpOptions, llvm::DWARFObject const&) const;
+124:	bool llvm::DWARFLocationTable::dumpLocationList(unsigned long*, llvm::raw_ostream&, std::optional<llvm::object::SectionedAddress>, llvm::DWARFObject const&, llvm::DWARFUnit*, llvm::DIDumpOptions, unsigned int) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugMacro.cpp:
+31:	void llvm::DWARFDebugMacro::MacroHeader::dumpMacroHeader(llvm::raw_ostream&) const;
+42:	void llvm::DWARFDebugMacro::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugPubTable.cpp:
+93:	void llvm::DWARFDebugPubTable::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugRangeList.cpp:
+67:	void llvm::DWARFDebugRangeList::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDebugRnglists.cpp:
+175:	void llvm::RangeListEntry::dump(llvm::raw_ostream&, unsigned char, unsigned char, unsigned long&, llvm::DIDumpOptions, llvm::function_ref<std::optional<llvm::object::SectionedAddress> (unsigned int)>) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFDie.cpp:
+722:	void llvm::DWARFDie::dump() const;
+662:	void llvm::DWARFDie::dump(llvm::raw_ostream&, unsigned int, llvm::DIDumpOptions) const;
+865:	void llvm::dumpTypeQualifiedName(llvm::DWARFDie const&, llvm::raw_ostream&);
+869:	void llvm::dumpTypeUnqualifiedName(llvm::DWARFDie const&, llvm::raw_ostream&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*);
+651:	static unsigned int dumpParentChain(llvm::DWARFDie, llvm::raw_ostream&, unsigned int, llvm::DIDumpOptions, unsigned int);
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFFormValue.cpp:
+382:	void llvm::DWARFFormValue::dump(llvm::raw_ostream&, llvm::DIDumpOptions) const;
+353:	void llvm::DWARFFormValue::dumpAddress(llvm::raw_ostream&, unsigned char, unsigned long);
+367:	void llvm::DWARFFormValue::dumpAddressSection(llvm::DWARFObject const&, llvm::raw_ostream&, llvm::DIDumpOptions, unsigned long);
+359:	void llvm::DWARFFormValue::dumpSectionedAddress(llvm::raw_ostream&, llvm::DIDumpOptions, llvm::object::SectionedAddress) const;
+582:	void llvm::DWARFFormValue::dumpString(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFGdbIndex.cpp:
+106:	void llvm::DWARFGdbIndex::dump(llvm::raw_ostream&);
+46:	void llvm::DWARFGdbIndex::dumpAddressArea(llvm::raw_ostream&) const;
+26:	void llvm::DWARFGdbIndex::dumpCUList(llvm::raw_ostream&) const;
+94:	void llvm::DWARFGdbIndex::dumpConstantPool(llvm::raw_ostream&) const;
+57:	void llvm::DWARFGdbIndex::dumpSymbolTable(llvm::raw_ostream&) const;
+36:	void llvm::DWARFGdbIndex::dumpTUList(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFListTable.cpp:
+78:	void llvm::DWARFListTableHeader::dump(llvm::DataExtractor, llvm::raw_ostream&, llvm::DIDumpOptions) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFTypeUnit.cpp:
+18:	void llvm::DWARFTypeUnit::dump(llvm::raw_ostream&, llvm::DIDumpOptions);
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFUnitIndex.cpp:
+115:	void llvm::DWARFUnitIndex::Header::dump(llvm::raw_ostream&) const;
+215:	void llvm::DWARFUnitIndex::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/DebugInfo/DWARF/DWARFVerifier.cpp:
+2409:	llvm::raw_ostream &llvm::DWARFVerifier::dump(llvm::DWARFDie const&, unsigned int) const;
+
+File /data/workspace/llvm-project/llvm/lib/Demangle/ItaniumDemangle.cpp:
+277:	void llvm::itanium_demangle::Node::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Demangle/MicrosoftDemangle.cpp:
+2476:	void llvm::ms_demangle::Demangler::dumpBackReferences();
+
+File /data/workspace/llvm-project/llvm/lib/IR/AsmWriter.cpp:
+5483:	void llvm::Comdat::dump() const;
+5461:	void llvm::DbgMarker::dump() const;
+5468:	void llvm::DbgRecord::dump() const;
+5499:	void llvm::MDNode::dumpTree() const;
+5502:	void llvm::MDNode::dumpTree(llvm::Module const*) const;
+5490:	void llvm::Metadata::dump() const;
+5493:	void llvm::Metadata::dump(llvm::Module const*) const;
+5476:	void llvm::Module::dump() const;
+5509:	void llvm::ModuleSummaryIndex::dump() const;
+5487:	void llvm::NamedMDNode::dump() const;
+5472:	void llvm::Type::dump() const;
+5457:	void llvm::Value::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/Attributes.cpp:
+2105:	void llvm::AttributeList::dump() const;
+1515:	void llvm::AttributeListImpl::dump() const;
+1266:	void llvm::AttributeSet::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/BasicBlock.cpp:
+114:	void llvm::BasicBlock::dumpDbgValues() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/ConstantFPRange.cpp:
+377:	void llvm::ConstantFPRange::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/ConstantRange.cpp:
+2289:	void llvm::ConstantRange::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/ConstantRangeList.cpp:
+242:	void llvm::ConstantRangeList::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/DebugLoc.cpp:
+197:	void llvm::DebugLoc::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/LegacyPassManager.cpp:
+1344:	void llvm::FPPassManager::dumpPassStructure(unsigned int);
+1209:	void llvm::PMDataManager::dumpAnalysisUsage(llvm::StringRef, llvm::Pass const*, llvm::SmallVectorImpl<void const*> const&) const;
+1114:	void llvm::PMDataManager::dumpLastUses(llvm::Pass*, unsigned int) const;
+1132:	void llvm::PMDataManager::dumpPassArguments() const;
+1141:	void llvm::PMDataManager::dumpPassInfo(llvm::Pass*, llvm::PassDebuggingString, llvm::PassDebuggingString, llvm::StringRef);
+1191:	void llvm::PMDataManager::dumpPreservedSet(llvm::Pass const*) const;
+1182:	void llvm::PMDataManager::dumpRequiredSet(llvm::Pass const*) const;
+1200:	void llvm::PMDataManager::dumpUsedSet(llvm::Pass const*) const;
+1683:	void llvm::PMStack::dump() const;
+820:	void llvm::PMTopLevelManager::dumpArguments() const;
+803:	void llvm::PMTopLevelManager::dumpPasses() const;
+299:	void llvm::legacy::FunctionPassManagerImpl::dumpPassStructure(unsigned int);
+426:	static void (anonymous namespace)::MPPassManager::dumpPassStructure(unsigned int);
+
+File /data/workspace/llvm-project/llvm/lib/IR/MemoryModelRelaxationAnnotations.cpp:
+155:	void llvm::MMRAMetadata::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/ModuleSummaryIndex.cpp:
+405:	void llvm::ModuleSummaryIndex::dumpSCCs(llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/IR/Pass.cpp:
+146:	void llvm::Pass::dump() const;
+78:	void llvm::Pass::dumpPassStructure(unsigned int);
+
+File /data/workspace/llvm-project/llvm/lib/IR/PassTimingInfo.cpp:
+210:	void llvm::TimePassesHandler::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/IR/ValueSymbolTable.cpp:
+132:	void llvm::ValueSymbolTable::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCAsmMacro.cpp:
+34:	void llvm::MCAsmMacro::dump(llvm::raw_ostream&) const;
+15:	void llvm::MCAsmMacroParameter::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCAssembler.cpp:
+1060:	void llvm::MCAssembler::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCExpr.cpp:
+193:	void llvm::MCExpr::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCFragment.cpp:
+42:	void llvm::MCFragment::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCInst.cpp:
+112:	void llvm::MCInst::dump() const;
+90:	void llvm::MCInst::dump_pretty(llvm::raw_ostream&, llvm::MCInstPrinter const*, llvm::StringRef, llvm::MCContext const*) const;
+96:	void llvm::MCInst::dump_pretty(llvm::raw_ostream&, llvm::StringRef, llvm::StringRef, llvm::MCContext const*) const;
+75:	void llvm::MCOperand::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCInstPrinter.cpp:
+26:	void llvm::dumpBytes(llvm::ArrayRef<unsigned char>, llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCParser/AsmLexer.cpp:
+39:	void llvm::AsmToken::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCParser/MCAsmParser.cpp:
+175:	void llvm::MCParsedAsmOperand::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCSection.cpp:
+46:	void llvm::MCSection::dump(llvm::DenseMap<llvm::MCFragment const*, llvm::SmallVector<llvm::MCSymbol const*, 0u>, llvm::DenseMapInfo<llvm::MCFragment const*, void>, llvm::detail::DenseMapPair<llvm::MCFragment const*, llvm::SmallVector<llvm::MCSymbol const*, 0u> > >*) const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/MCSymbol.cpp:
+87:	void llvm::MCSymbol::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/MC/WasmObjectWriter.cpp:
+113:	static void (anonymous namespace)::WasmRelocationEntry::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Object/Minidump.cpp:
+91:	llvm::Expected<std::unique_ptr<llvm::object::MinidumpFile, std::default_delete<llvm::object::MinidumpFile> > > llvm::object::MinidumpFile::create(llvm::MemoryBufferRef);
+80:	llvm::Expected<llvm::ArrayRef<unsigned char> > llvm::object::MinidumpFile::getDataSlice(llvm::ArrayRef<unsigned char>, unsigned long, unsigned long);
+56:	llvm::iterator_range<llvm::object::MinidumpFile::ExceptionStreamsIterator> llvm::object::MinidumpFile::getExceptionStreams() const;
+147:	llvm::iterator_range<llvm::fallible_iterator<llvm::object::MinidumpFile::Memory64Iterator> > llvm::object::MinidumpFile::getMemory64List(llvm::Error&) const;
+62:	llvm::Expected<llvm::iterator_range<llvm::object::MinidumpFile::MemoryInfoIterator> > llvm::object::MinidumpFile::getMemoryInfoList() const;
+17:	std::optional<llvm::ArrayRef<unsigned char> > llvm::object::MinidumpFile::getRawStream(llvm::minidump::StreamType) const;
+24:	llvm::Expected<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > llvm::object::MinidumpFile::getString[abi:cxx11](unsigned long) const;
+
+File /data/workspace/llvm-project/llvm/lib/Object/WasmObjectFile.cpp:
+71:	void llvm::object::WasmSymbol::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/ProfileData/InstrProf.cpp:
+709:	void llvm::InstrProfSymtab::dumpNames(llvm::raw_ostream&) const;
+1605:	void llvm::OverlapStats::dump(llvm::raw_fd_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/ProfileData/InstrProfCorrelator.cpp:
+266:	llvm::Error llvm::InstrProfCorrelatorImpl<unsigned int>::dumpYaml(int, llvm::raw_ostream&);
+266:	llvm::Error llvm::InstrProfCorrelatorImpl<unsigned long>::dumpYaml(int, llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/ProfileData/SampleProf.cpp:
+398:	void llvm::sampleprof::FunctionSamples::dump() const;
+172:	void llvm::sampleprof::LineLocation::dump() const;
+494:	void llvm::sampleprof::ProfileSymbolList::dump(llvm::raw_ostream&) const;
+192:	void llvm::sampleprof::SampleRecord::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/ProfileData/SampleProfReader.cpp:
+70:	void llvm::sampleprof::SampleProfileReader::dump(llvm::raw_ostream&);
+64:	void llvm::sampleprof::SampleProfileReader::dumpFunctionProfile(llvm::sampleprof::FunctionSamples const&, llvm::raw_ostream&);
+137:	void llvm::sampleprof::SampleProfileReader::dumpJson(llvm::raw_ostream&);
+1602:	bool llvm::sampleprof::SampleProfileReaderExtBinaryBase::dumpSectionInfo(llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Argument.cpp:
+17:	void llvm::sandboxir::Argument::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/BasicBlock.cpp:
+115:	void llvm::sandboxir::BasicBlock::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Constant.cpp:
+18:	void llvm::sandboxir::Constant::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Function.cpp:
+28:	void llvm::sandboxir::Function::dumpNameAndArgs(llvm::raw_ostream&) const;
+44:	void llvm::sandboxir::Function::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Instruction.cpp:
+992:	void llvm::sandboxir::CmpInst::dump() const;
+987:	void llvm::sandboxir::CmpInst::dumpOS(llvm::raw_ostream&) const;
+283:	void llvm::sandboxir::Instruction::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Pass.cpp:
+15:	void llvm::sandboxir::Pass::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Region.cpp:
+145:	void llvm::sandboxir::Region::dump() const;
+131:	void llvm::sandboxir::Region::dump(llvm::raw_ostream&) const;
+32:	void llvm::sandboxir::ScoreBoard::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Tracker.cpp:
+325:	void llvm::sandboxir::CmpSwapOperands::dump() const;
+301:	void llvm::sandboxir::CreateAndInsertInst::dump() const;
+187:	void llvm::sandboxir::EraseFromParent::dump() const;
+20:	std::string llvm::sandboxir::IRSnapshotChecker::dumpIR[abi:cxx11](llvm::Function const&) const;
+292:	void llvm::sandboxir::InsertIntoBB::dump() const;
+281:	void llvm::sandboxir::MoveInstr::dump() const;
+113:	void llvm::sandboxir::PHIRemoveIncoming::dump() const;
+210:	void llvm::sandboxir::RemoveFromParent::dump() const;
+315:	void llvm::sandboxir::ShuffleVectorSetMask::dump() const;
+258:	void llvm::sandboxir::SwitchAddCase::dump() const;
+246:	void llvm::sandboxir::SwitchRemoveCase::dump() const;
+366:	void llvm::sandboxir::Tracker::dump() const;
+359:	void llvm::sandboxir::Tracker::dump(llvm::raw_ostream&) const;
+80:	void llvm::sandboxir::UseSet::dump() const;
+85:	void llvm::sandboxir::UseSwap::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Type.cpp:
+45:	void llvm::sandboxir::Type::dump();
+44:	void llvm::sandboxir::Type::dumpOS(llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Use.cpp:
+58:	void llvm::sandboxir::Use::dump() const;
+30:	void llvm::sandboxir::Use::dumpOS(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/User.cpp:
+115:	void llvm::sandboxir::User::dumpCommonHeader(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/SandboxIR/Value.cpp:
+118:	void llvm::sandboxir::Value::dump() const;
+91:	void llvm::sandboxir::Value::dumpCommonFooter(llvm::raw_ostream&) const;
+87:	void llvm::sandboxir::Value::dumpCommonHeader(llvm::raw_ostream&) const;
+100:	void llvm::sandboxir::Value::dumpCommonPrefix(llvm::raw_ostream&) const;
+107:	void llvm::sandboxir::Value::dumpCommonSuffix(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/APFloat.cpp:
+6012:	void llvm::APFloat::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/APInt.cpp:
+2309:	void llvm::APInt::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/BranchProbability.cpp:
+35:	void llvm::BranchProbability::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/DebugCounter.cpp:
+197:	void llvm::DebugCounter::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/DynamicAPInt.cpp:
+36:	void llvm::DynamicAPInt::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/JSON.cpp:
+179:	void llvm::json::Value::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/KnownBits.cpp:
+1348:	void llvm::KnownBits::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/ScaledNumber.cpp:
+322:	void llvm::ScaledNumberBase::dump(unsigned long, short, int);
+
+File /data/workspace/llvm-project/llvm/lib/Support/SlowDynamicAPInt.cpp:
+287:	void llvm::detail::SlowDynamicAPInt::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/Twine.cpp:
+178:	void llvm::Twine::dump() const;
+180:	void llvm::Twine::dumpRepr() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/VirtualFileSystem.cpp:
+166:	void llvm::vfs::FileSystem::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Support/YAMLParser.cpp:
+607:	bool llvm::yaml::dumpTokens(llvm::StringRef, llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/Target/AMDGPU/AMDGPUHSAMetadataStreamer.cpp:
+79:	void llvm::AMDGPU::HSAMD::MetadataStreamerMsgPackV4::dump(llvm::StringRef) const;
+
+File /data/workspace/llvm-project/llvm/lib/Target/AMDGPU/AMDGPUInsertDelayAlu.cpp:
+259:	static void (anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(llvm::TargetRegisterInfo const*) const;
+
+File /data/workspace/llvm-project/llvm/lib/Target/AMDGPU/AMDGPUSplitModule.cpp:
+778:	static void llvm::(anonymous namespace)::SplitProposal::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Target/AMDGPU/GCNRegPressure.cpp:
+838:	void llvm::GCNRegPressure::dump() const;
+1000:	void llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, llvm::MachineLoopInfo const*);
+
+File /data/workspace/llvm-project/llvm/lib/Target/AMDGPU/SIFixSGPRCopies.cpp:
+114:	static void (anonymous namespace)::V2SCopyInfo::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Target/AMDGPU/SIInsertWaitcnts.cpp:
+408:	static void (anonymous namespace)::WaitEventSet::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Target/NVPTX/../../CodeGen/AsmPrinter/DebugLocEntry.h:
+172:	void llvm::DbgValueLoc::dump() const;
+95:	void llvm::DbgValueLocEntry::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Target/X86/X86DomainReassignment.cpp:
+338:	static void (anonymous namespace)::Closure::dump(llvm::MachineRegisterInfo const*) const;
+
+File /data/workspace/llvm-project/llvm/lib/Target/X86/X86ISelDAGToDAG.cpp:
+111:	static void (anonymous namespace)::X86ISelAddressMode::dump(llvm::SelectionDAG*);
+
+File /data/workspace/llvm-project/llvm/lib/TargetParser/SubtargetFeature.cpp:
+65:	void llvm::SubtargetFeatures::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/TextAPI/Symbol.cpp:
+20:	void llvm::MachO::Symbol::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Coroutines/SuspendCrossingInfo.cpp:
+48:	void llvm::SuspendCrossingInfo::dump() const;
+34:	void llvm::SuspendCrossingInfo::dump(llvm::StringRef, llvm::BitVector const&, llvm::ReversePostOrderTraversal<llvm::Function*, llvm::GraphTraits<llvm::Function*> > const&, llvm::ModuleSlotTracker&) const;
+24:	static void llvm::dumpBasicBlockLabel(llvm::BasicBlock const*, llvm::ModuleSlotTracker&);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/IPO/Attributor.cpp:
+3992:	void llvm::AADepGraph::dumpGraph();
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/IPO/AttributorAttributes.cpp:
+1432:	static void (anonymous namespace)::AAPointerInfoImpl::dumpState(llvm::raw_ostream&);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/IPO/FunctionImport.cpp:
+1323:	static void dumpImportListForModule(llvm::ModuleSummaryIndex const&, llvm::StringRef, llvm::FunctionImporter::ImportMapTy&);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/IPO/SampleContextTracker.cpp:
+151:	void llvm::ContextTrieNode::dumpNode();
+162:	void llvm::ContextTrieNode::dumpTree();
+451:	void llvm::SampleContextTracker::dump();
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Instrumentation/BlockCoverageInference.cpp:
+339:	void llvm::BlockCoverageInference::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Instrumentation/ControlHeightReduction.cpp:
+427:	static void dumpIR(llvm::Function&, char const*, (anonymous namespace)::CHRStats*);
+2012:	static void dumpScopes(llvm::SmallVectorImpl<(anonymous namespace)::CHRScope*>&, char const*);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Instrumentation/GCOVProfiling.cpp:
+735:	static void dumpEdges(llvm::CFGMST<(anonymous namespace)::Edge, (anonymous namespace)::BBInfo>&, (anonymous namespace)::GCOVFunction&);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Instrumentation/MemorySanitizer.cpp:
+7495:	static void (anonymous namespace)::MemorySanitizerVisitor::dumpInst(llvm::Instruction&);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Instrumentation/PGOInstrumentation.cpp:
+640:	static void (anonymous namespace)::FuncPGOInstrumentation<(anonymous namespace)::PGOUseEdge, (anonymous namespace)::PGOUseBBInfo>::dumpInfo(llvm::StringRef) const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/ConstraintElimination.cpp:
+926:	static void dumpConstraint(llvm::ArrayRef<long>, llvm::DenseMap<llvm::Value*, unsigned int, llvm::DenseMapInfo<llvm::Value*, void>, llvm::detail::DenseMapPair<llvm::Value*, unsigned int> > const&);
+1307:	static void dumpUnpackedICmp(llvm::raw_ostream&, llvm::CmpInst::Predicate, llvm::Value*, llvm::Value*);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/GVN.cpp:
+937:	void llvm::GVNPass::dump(llvm::DenseMap<unsigned int, llvm::Value*, llvm::DenseMapInfo<unsigned int, void>, llvm::detail::DenseMapPair<unsigned int, llvm::Value*> >&) const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/GVNSink.cpp:
+82:	void llvm::GVNExpression::Expression::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/GuardWidening.cpp:
+268:	static void (anonymous namespace)::GuardWideningImpl::RangeCheck::dump();
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/InductiveRangeCheckElimination.cpp:
+181:	static void (anonymous namespace)::InductiveRangeCheck::dump();
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/LoopFuse.cpp:
+289:	static void (anonymous namespace)::FusionCandidate::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/LoopStrengthReduce.cpp:
+1638:	static void (anonymous namespace)::Cost::dump() const;
+791:	static void (anonymous namespace)::Formula::dump() const;
+1681:	static void (anonymous namespace)::LSRFixup::dump() const;
+6322:	static void (anonymous namespace)::LSRInstance::dump() const;
+1800:	static void (anonymous namespace)::LSRUse::dump() const;
+378:	static void (anonymous namespace)::RegSortData::dump() const;
+4510:	static void (anonymous namespace)::WorkItem::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/LowerMatrixIntrinsics.cpp:
+239:	static void (anonymous namespace)::ShapeInfo::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/RewriteStatepointsForGC.cpp:
+770:	static void (anonymous namespace)::BDVState::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Scalar/SROA.cpp:
+1516:	static void (anonymous namespace)::AllocaSlices::dump((anonymous namespace)::AllocaSlices::const_iterator) const;
+1519:	static void (anonymous namespace)::AllocaSlices::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Utils/PredicateInfo.cpp:
+867:	void llvm::PredicateInfo::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/LoadStoreVectorizer.cpp:
+177:	static void (anonymous namespace)::dumpChain(llvm::ArrayRef<(anonymous namespace)::ChainElem>);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SLPVectorizer.cpp:
+2407:	void llvm::slpvectorizer::BoUpSLP::EdgeInfo::dump() const;
+2403:	void llvm::slpvectorizer::BoUpSLP::EdgeInfo::dump(llvm::raw_ostream&) const;
+5144:	void llvm::slpvectorizer::BoUpSLP::ScheduleBundle::dump() const;
+5130:	void llvm::slpvectorizer::BoUpSLP::ScheduleBundle::dump(llvm::raw_ostream&) const;
+5256:	void llvm::slpvectorizer::BoUpSLP::ScheduleCopyableData::dump() const;
+5005:	void llvm::slpvectorizer::BoUpSLP::ScheduleData::dump() const;
+4874:	void llvm::slpvectorizer::BoUpSLP::ScheduleEntity::dump() const;
+4282:	void llvm::slpvectorizer::BoUpSLP::TreeEntry::dump() const;
+3542:	void llvm::slpvectorizer::BoUpSLP::VLOperands::dump() const;
+3515:	void llvm::slpvectorizer::BoUpSLP::VLOperands::dumpMode(llvm::slpvectorizer::BoUpSLP::VLOperands::ReorderingMode);
+4364:	void llvm::slpvectorizer::BoUpSLP::dumpTreeCosts(llvm::slpvectorizer::BoUpSLP::TreeEntry const*, llvm::InstructionCost, llvm::InstructionCost, llvm::InstructionCost, llvm::StringRef) const;
+4545:	void llvm::slpvectorizer::BoUpSLP::dumpVectorizableTree() const;
+9449:	static void dumpOrder(llvm::slpvectorizer::BoUpSLP::OrdersType const&);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/DependencyGraph.cpp:
+90:	void llvm::sandboxir::DGNode::dump() const;
+659:	void llvm::sandboxir::DependencyGraph::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/InstrMaps.cpp:
+26:	void llvm::sandboxir::Action::dump() const;
+28:	void llvm::sandboxir::InstrMaps::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/Interval.cpp:
+43:	void llvm::sandboxir::Interval<llvm::sandboxir::Instruction>::dump() const;
+43:	void llvm::sandboxir::Interval<llvm::sandboxir::MemDGNode>::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/Legality.cpp:
+26:	void llvm::sandboxir::LegalityResult::dump() const;
+21:	void llvm::sandboxir::ShuffleMask::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/Passes/BottomUpVec.cpp:
+339:	void llvm::sandboxir::BottomUpVec::ActionsVector::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/Scheduler.cpp:
+63:	void llvm::sandboxir::ReadyListContainer::dump() const;
+55:	void llvm::sandboxir::ReadyListContainer::dump(llvm::raw_ostream&) const;
+48:	void llvm::sandboxir::SchedBundle::dump() const;
+43:	void llvm::sandboxir::SchedBundle::dump(llvm::raw_ostream&) const;
+357:	void llvm::sandboxir::Scheduler::dump() const;
+347:	void llvm::sandboxir::Scheduler::dump(llvm::raw_ostream&) const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/SeedCollector.cpp:
+209:	void llvm::sandboxir::SeedCollector::dump() const;
+147:	void llvm::sandboxir::SeedContainer::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/SandboxVectorizer/VecUtils.cpp:
+29:	void llvm::sandboxir::VecUtils::dump(llvm::ArrayRef<llvm::sandboxir::Instruction*>);
+28:	void llvm::sandboxir::VecUtils::dump(llvm::ArrayRef<llvm::sandboxir::Value*>);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/VPlan.cpp:
+114:	void llvm::VPRecipeBase::dump() const;
+106:	void llvm::VPValue::dump() const;
+1132:	void llvm::VPlan::dump() const;
+1265:	void llvm::VPlanPrinter::dump();
+1335:	void llvm::VPlanPrinter::dumpBasicBlock(llvm::VPBasicBlock const*);
+1295:	void llvm::VPlanPrinter::dumpBlock(llvm::VPBlockBase const*);
+1321:	void llvm::VPlanPrinter::dumpEdges(llvm::VPBlockBase const*);
+1365:	void llvm::VPlanPrinter::dumpRegion(llvm::VPRegionBlock const*);
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/VPlan.h:
+370:	void llvm::VPBlockBase::dump() const;
+
+File /data/workspace/llvm-project/llvm/lib/Transforms/Vectorize/VPlanRecipes.cpp:
+1412:	void llvm::VPInstruction::dump() const;
+385:	void llvm::VPSingleDefRecipe::dump() const;
+
+File /data/workspace/llvm-project/mlir/include/mlir/IR/OpDefinition.h:
+276:	void mlir::OpFoldResult::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/CallGraph.cpp:
+179:	void mlir::CallGraph::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/DataFlowFramework.cpp:
+54:	void mlir::AnalysisState::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/FlatLinearValueConstraints.cpp:
+479:	void mlir::FlatLinearConstraints::dumpPretty() const;
+447:	void mlir::FlatLinearConstraints::dumpRow(llvm::ArrayRef<long>, bool) const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Liveness.cpp:
+257:	void mlir::Liveness::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Presburger/IntegerRelation.cpp:
+2740:	void mlir::presburger::IntegerRelation::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Presburger/Matrix.cpp:
+419:	void mlir::presburger::Matrix<llvm::DynamicAPInt>::dump() const;
+419:	void mlir::presburger::Matrix<mlir::presburger::Fraction>::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Presburger/PWMAFunction.cpp:
+68:	void mlir::presburger::MultiAffineFunction::dump() const;
+314:	void mlir::presburger::PWMAFunction::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Presburger/PresburgerRelation.cpp:
+1059:	void mlir::presburger::PresburgerRelation::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Presburger/PresburgerSpace.cpp:
+33:	void mlir::presburger::Identifier::dump() const;
+357:	void mlir::presburger::PresburgerSpace::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Presburger/Simplex.cpp:
+2170:	void mlir::presburger::SimplexBase::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Analysis/Presburger/Utils.cpp:
+519:	void mlir::presburger::DivisionRepr::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Dialect/Affine/Analysis/Utils.cpp:
+942:	void mlir::affine::ComputationSliceState::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Dialect/ArmSME/Transforms/TileAllocation.cpp:
+754:	static void (anonymous namespace)::dumpLiveRanges(mlir::DenseMap const&, llvm::ArrayRef<(anonymous namespace)::LiveRange const*>, mlir::FunctionOpInterface);
+
+File /data/workspace/llvm-project/mlir/lib/Dialect/SparseTensor/IR/Detail/Var.cpp:
+41:	void mlir::sparse_tensor::ir_detail::Var::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Dialect/SparseTensor/Utils/Merger.cpp:
+920:	void mlir::sparse_tensor::Merger::dumpBits(llvm::BitVector const&) const;
+799:	void mlir::sparse_tensor::Merger::dumpExp(unsigned int) const;
+899:	void mlir::sparse_tensor::Merger::dumpLat(unsigned int) const;
+910:	void mlir::sparse_tensor::Merger::dumpSet(unsigned int) const;
+
+File /data/workspace/llvm-project/mlir/lib/Dialect/Vector/Transforms/LowerVectorToFromElementsToShuffleTree.cpp:
+319:	static void (anonymous namespace)::VectorShuffleTreeBuilder::dump();
+
+File /data/workspace/llvm-project/mlir/lib/IR/AsmPrinter.cpp:
+4059:	void mlir::AffineExpr::dump() const;
+4040:	void mlir::AffineMap::dump() const;
+3986:	void mlir::Attribute::dump() const;
+4197:	void mlir::Block::dump();
+4045:	void mlir::IntegerSet::dump() const;
+4170:	void mlir::Operation::dump();
+4175:	void mlir::Operation::dumpPretty();
+62:	void mlir::OperationName::dump() const;
+4035:	void mlir::Type::dump() const;
+4107:	void mlir::Value::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Interfaces/InferTypeOpInterface.cpp:
+183:	void mlir::ShapeAdaptor::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Interfaces/ValueBoundsOpInterface.cpp:
+932:	void mlir::ValueBoundsConstraintSet::dump() const;
+
+File /data/workspace/llvm-project/mlir/lib/Pass/Pass.cpp:
+462:	void mlir::OpPassManager::dump();
+
+File /data/workspace/llvm-project/mlir/lib/Pass/PassStatistics.cpp:
+244:	void mlir::PassManager::dumpStatistics();
+
+File /data/workspace/llvm-project/mlir/lib/Support/Timing.cpp:
+549:	void mlir::DefaultTimingManager::dumpAsList(llvm::raw_ostream&);
+555:	void mlir::DefaultTimingManager::dumpAsTree(llvm::raw_ostream&);
+544:	void mlir::DefaultTimingManager::dumpTimers(llvm::raw_ostream&);
+348:	static void (anonymous namespace)::TimerImpl::dump(llvm::raw_ostream&, unsigned int, unsigned int);
+
+File /usr/include/c++/11/bits/std_function.h:
+288:	static std::optional<llvm::object::SectionedAddress> std::_Function_handler<std::optional<llvm::object::SectionedAddress>(unsigned int), llvm::DWARFLocationTable::dumpLocationList(uint64_t*, llvm::raw_ostream&, std::optional<llvm::object::SectionedAddress>, const llvm::DWARFObject&, llvm::DWARFUnit*, llvm::DIDumpOptions, unsigned int) const::<lambda(uint32_t)> >::_M_invoke(const std::_Any_data &, unsigned int &&);
+267:	static bool std::_Function_handler<std::optional<llvm::object::SectionedAddress>(unsigned int), llvm::DWARFLocationTable::dumpLocationList(uint64_t*, llvm::raw_ostream&, std::optional<llvm::object::SectionedAddress>, const llvm::DWARFObject&, llvm::DWARFUnit*, llvm::DIDumpOptions, unsigned int) const::<lambda(uint32_t)> >::_M_manager(std::_Any_data &, const std::_Any_data &, std::_Manager_operation);
+288:	static void std::_Function_handler<void(llvm::raw_ostream&), llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(const llvm::MachineBasicBlock*, llvm::SlotIndex)>::<lambda(llvm::raw_ostream&)> >::_M_invoke(const std::_Any_data &, llvm::raw_ostream &);
+267:	static bool std::_Function_handler<void(llvm::raw_ostream&), llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(const llvm::MachineBasicBlock*, llvm::SlotIndex)>::<lambda(llvm::raw_ostream&)> >::_M_manager(std::_Any_data &, const std::_Any_data &, std::_Manager_operation);
+
+File /usr/include/c++/11/bits/stl_algo.h:
+2756:	static void std::__inplace_stable_sort<llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2756:	static void std::__inplace_stable_sort<llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+1819:	static void std::__insertion_sort<__gnu_cxx::__normal_iterator<const llvm::DWARFDebugNames::Abbrev**, std::vector<const llvm::DWARFDebugNames::Abbrev*> >, __gnu_cxx::__ops::_Iter_comp_iter<llvm::DWARFDebugNames::NameIndex::dumpAbbreviations(llvm::ScopedPrinter&) const::<lambda(const llvm::DWARFDebugNames::Abbrev*, const llvm::DWARFDebugNames::Abbrev*)> > >(__gnu_cxx::__normal_iterator<llvm::DWARFDebugNames::Abbrev const**, std::vector<llvm::DWARFDebugNames::Abbrev const*, std::allocator<llvm::DWARFDebugNames::Abbrev const*> > >, __gnu_cxx::__normal_iterator<llvm::DWARFDebugNames::Abbrev const**, std::vector<llvm::DWARFDebugNames::Abbrev const*, std::allocator<llvm::DWARFDebugNames::Abbrev const*> > >, __gnu_cxx::__ops::_Iter_comp_iter<llvm::DWARFDebugNames::NameIndex::dumpAbbreviations(llvm::ScopedPrinter&) const::<lambda(const llvm::DWARFDebugNames::Abbrev*, const llvm::DWARFDebugNames::Abbrev*)> >);
+1819:	static void std::__insertion_sort<llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true>*, __gnu_cxx::__ops::_Iter_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> > >(llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true> *, llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true> *, __gnu_cxx::__ops::_Iter_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> >);
+1819:	static void std::__insertion_sort<llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+1819:	static void std::__insertion_sort<llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+1819:	static void std::__insertion_sort<llvm::Register*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(llvm::Register, llvm::Register)> > >(llvm::Register *, llvm::Register *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(llvm::Register, llvm::Register)> >);
+1925:	static void std::__introsort_loop<__gnu_cxx::__normal_iterator<const llvm::DWARFDebugNames::Abbrev**, std::vector<const llvm::DWARFDebugNames::Abbrev*> >, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::DWARFDebugNames::NameIndex::dumpAbbreviations(llvm::ScopedPrinter&) const::<lambda(const llvm::DWARFDebugNames::Abbrev*, const llvm::DWARFDebugNames::Abbrev*)> > >(__gnu_cxx::__normal_iterator<llvm::DWARFDebugNames::Abbrev const**, std::vector<llvm::DWARFDebugNames::Abbrev const*, std::allocator<llvm::DWARFDebugNames::Abbrev const*> > >, __gnu_cxx::__normal_iterator<llvm::DWARFDebugNames::Abbrev const**, std::vector<llvm::DWARFDebugNames::Abbrev const*, std::allocator<llvm::DWARFDebugNames::Abbrev const*> > >, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::DWARFDebugNames::NameIndex::dumpAbbreviations(llvm::ScopedPrinter&) const::<lambda(const llvm::DWARFDebugNames::Abbrev*, const llvm::DWARFDebugNames::Abbrev*)> >);
+1925:	static void std::__introsort_loop<llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true>*, long int, __gnu_cxx::__ops::_Iter_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> > >(llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true> *, llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true> *, long, __gnu_cxx::__ops::_Iter_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> >);
+1925:	static void std::__introsort_loop<llvm::Register*, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(llvm::Register, llvm::Register)> > >(llvm::Register *, llvm::Register *, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(llvm::Register, llvm::Register)> >);
+2407:	static void std::__merge_adaptive<llvm::MCWriteProcResEntry*, long int, llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, long, llvm::MCWriteProcResEntry *, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2407:	static void std::__merge_adaptive<llvm::MCWriteProcResEntry*, long int, llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, long, llvm::MCWriteProcResEntry *, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2658:	static void std::__merge_sort_loop<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2658:	static void std::__merge_sort_loop<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2699:	static void std::__merge_sort_with_buffer<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2699:	static void std::__merge_sort_with_buffer<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2468:	static void std::__merge_without_buffer<llvm::MCWriteProcResEntry*, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2468:	static void std::__merge_without_buffer<llvm::MCWriteProcResEntry*, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2632:	static llvm::MCWriteProcResEntry *std::__move_merge<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2632:	static llvm::MCWriteProcResEntry *std::__move_merge<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2726:	static void std::__stable_sort_adaptive<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2726:	static void std::__stable_sort_adaptive<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry*, long int, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, long, __gnu_cxx::__ops::_Iter_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+1799:	static void std::__unguarded_linear_insert<llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true>*, __gnu_cxx::__ops::_Val_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> > >(llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true> *, __gnu_cxx::__ops::_Val_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> >);
+2028:	static llvm::MCWriteProcResEntry *std::__upper_bound<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry, __gnu_cxx::__ops::_Val_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, const llvm::MCWriteProcResEntry &, __gnu_cxx::__ops::_Val_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+2028:	static llvm::MCWriteProcResEntry *std::__upper_bound<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry, __gnu_cxx::__ops::_Val_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, const llvm::MCWriteProcResEntry &, __gnu_cxx::__ops::_Val_comp_iter<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+
+File /usr/include/c++/11/bits/stl_algobase.h:
+1451:	static llvm::MCWriteProcResEntry *std::__lower_bound<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry, __gnu_cxx::__ops::_Iter_comp_val<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, const llvm::MCWriteProcResEntry &, __gnu_cxx::__ops::_Iter_comp_val<llvm::ScheduleDAGMI::dumpScheduleTraceBottomUp() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+1451:	static llvm::MCWriteProcResEntry *std::__lower_bound<llvm::MCWriteProcResEntry*, llvm::MCWriteProcResEntry, __gnu_cxx::__ops::_Iter_comp_val<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> > >(llvm::MCWriteProcResEntry *, llvm::MCWriteProcResEntry *, const llvm::MCWriteProcResEntry &, __gnu_cxx::__ops::_Iter_comp_val<llvm::ScheduleDAGMI::dumpScheduleTraceTopDown() const::<lambda(const llvm::MCWriteProcResEntry&, const llvm::MCWriteProcResEntry&)> >);
+
+File /usr/include/c++/11/bits/stl_heap.h:
+223:	static void std::__adjust_heap<__gnu_cxx::__normal_iterator<const llvm::DWARFDebugNames::Abbrev**, std::vector<const llvm::DWARFDebugNames::Abbrev*> >, long int, const llvm::DWARFDebugNames::Abbrev*, __gnu_cxx::__ops::_Iter_comp_iter<llvm::DWARFDebugNames::NameIndex::dumpAbbreviations(llvm::ScopedPrinter&) const::<lambda(const llvm::DWARFDebugNames::Abbrev*, const llvm::DWARFDebugNames::Abbrev*)> > >(__gnu_cxx::__normal_iterator<llvm::DWARFDebugNames::Abbrev const**, std::vector<llvm::DWARFDebugNames::Abbrev const*, std::allocator<llvm::DWARFDebugNames::Abbrev const*> > >, long, long, const llvm::DWARFDebugNames::Abbrev *, __gnu_cxx::__ops::_Iter_comp_iter<llvm::DWARFDebugNames::NameIndex::dumpAbbreviations(llvm::ScopedPrinter&) const::<lambda(const llvm::DWARFDebugNames::Abbrev*, const llvm::DWARFDebugNames::Abbrev*)> >);
+223:	static void std::__adjust_heap<llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true>*, long int, llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true>, __gnu_cxx::__ops::_Iter_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> > >(llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true> *, long, long, llvm::DenseMapIterator<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo, llvm::DenseMapInfo<llvm::MCRegUnit, void>, llvm::detail::DenseMapPair<llvm::MCRegUnit, (anonymous namespace)::AMDGPUInsertDelayAlu::DelayInfo>, true>, __gnu_cxx::__ops::_Iter_comp_iter<(anonymous namespace)::AMDGPUInsertDelayAlu::DelayState::dump(const llvm::TargetRegisterInfo*) const::<lambda(const const_iterator&, const const_iterator&)> >);
+223:	static void std::__adjust_heap<llvm::Register*, long int, llvm::Register, __gnu_cxx::__ops::_Iter_comp_iter<llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(llvm::Register, llvm::Register)> > >(llvm::Register *, long, long, llvm::Register, __gnu_cxx::__ops::_Iter_comp_iter<llvm::dumpMaxRegPressure(llvm::MachineFunction&, llvm::GCNRegPressure::RegKind, llvm::LiveIntervals&, const llvm::MachineLoopInfo*)::<lambda(llvm::Register, llvm::Register)> >);
+
+File /usr/include/c++/11/bits/vector.tcc:
+426:	void std::vector<llvm::minidump::Directory, std::allocator<llvm::minidump::Directory> >::_M_realloc_insert<llvm::minidump::Directory const&>(__gnu_cxx::__normal_iterator<llvm::minidump::Directory*, std::vector<llvm::minidump::Directory, std::allocator<llvm::minidump::Directory> > >, llvm::minidump::Directory const&);
+
+Non-debugging symbols:
+0x000055567b0ebce0  non-virtual thunk to llvm::GCNSubtarget::dumpCode() const
