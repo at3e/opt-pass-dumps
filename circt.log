@@ -1,0 +1,38 @@
+oot@e85b278f5ef2:/workspace# circt/build/bin/circt-opt model_norm-memref.mlir -verify-each -flatten-memref 
+PLEASE submit a bug report to https://github.com/llvm/circt and include the crash backtrace.
+Stack dump:
+0.	Program arguments: circt/build/bin/circt-opt model_norm-memref.mlir -verify-each -flatten-memref
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
+0  circt-opt 0x0000556a93b61f82 llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 66
+1  circt-opt 0x0000556a93b5f0af llvm::sys::RunSignalHandlers() + 47
+2  circt-opt 0x0000556a93b5f711
+3  libc.so.6 0x00007efe6479d520
+4  circt-opt 0x0000556a95647cb1 mlir::DenseElementsAttr::getNumElements() const + 33
+5  circt-opt 0x0000556a955c40fb
+6  circt-opt 0x0000556a955c5a6f llvm::LogicalResult mlir::ConversionPattern::dispatchTo1To1<mlir::OpConversionPattern<mlir::memref::GlobalOp>, mlir::memref::GlobalOp>(mlir::OpConversionPattern<mlir::memref::GlobalOp> const&, mlir::memref::GlobalOp, mlir::memref::GlobalOp::GenericAdaptor<llvm::ArrayRef<mlir::ValueRange>>, mlir::ConversionPatternRewriter&) + 335
+7  circt-opt 0x0000556a955c5ccd
+8  circt-opt 0x0000556a9620b0ff mlir::ConversionPattern::matchAndRewrite(mlir::Operation*, mlir::PatternRewriter&) const + 575
+9  circt-opt 0x0000556a9624f360
+10 circt-opt 0x0000556a9625059a mlir::PatternApplicator::matchAndRewrite(mlir::Operation*, mlir::PatternRewriter&, llvm::function_ref<bool (mlir::Pattern const&)>, llvm::function_ref<void (mlir::Pattern const&)>, llvm::function_ref<llvm::LogicalResult (mlir::Pattern const&)>) + 746
+11 circt-opt 0x0000556a9620ebb0
+12 circt-opt 0x0000556a9620f0d4 mlir::OperationConverter::convert(mlir::Operation*, bool) + 68
+13 circt-opt 0x0000556a96216d76 mlir::OperationConverter::applyConversion(llvm::ArrayRef<mlir::Operation*>) + 262
+14 circt-opt 0x0000556a962198dd
+15 circt-opt 0x0000556a96219a86 mlir::applyPartialConversion(mlir::Operation*, mlir::ConversionTarget const&, mlir::FrozenRewritePatternSet const&, mlir::ConversionConfig) + 118
+16 circt-opt 0x0000556a955c178c
+17 circt-opt 0x0000556a963649d6 mlir::detail::OpToOpPassAdaptor::run(mlir::Pass*, mlir::Operation*, mlir::AnalysisManager, bool, unsigned int) + 3222
+18 circt-opt 0x0000556a96364cb4 mlir::detail::OpToOpPassAdaptor::runPipeline(mlir::OpPassManager&, mlir::Operation*, mlir::AnalysisManager, bool, unsigned int, mlir::PassInstrumentor*, mlir::PassInstrumentation::PipelineParentInfo const*) + 276
+19 circt-opt 0x0000556a96366c33 mlir::PassManager::runPasses(mlir::Operation*, mlir::AnalysisManager) + 99
+20 circt-opt 0x0000556a96367e96 mlir::PassManager::run(mlir::Operation*) + 4150
+21 circt-opt 0x0000556a95bd4cf5
+22 circt-opt 0x0000556a95bd54ac
+23 circt-opt 0x0000556a95bd56e1
+24 circt-opt 0x0000556a95c075bd mlir::splitAndProcessBuffer(std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::function_ref<llvm::LogicalResult (std::unique_ptr<llvm::MemoryBuffer, std::default_delete<llvm::MemoryBuffer>>, llvm::MemoryBufferRef const&, llvm::raw_ostream&)>, llvm::raw_ostream&, llvm::StringRef, llvm::StringRef) + 173
+25 circt-opt 0x0000556a95bcdb63
+26 circt-opt 0x0000556a95bd5c48 mlir::MlirOptMain(int, char**, llvm::StringRef, llvm::StringRef, mlir::DialectRegistry&) + 1320
+27 circt-opt 0x0000556a95bd5e82 mlir::MlirOptMain(int, char**, llvm::StringRef, mlir::DialectRegistry&) + 482
+28 circt-opt 0x0000556a93aa8c25 main + 1717
+29 libc.so.6 0x00007efe64784d90
+30 libc.so.6 0x00007efe64784e40 __libc_start_main + 128
+31 circt-opt 0x0000556a93a96fc5 _start + 37
+Segmentation fault
