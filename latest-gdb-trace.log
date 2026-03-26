@@ -1,0 +1,1475 @@
+or help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from llvm-project/build/bin/mlir-opt...
+(gdb)  break llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:262
+Breakpoint 1 at 0xeb4d84d: file /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp, line 262.
+(gdb) run
+Starting program: /data/workspace/llvm-project/build/bin/mlir-opt 1LayerConv/model_cf.mlir --flatten-memref
+warning: Error disabling address space randomization: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, (anonymous namespace)::FlattenMemrefsPass::runOnOperation (this=0x561b737e31c0) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:262
+262	  void runOnOperation() override {
+(gdb) step
+263	    RewritePatternSet patterns(&getContext());
+(gdb) s
+mlir::Pass::getContext (this=0x561b737e31c0) at /data/workspace/llvm-project/mlir/include/mlir/Pass/Pass.h:178
+178	  MLIRContext &getContext() { return *getOperation()->getContext(); }
+(gdb) p *getOperation()
+$1 = {<llvm::ilist_node_with_parent<mlir::Operation, mlir::Block>> = {<llvm::ilist_node<mlir::Operation>> = {<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void> >> = {<llvm::ilist_node_base<true, void>> = {<llvm::ilist_detail::node_base_prevnext<llvm::ilist_node_base<true, void>, true>> = {PrevAndSentinel = {Value = {
+                Data = "\000\000\000\000\000\000\000"}}, 
+            Next = 0x0}, <llvm::ilist_detail::node_base_parent<void>> = {<No data fields>}, <No data fields>}, <llvm::ilist_detail::node_parent_access<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void> >, void>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsBase> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, static kInvalidOrderIdx = 4294967295, static kOrderStride = 5, block = 0x0, location = {impl = {<mlir::Attribute> = {impl = 0x561b73838558}, <No data fields>}}, 
+  orderIndex = 4294967295, numResults = 0, numSuccs = 0, numRegions = 1, hasOperandStorage = false, propertiesStorageSize = 2 '\002', static propertiesCapacity = 2048, name = {impl = 0x561b7383af10}, 
+  attrs = {<mlir::detail::StorageUserBase<mlir::DictionaryAttr, mlir::Attribute, mlir::detail::DictionaryAttrStorage, mlir::detail::AttributeUniquer>> = {<mlir::Attribute> = {
+        impl = 0x561b7383c628}, <No data fields>}, static name = {<llvm::StringRef> = {static npos = 18446744073709551615, Data = 0x561b594377a0 "builtin.dictionary", Length = 18}, <No data fields>}, 
+    static dialectName = {<llvm::StringRef> = {static npos = 18446744073709551615, Data = 0x561b5496f938 "builtin", Length = 7}, <No data fields>}}}
+(gdb) p getOperation()->dump()
+module {
+  memref.global "private" constant @__constant_100xf32 : memref<100xf32> = dense_resource<torch_tensor_100_torch.float32> {alignment = 64 : i64}
+  memref.global "private" constant @__constant_100x3200xf32 : memref<100x3200xf32> = dense_resource<torch_tensor_100_3200_torch.float32> {alignment = 64 : i64}
+  memref.global "private" constant @__constant_32xf32 : memref<32xf32> = dense_resource<torch_tensor_32_torch.float32> {alignment = 64 : i64}
+  memref.global "private" constant @__constant_32x16x3xf32 : memref<32x16x3xf32> = dense_resource<torch_tensor_32_16_3_torch.float32> {alignment = 64 : i64}
+  memref.global "private" constant @__constant_16x1x3xf32 : memref<16x1x3xf32> = dense_resource<torch_tensor_16_1_3_torch.float32> {alignment = 64 : i64}
+  memref.global "private" constant @__constant_16xf32 : memref<16xf32> = dense_resource<torch_tensor_16_torch.float32> {alignment = 64 : i64}
+  func.func @main(%arg0: memref<8x1x100xf32, strided<[?, ?, ?], offset: ?>>) -> memref<8x100xf32> {
+    %c3200 = arith.constant 3200 : index
+    %c32 = arith.constant 32 : index
+    %c3 = arith.constant 3 : index
+    %c100 = arith.constant 100 : index
+    %c16 = arith.constant 16 : index
+    %c102 = arith.constant 102 : index
+    %c1 = arith.constant 1 : index
+    %c8 = arith.constant 8 : index
+    %c0 = arith.constant 0 : index
+    %cst = arith.constant 0.000000e+00 : f32
+    %0 = memref.get_global @__constant_16xf32 : memref<16xf32>
+    %1 = memref.get_global @__constant_16x1x3xf32 : memref<16x1x3xf32>
+    %2 = memref.get_global @__constant_32x16x3xf32 : memref<32x16x3xf32>
+    %3 = memref.get_global @__constant_32xf32 : memref<32xf32>
+    %4 = memref.get_global @__constant_100x3200xf32 : memref<100x3200xf32>
+    %5 = memref.get_global @__constant_100xf32 : memref<100xf32>
+    %alloc = memref.alloc() {alignment = 64 : i64} : memref<8x1x102xf32>
+    cf.br ^bb1(%c0 : index)
+  ^bb1(%6: index):  // 2 preds: ^bb0, ^bb6
+    %7 = arith.cmpi slt, %6, %c8 : index
+    cf.cond_br %7, ^bb2(%c0 : index), ^bb7
+  ^bb2(%8: index):  // 2 preds: ^bb1, ^bb5
+    %9 = arith.cmpi slt, %8, %c1 : index
+    cf.cond_br %9, ^bb3(%c0 : index), ^bb6
+  ^bb3(%10: index):  // 2 preds: ^bb2, ^bb4
+    %11 = arith.cmpi slt, %10, %c102 : index
+    cf.cond_br %11, ^bb4, ^bb5
+  ^bb4:  // pred: ^bb3
+    memref.store %cst, %alloc[%6, %8, %10] : memref<8x1x102xf32>
+    %12 = arith.addi %10, %c1 : index
+    cf.br ^bb3(%12 : index)
+  ^bb5:  // pred: ^bb3
+    %13 = arith.addi %8, %c1 : index
+    cf.br ^bb2(%13 : index)
+  ^bb6:  // pred: ^bb2
+    %14 = arith.addi %6, %c1 : index
+    cf.br ^bb1(%14 : index)
+  ^bb7:  // pred: ^bb1
+    %subview = memref.subview %alloc[0, 0, 1] [8, 1, 100] [1, 1, 1] : memref<8x1x102xf32> to memref<8x1x100xf32, strided<[102, 102, 1], offset: 1>>
+    memref.copy %arg0, %subview : memref<8x1x100xf32, strided<[?, ?, ?], offset: ?>> to memref<8x1x100xf32, strided<[102, 102, 1], offset: 1>>
+    %alloc_0 = memref.alloc() {alignment = 64 : i64} : memref<8x16x100xf32>
+    cf.br ^bb8(%c0 : index)
+  ^bb8(%15: index):  // 2 preds: ^bb7, ^bb13
+    %16 = arith.cmpi slt, %15, %c8 : index
+    cf.cond_br %16, ^bb9(%c0 : index), ^bb14(%c0 : index)
+  ^bb9(%17: index):  // 2 preds: ^bb8, ^bb12
+    %18 = arith.cmpi slt, %17, %c16 : index
+    cf.cond_br %18, ^bb10(%c0 : index), ^bb13
+  ^bb10(%19: index):  // 2 preds: ^bb9, ^bb11
+    %20 = arith.cmpi slt, %19, %c100 : index
+    cf.cond_br %20, ^bb11, ^bb12
+  ^bb11:  // pred: ^bb10
+    %21 = memref.load %0[%17] : memref<16xf32>
+    memref.store %21, %alloc_0[%15, %17, %19] : memref<8x16x100xf32>
+    %22 = arith.addi %19, %c1 : index
+    cf.br ^bb10(%22 : index)
+  ^bb12:  // pred: ^bb10
+    %23 = arith.addi %17, %c1 : index
+    cf.br ^bb9(%23 : index)
+  ^bb13:  // pred: ^bb9
+    %24 = arith.addi %15, %c1 : index
+    cf.br ^bb8(%24 : index)
+  ^bb14(%25: index):  // 2 preds: ^bb8, ^bb23
+    %26 = arith.cmpi slt, %25, %c8 : index
+    cf.cond_br %26, ^bb15(%c0 : index), ^bb24(%c0 : index)
+  ^bb15(%27: index):  // 2 preds: ^bb14, ^bb22
+    %28 = arith.cmpi slt, %27, %c16 : index
+    cf.cond_br %28, ^bb16(%c0 : index), ^bb23
+  ^bb16(%29: index):  // 2 preds: ^bb15, ^bb21
+    %30 = arith.cmpi slt, %29, %c100 : index
+    cf.cond_br %30, ^bb17(%c0 : index), ^bb22
+  ^bb17(%31: index):  // 2 preds: ^bb16, ^bb20
+    %32 = arith.cmpi slt, %31, %c1 : index
+    cf.cond_br %32, ^bb18(%c0 : index), ^bb21
+  ^bb18(%33: index):  // 2 preds: ^bb17, ^bb19
+    %34 = arith.cmpi slt, %33, %c3 : index
+    cf.cond_br %34, ^bb19, ^bb20
+  ^bb19:  // pred: ^bb18
+    %35 = arith.addi %29, %33 : index
+    %36 = memref.load %alloc[%25, %31, %35] : memref<8x1x102xf32>
+    %37 = memref.load %1[%27, %31, %33] : memref<16x1x3xf32>
+    %38 = memref.load %alloc_0[%25, %27, %29] : memref<8x16x100xf32>
+    %39 = arith.mulf %36, %37 : f32
+    %40 = arith.addf %38, %39 : f32
+    memref.store %40, %alloc_0[%25, %27, %29] : memref<8x16x100xf32>
+    %41 = arith.addi %33, %c1 : index
+    cf.br ^bb18(%41 : index)
+  ^bb20:  // pred: ^bb18
+    %42 = arith.addi %31, %c1 : index
+    cf.br ^bb17(%42 : index)
+  ^bb21:  // pred: ^bb17
+    %43 = arith.addi %29, %c1 : index
+    cf.br ^bb16(%43 : index)
+  ^bb22:  // pred: ^bb16
+    %44 = arith.addi %27, %c1 : index
+    cf.br ^bb15(%44 : index)
+  ^bb23:  // pred: ^bb15
+    %45 = arith.addi %25, %c1 : index
+    cf.br ^bb14(%45 : index)
+  ^bb24(%46: index):  // 2 preds: ^bb14, ^bb29
+    %47 = arith.cmpi slt, %46, %c8 : index
+    cf.cond_br %47, ^bb25(%c0 : index), ^bb30
+  ^bb25(%48: index):  // 2 preds: ^bb24, ^bb28
+    %49 = arith.cmpi slt, %48, %c16 : index
+    cf.cond_br %49, ^bb26(%c0 : index), ^bb29
+  ^bb26(%50: index):  // 2 preds: ^bb25, ^bb27
+    %51 = arith.cmpi slt, %50, %c100 : index
+    cf.cond_br %51, ^bb27, ^bb28
+  ^bb27:  // pred: ^bb26
+    %52 = memref.load %alloc_0[%46, %48, %50] : memref<8x16x100xf32>
+    %53 = arith.cmpf ugt, %52, %cst : f32
+    %54 = arith.select %53, %52, %cst : f32
+    memref.store %54, %alloc_0[%46, %48, %50] : memref<8x16x100xf32>
+    %55 = arith.addi %50, %c1 : index
+    cf.br ^bb26(%55 : index)
+  ^bb28:  // pred: ^bb26
+    %56 = arith.addi %48, %c1 : index
+    cf.br ^bb25(%56 : index)
+  ^bb29:  // pred: ^bb25
+    %57 = arith.addi %46, %c1 : index
+    cf.br ^bb24(%57 : index)
+  ^bb30:  // pred: ^bb24
+    %alloc_1 = memref.alloc() {alignment = 64 : i64} : memref<8x16x102xf32>
+    cf.br ^bb31(%c0 : index)
+  ^bb31(%58: index):  // 2 preds: ^bb30, ^bb36
+    %59 = arith.cmpi slt, %58, %c8 : index
+    cf.cond_br %59, ^bb32(%c0 : index), ^bb37
+  ^bb32(%60: index):  // 2 preds: ^bb31, ^bb35
+    %61 = arith.cmpi slt, %60, %c16 : index
+    cf.cond_br %61, ^bb33(%c0 : index), ^bb36
+  ^bb33(%62: index):  // 2 preds: ^bb32, ^bb34
+    %63 = arith.cmpi slt, %62, %c102 : index
+    cf.cond_br %63, ^bb34, ^bb35
+  ^bb34:  // pred: ^bb33
+    memref.store %cst, %alloc_1[%58, %60, %62] : memref<8x16x102xf32>
+    %64 = arith.addi %62, %c1 : index
+    cf.br ^bb33(%64 : index)
+  ^bb35:  // pred: ^bb33
+    %65 = arith.addi %60, %c1 : index
+    cf.br ^bb32(%65 : index)
+  ^bb36:  // pred: ^bb32
+    %66 = arith.addi %58, %c1 : index
+    cf.br ^bb31(%66 : index)
+  ^bb37:  // pred: ^bb31
+    %subview_2 = memref.subview %alloc_1[0, 0, 1] [8, 16, 100] [1, 1, 1] : memref<8x16x102xf32> to memref<8x16x100xf32, strided<[1632, 102, 1], offset: 1>>
+    memref.copy %alloc_0, %subview_2 : memref<8x16x100xf32> to memref<8x16x100xf32, strided<[1632, 102, 1], offset: 1>>
+    %alloc_3 = memref.alloc() {alignment = 64 : i64} : memref<8x32x100xf32>
+    cf.br ^bb38(%c0 : index)
+  ^bb38(%67: index):  // 2 preds: ^bb37, ^bb43
+    %68 = arith.cmpi slt, %67, %c8 : index
+    cf.cond_br %68, ^bb39(%c0 : index), ^bb44(%c0 : index)
+  ^bb39(%69: index):  // 2 preds: ^bb38, ^bb42
+    %70 = arith.cmpi slt, %69, %c32 : index
+    cf.cond_br %70, ^bb40(%c0 : index), ^bb43
+  ^bb40(%71: index):  // 2 preds: ^bb39, ^bb41
+    %72 = arith.cmpi slt, %71, %c100 : index
+    cf.cond_br %72, ^bb41, ^bb42
+  ^bb41:  // pred: ^bb40
+    %73 = memref.load %3[%69] : memref<32xf32>
+    memref.store %73, %alloc_3[%67, %69, %71] : memref<8x32x100xf32>
+    %74 = arith.addi %71, %c1 : index
+    cf.br ^bb40(%74 : index)
+  ^bb42:  // pred: ^bb40
+    %75 = arith.addi %69, %c1 : index
+    cf.br ^bb39(%75 : index)
+  ^bb43:  // pred: ^bb39
+    %76 = arith.addi %67, %c1 : index
+    cf.br ^bb38(%76 : index)
+  ^bb44(%77: index):  // 2 preds: ^bb38, ^bb53
+    %78 = arith.cmpi slt, %77, %c8 : index
+    cf.cond_br %78, ^bb45(%c0 : index), ^bb54(%c0 : index)
+  ^bb45(%79: index):  // 2 preds: ^bb44, ^bb52
+    %80 = arith.cmpi slt, %79, %c32 : index
+    cf.cond_br %80, ^bb46(%c0 : index), ^bb53
+  ^bb46(%81: index):  // 2 preds: ^bb45, ^bb51
+    %82 = arith.cmpi slt, %81, %c100 : index
+    cf.cond_br %82, ^bb47(%c0 : index), ^bb52
+  ^bb47(%83: index):  // 2 preds: ^bb46, ^bb50
+    %84 = arith.cmpi slt, %83, %c16 : index
+    cf.cond_br %84, ^bb48(%c0 : index), ^bb51
+  ^bb48(%85: index):  // 2 preds: ^bb47, ^bb49
+    %86 = arith.cmpi slt, %85, %c3 : index
+    cf.cond_br %86, ^bb49, ^bb50
+  ^bb49:  // pred: ^bb48
+    %87 = arith.addi %81, %85 : index
+    %88 = memref.load %alloc_1[%77, %83, %87] : memref<8x16x102xf32>
+    %89 = memref.load %2[%79, %83, %85] : memref<32x16x3xf32>
+    %90 = memref.load %alloc_3[%77, %79, %81] : memref<8x32x100xf32>
+    %91 = arith.mulf %88, %89 : f32
+    %92 = arith.addf %90, %91 : f32
+    memref.store %92, %alloc_3[%77, %79, %81] : memref<8x32x100xf32>
+    %93 = arith.addi %85, %c1 : index
+    cf.br ^bb48(%93 : index)
+  ^bb50:  // pred: ^bb48
+    %94 = arith.addi %83, %c1 : index
+    cf.br ^bb47(%94 : index)
+  ^bb51:  // pred: ^bb47
+    %95 = arith.addi %81, %c1 : index
+    cf.br ^bb46(%95 : index)
+  ^bb52:  // pred: ^bb46
+    %96 = arith.addi %79, %c1 : index
+    cf.br ^bb45(%96 : index)
+  ^bb53:  // pred: ^bb45
+    %97 = arith.addi %77, %c1 : index
+    cf.br ^bb44(%97 : index)
+  ^bb54(%98: index):  // 2 preds: ^bb44, ^bb59
+    %99 = arith.cmpi slt, %98, %c8 : index
+    cf.cond_br %99, ^bb55(%c0 : index), ^bb60
+  ^bb55(%100: index):  // 2 preds: ^bb54, ^bb58
+    %101 = arith.cmpi slt, %100, %c32 : index
+    cf.cond_br %101, ^bb56(%c0 : index), ^bb59
+  ^bb56(%102: index):  // 2 preds: ^bb55, ^bb57
+    %103 = arith.cmpi slt, %102, %c100 : index
+    cf.cond_br %103, ^bb57, ^bb58
+  ^bb57:  // pred: ^bb56
+    %104 = memref.load %alloc_3[%98, %100, %102] : memref<8x32x100xf32>
+    %105 = arith.cmpf ugt, %104, %cst : f32
+    %106 = arith.select %105, %104, %cst : f32
+    memref.store %106, %alloc_3[%98, %100, %102] : memref<8x32x100xf32>
+    %107 = arith.addi %102, %c1 : index
+    cf.br ^bb56(%107 : index)
+  ^bb58:  // pred: ^bb56
+    %108 = arith.addi %100, %c1 : index
+    cf.br ^bb55(%108 : index)
+  ^bb59:  // pred: ^bb55
+    %109 = arith.addi %98, %c1 : index
+    cf.br ^bb54(%109 : index)
+  ^bb60:  // pred: ^bb54
+    %collapse_shape = memref.collapse_shape %alloc_3 [[0], [1, 2]] : memref<8x32x100xf32> into memref<8x3200xf32>
+    %alloc_4 = memref.alloc() {alignment = 64 : i64} : memref<3200x100xf32>
+    cf.br ^bb61(%c0 : index)
+  ^bb61(%110: index):  // 2 preds: ^bb60, ^bb64
+    %111 = arith.cmpi slt, %110, %c3200 : index
+    cf.cond_br %111, ^bb62(%c0 : index), ^bb65
+  ^bb62(%112: index):  // 2 preds: ^bb61, ^bb63
+    %113 = arith.cmpi slt, %112, %c100 : index
+    cf.cond_br %113, ^bb63, ^bb64
+  ^bb63:  // pred: ^bb62
+    %114 = memref.load %4[%112, %110] : memref<100x3200xf32>
+    memref.store %114, %alloc_4[%110, %112] : memref<3200x100xf32>
+    %115 = arith.addi %112, %c1 : index
+    cf.br ^bb62(%115 : index)
+  ^bb64:  // pred: ^bb62
+    %116 = arith.addi %110, %c1 : index
+    cf.br ^bb61(%116 : index)
+  ^bb65:  // pred: ^bb61
+    %alloc_5 = memref.alloc() {alignment = 64 : i64} : memref<8x100xf32>
+    cf.br ^bb66(%c0 : index)
+  ^bb66(%117: index):  // 2 preds: ^bb65, ^bb69
+    %118 = arith.cmpi slt, %117, %c8 : index
+    cf.cond_br %118, ^bb67(%c0 : index), ^bb70(%c0 : index)
+  ^bb67(%119: index):  // 2 preds: ^bb66, ^bb68
+    %120 = arith.cmpi slt, %119, %c100 : index
+    cf.cond_br %120, ^bb68, ^bb69
+  ^bb68:  // pred: ^bb67
+    memref.store %cst, %alloc_5[%117, %119] : memref<8x100xf32>
+    %121 = arith.addi %119, %c1 : index
+    cf.br ^bb67(%121 : index)
+  ^bb69:  // pred: ^bb67
+    %122 = arith.addi %117, %c1 : index
+    cf.br ^bb66(%122 : index)
+  ^bb70(%123: index):  // 2 preds: ^bb66, ^bb75
+    %124 = arith.cmpi slt, %123, %c8 : index
+    cf.cond_br %124, ^bb71(%c0 : index), ^bb76(%c0 : index)
+  ^bb71(%125: index):  // 2 preds: ^bb70, ^bb74
+    %126 = arith.cmpi slt, %125, %c100 : index
+    cf.cond_br %126, ^bb72(%c0 : index), ^bb75
+  ^bb72(%127: index):  // 2 preds: ^bb71, ^bb73
+    %128 = arith.cmpi slt, %127, %c3200 : index
+    cf.cond_br %128, ^bb73, ^bb74
+  ^bb73:  // pred: ^bb72
+    %129 = memref.load %collapse_shape[%123, %127] : memref<8x3200xf32>
+    %130 = memref.load %alloc_4[%127, %125] : memref<3200x100xf32>
+    %131 = memref.load %alloc_5[%123, %125] : memref<8x100xf32>
+    %132 = arith.mulf %129, %130 : f32
+    %133 = arith.addf %131, %132 : f32
+    memref.store %133, %alloc_5[%123, %125] : memref<8x100xf32>
+    %134 = arith.addi %127, %c1 : index
+    cf.br ^bb72(%134 : index)
+  ^bb74:  // pred: ^bb72
+    %135 = arith.addi %125, %c1 : index
+    cf.br ^bb71(%135 : index)
+  ^bb75:  // pred: ^bb71
+    %136 = arith.addi %123, %c1 : index
+    cf.br ^bb70(%136 : index)
+  ^bb76(%137: index):  // 2 preds: ^bb70, ^bb79
+    %138 = arith.cmpi slt, %137, %c8 : index
+    cf.cond_br %138, ^bb77(%c0 : index), ^bb80
+  ^bb77(%139: index):  // 2 preds: ^bb76, ^bb78
+    %140 = arith.cmpi slt, %139, %c100 : index
+    cf.cond_br %140, ^bb78, ^bb79
+  ^bb78:  // pred: ^bb77
+    %141 = memref.load %alloc_5[%137, %139] : memref<8x100xf32>
+    %142 = memref.load %5[%139] : memref<100xf32>
+    %143 = arith.addf %141, %142 : f32
+    memref.store %143, %alloc_5[%137, %139] : memref<8x100xf32>
+    %144 = arith.addi %139, %c1 : index
+    cf.br ^bb77(%144 : index)
+  ^bb79:  // pred: ^bb77
+    %145 = arith.addi %137, %c1 : index
+    cf.br ^bb76(%145 : index)
+  ^bb80:  // pred: ^bb76
+    return %alloc_5 : memref<8x100xf32>
+  }
+}
+$2 = void
+(gdb) n
+(anonymous namespace)::FlattenMemrefsPass::runOnOperation (this=0x561b737e31c0) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:265
+265	    memref::populateFlattenMemrefsPatterns(patterns);
+(gdb) n
+267	    if (failed(applyPatternsGreedily(getOperation(), std::move(patterns))))
+(gdb) s
+mlir::GreedyRewriteConfig::GreedyRewriteConfig (this=0x7ffe6240ab40) at /data/workspace/llvm-project/mlir/include/mlir/Transforms/GreedyPatternRewriteDriver.h:43
+43	class GreedyRewriteConfig {
+(gdb) finish
+Run till exit from #0  mlir::GreedyRewriteConfig::GreedyRewriteConfig (this=0x7ffe6240ab40) at /data/workspace/llvm-project/mlir/include/mlir/Transforms/GreedyPatternRewriteDriver.h:43
+0x0000561b508998eb in (anonymous namespace)::FlattenMemrefsPass::runOnOperation (this=0x561b737e31c0) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:267
+267	    if (failed(applyPatternsGreedily(getOperation(), std::move(patterns))))
+(gdb) s
+llvm::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::ArrayRef (this=0x7ffe6240ab20) at /data/workspace/llvm-project/llvm/include/llvm/ADT/ArrayRef.h:66
+66	    /*implicit*/ ArrayRef() = default;
+(gdb) fin
+Run till exit from #0  llvm::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::ArrayRef (this=0x7ffe6240ab20)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/ArrayRef.h:66
+0x0000561b50899910 in (anonymous namespace)::FlattenMemrefsPass::runOnOperation (this=0x561b737e31c0) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:267
+267	    if (failed(applyPatternsGreedily(getOperation(), std::move(patterns))))
+(gdb) s
+llvm::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::ArrayRef (this=0x7ffe6240ab10) at /data/workspace/llvm-project/llvm/include/llvm/ADT/ArrayRef.h:66
+66	    /*implicit*/ ArrayRef() = default;
+(gdb) fin
+Run till exit from #0  llvm::ArrayRef<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >::ArrayRef (this=0x7ffe6240ab10)
+    at /data/workspace/llvm-project/llvm/include/llvm/ADT/ArrayRef.h:66
+(anonymous namespace)::FlattenMemrefsPass::runOnOperation (this=0x561b737e31c0) at /data/workspace/llvm-project/mlir/lib/Dialect/MemRef/Transforms/FlattenMemRefs.cpp:267
+267	    if (failed(applyPatternsGreedily(getOperation(), std::move(patterns))))
+(gdb) b applyPatternsGreedily
+Breakpoint 2 at 0x561b455f96cc: applyPatternsGreedily. (2 locations)
+(gdb) c
+Continuing.
+
+Breakpoint 2, mlir::applyPatternsGreedily (op=0x561b7387ddd0, patterns=..., config=..., changed=0x0) at /data/workspace/llvm-project/mlir/include/mlir/Transforms/GreedyPatternRewriteDriver.h:219
+219	                      bool *changed = nullptr) {
+(gdb) n
+220	  bool anyRegionChanged = false;
+(gdb) n
+221	  bool failed = false;
+(gdb) n
+222	  for (Region &region : op->getRegions()) {
+(gdb) n
+224	    failed |= applyPatternsGreedily(region, patterns, config, &regionChanged)
+(gdb) l
+219	                      bool *changed = nullptr) {
+220	  bool anyRegionChanged = false;
+221	  bool failed = false;
+222	  for (Region &region : op->getRegions()) {
+223	    bool regionChanged;
+224	    failed |= applyPatternsGreedily(region, patterns, config, &regionChanged)
+225	                  .failed();
+226	    anyRegionChanged |= regionChanged;
+227	  }
+228	  if (changed)
+(gdb) c
+Continuing.
+
+Breakpoint 2, mlir::applyPatternsGreedily (region=..., patterns=..., config=..., changed=0x7ffe6240aa6c) at /data/workspace/llvm-project/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp:914
+914	                            GreedyRewriteConfig config, bool *changed) {
+(gdb) l
+909	}
+910	
+911	LogicalResult
+912	mlir::applyPatternsGreedily(Region &region,
+913	                            const FrozenRewritePatternSet &patterns,
+914	                            GreedyRewriteConfig config, bool *changed) {
+915	  // The top-level operation must be known to be isolated from above to
+916	  // prevent performing canonicalizations on operations defined at or above
+917	  // the region containing 'op'.
+918	  assert(region.getParentOp()->hasTrait<OpTrait::IsIsolatedFromAbove>() &&
+(gdb) p region
+$3 = (mlir::Region &) @0x561b7387de20: {
+  blocks = {<llvm::iplist_impl<llvm::simple_ilist<mlir::Block>, llvm::ilist_traits<mlir::Block> >> = {<llvm::ilist_traits<mlir::Block>> = {<llvm::ilist_alloc_traits<mlir::Block>> = {<No data fields>}, <No data fields>}, <llvm::simple_ilist<mlir::Block>> = {<llvm::ilist_base<true, void>> = {<No data fields>}, <llvm::ilist_detail::SpecificNodeAccess<llvm::ilist_detail::node_options<mlir::Block, true, false, void, false, void> >> = {<llvm::ilist_detail::NodeAccess> = {<No data fields>}, <No data fields>}, 
+        Sentinel = {<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Block, true, false, void, false, void> >> = {<llvm::ilist_node_base<true, void>> = {<llvm::ilist_detail::node_base_prevnext<llvm::ilist_node_base<true, void>, true>> = {PrevAndSentinel = {Value = {Data = "\254Z\204s\033V\000"}}, 
+                Next = 0x561b73845aa8}, <llvm::ilist_detail::node_base_parent<void>> = {<No data fields>}, <No data fields>}, <llvm::ilist_detail::node_parent_access<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Block, true, false, void, false, void> >, void>> = {<No data fields>}, <No data fields>}, <No data fields>}}, <No data fields>}, <No data fields>}, container = 0x561b7387ddd0}
+(gdb) p region.dump()
+Couldn't find method mlir::Region::dump
+(gdb) n
+918	  assert(region.getParentOp()->hasTrait<OpTrait::IsIsolatedFromAbove>() &&
+(gdb) n
+922	  if (!config.getScope())
+(gdb) n
+923	    config.setScope(&region);
+(gdb) n
+933	                                    region);
+(gdb) l
+928	        "greedy pattern rewriter input IR failed to verify");
+929	#endif // MLIR_ENABLE_EXPENSIVE_PATTERN_API_CHECKS
+930	
+931	  // Start the pattern driver.
+932	  RegionPatternRewriteDriver driver(region.getContext(), patterns, config,
+933	                                    region);
+934	  LogicalResult converged = std::move(driver).simplify(changed);
+935	  if (failed(converged))
+936	    LDBG() << "The pattern rewrite did not converge after scanning "
+937	           << config.getMaxIterations() << " times";
+(gdb) p change
+
+No symbol "change" in current context.
+(gdb) 
+No symbol "change" in current context.
+(gdb) p changed
+$4 = (bool *) 0x7ffe6240aa6c
+(gdb) p *changed
+$5 = 27
+(gdb) p (bool)*changed
+$6 = 27
+(gdb) n
+934	  LogicalResult converged = std::move(driver).simplify(changed);
+(gdb) s
+std::move<(anonymous namespace)::RegionPatternRewriteDriver&> (__t=...) at /usr/include/c++/11/bits/move.h:105
+105	    { return static_cast<typename std::remove_reference<_Tp>::type&&>(__t); }
+(gdb) fin
+Run till exit from #0  std::move<(anonymous namespace)::RegionPatternRewriteDriver&> (__t=...) at /usr/include/c++/11/bits/move.h:105
+0x0000561b52f0839b in mlir::applyPatternsGreedily (region=..., patterns=..., config=..., changed=0x7ffe6240aa6c) at /data/workspace/llvm-project/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp:934
+934	  LogicalResult converged = std::move(driver).simplify(changed);
+Value returned is $7 = (std::remove_reference<(anonymous namespace)::RegionPatternRewriteDriver&>::type &&) @0x7ffe6240a820: {<(anonymous namespace)::GreedyPatternRewriteDriver> = {<mlir::RewriterBase::Listener> = {<mlir::OpBuilder::Listener> = {<mlir::OpBuilder::ListenerBase> = {kind = mlir::OpBuilder::ListenerBase::Kind::RewriterBaseListener}, _vptr.Listener = 0x561b5eb290a0 <vtable for (anonymous namespace)::RegionPatternRewriteDriver+16>}, <No data fields>}, rewriter = {<mlir::RewriterBase> = {<mlir::OpBuilder> = {<mlir::Builder> = {context = 0x7ffe6240b8c0}, listener = 0x7ffe6240a820, block = 0x0, insertPoint = {<llvm::ilist_detail::SpecificNodeAccess<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void> >> = {<llvm::ilist_detail::NodeAccess> = {<No data fields>}, <No data fields>}, <llvm::ilist_detail::iterator_parent_access<llvm::ilist_iterator<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void>, false, false>, void, false>> = {<No data fields>}, NodePtr = 0x0}}, _vptr.RewriterBase = 0x561b5eb36be0 <vtable for mlir::PatternRewriter+16>}, <No data fields>}, worklist = {list = std::vector of length 0, capacity 64, map = {<llvm::DenseMapBase<llvm::DenseMap<mlir::Operation*, unsigned int, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, unsigned int> >, mlir::Operation*, unsigned int, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, unsigned int> >> = {<llvm::DebugEpochBase> = {Epoch = 0}, <No data fields>}, Buckets = 0x0, NumEntries = 0, NumTombstones = 0, NumBuckets = 0}}, config = {static kNoLimit = -1, scope = 0x561b7387de20, useTopDownTraversal = false, regionSimplificationLevel = mlir::GreedySimplifyRegionLevel::Aggressive, maxIterations = 10, maxNumRewrites = -1, strictness = mlir::GreedyRewriteStrictness::AnyOp, listener = 0x0, fold = true, cseConstants = true}, strictModeFilteredOps = {<llvm::detail::DenseSetImpl<mlir::Operation*, llvm::SmallDenseMap<mlir::Operation*, llvm::detail::DenseSetEmpty, 4, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseSetPair<mlir::Operation*> >, llvm::DenseMapInfo<mlir::Operation*, void> >> = {TheMap = {<llvm::DenseMapBase<llvm::SmallDenseMap<mlir::Operation*, llvm::detail::DenseSetEmpty, 4, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseSetPair<mlir::Operation*> >, mlir::Operation*, llvm::detail::DenseSetEmpty, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseSetPair<mlir::Operation*> >> = {<llvm::DebugEpochBase> = {Epoch = 0}, <No data fields>}, Small = 1, NumEntries = 0, NumTombstones = 0, storage = {static Align = 8, buffer = "\000\360\377\377\377\377\377\377\000\360\377\377\377\377\377\377\000\360\377\377\377\377\377\377\000\360\377\377\377\377\377\377"}}}, <No data fields>}, os = {<llvm::raw_ostream> = {_vptr.raw_ostream = 0x561b5eb38e68 <vtable for llvm::impl::raw_ldbg_ostream+16>, Kind = llvm::raw_ostream::OStreamKind::OK_OStream, OutBufStart = 0x0, OutBufEnd = 0x0, OutBufCur = 0x0, ColorEnabled = false, BufferMode = llvm::raw_ostream::BufferKind::Unbuffered, static BLACK = llvm::raw_ostream::Colors::BLACK, static RED = llvm::raw_ostream::Colors::RED, static GREEN = llvm::raw_ostream::Colors::GREEN, static YELLOW = llvm::raw_ostream::Colors::YELLOW, static BLUE = llvm::raw_ostream::Colors::BLUE, static MAGENTA = llvm::raw_ostream::Colors::MAGENTA, static CYAN = llvm::raw_ostream::Colors::CYAN, static WHITE = llvm::raw_ostream::Colors::WHITE, static BRIGHT_BLACK = llvm::raw_ostream::Colors::BRIGHT_BLACK, static BRIGHT_RED = llvm::raw_ostream::Colors::BRIGHT_RED, static BRIGHT_GREEN = llvm::raw_ostream::Colors::BRIGHT_GREEN, static BRIGHT_YELLOW = llvm::raw_ostream::Colors::BRIGHT_YELLOW, static BRIGHT_BLUE = llvm::raw_ostream::Colors::BRIGHT_BLUE, static BRIGHT_MAGENTA = llvm::raw_ostream::Colors::BRIGHT_MAGENTA, static BRIGHT_CYAN = llvm::raw_ostream::Colors::BRIGHT_CYAN, static BRIGHT_WHITE = llvm::raw_ostream::Colors::BRIGHT_WHITE, static SAVEDCOLOR = llvm::raw_ostream::Colors::SAVEDCOLOR, static RESET = llvm::raw_ostream::Colors::RESET}, Prefix = "[greedy-rewriter:1] ", Os = @0x561b5ec4d980, ShouldPrefixNextString = true, ShouldEmitNewLineOnDestruction = false}, logger = {_vptr.ScopedPrinter = 0x561b5eb2f6d0 <vtable for llvm::ScopedPrinter+16>, OS = @0x7ffe6240a8f8, IndentLevel = 0, Prefix = {static npos = 18446744073709551615, Data = 0x0, Length = 0}, Kind = llvm::ScopedPrinter::ScopedPrinterKind::Base}, matcher = {frozenPatternList = @0x7ffe6240ab30, patterns = {<llvm::DenseMapBase<llvm::DenseMap<mlir::OperationName, llvm::SmallVector<mlir::RewritePattern const*, 2>, llvm::DenseMapInfo<mlir::OperationName, void>, llvm::detail::DenseMapPair<mlir::OperationName, llvm::SmallVector<mlir::RewritePattern const*, 2> > >, mlir::OperationName, llvm::SmallVector<mlir::RewritePattern const*, 2>, llvm::DenseMapInfo<mlir::OperationName, void>, llvm::detail::DenseMapPair<mlir::OperationName, llvm::SmallVector<mlir::RewritePattern const*, 2> > >> = {<llvm::DebugEpochBase> = {Epoch = 11}, <No data fields>}, Buckets = 0x561b73896b00, NumEntries = 10, NumTombstones = 0, NumBuckets = 64}, anyOpPatterns = {<llvm::SmallVectorImpl<mlir::RewritePattern const*>> = {<llvm::SmallVectorTemplateBase<mlir::RewritePattern const*, true>> = {<llvm::SmallVectorTemplateCommon<mlir::RewritePattern const*, void>> = {<llvm::SmallVectorBase<unsigned int>> = {BeginX = 0x7ffe6240a9c0, Size = 0, Capacity = 1}, <No data fields>}, static TakesParamByValue = true}, <No data fields>}, <llvm::SmallVectorStorage<mlir::RewritePattern const*, 1>> = {InlineElts = "\001\000\000\000\000\000\000"}, <No data fields>}, mutableByteCodeState = std::unique_ptr<mlir::detail::PDLByteCodeMutableState> = {get() = 0x0}}}, region = @0x561b7387de20}
+(gdb) s
+(anonymous namespace)::RegionPatternRewriteDriver::simplify (this=0x7ffe6240a820, changed=0x7ffe6240aa6c) at /data/workspace/llvm-project/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp:830
+830	LogicalResult RegionPatternRewriteDriver::simplify(bool *changed) && {
+(gdb) s
+831	  bool continueRewrites = false;
+(gdb) l
+826	  int64_t iteration = 0;
+827	};
+828	} // namespace
+829	
+830	LogicalResult RegionPatternRewriteDriver::simplify(bool *changed) && {
+831	  bool continueRewrites = false;
+832	  int64_t iteration = 0;
+833	  MLIRContext *ctx = rewriter.getContext();
+834	  do {
+835	    // Check if the iteration limit was reached.
+(gdb) s
+832	  int64_t iteration = 0;
+(gdb) s
+833	  MLIRContext *ctx = rewriter.getContext();
+(gdb) s
+mlir::Builder::getContext (this=0x7ffe6240a838) at /data/workspace/llvm-project/mlir/include/mlir/IR/Builders.h:56
+56	  MLIRContext *getContext() const { return context; }
+(gdb) s
+(anonymous namespace)::RegionPatternRewriteDriver::simplify (this=0x7ffe6240a820, changed=0x7ffe6240aa6c) at /data/workspace/llvm-project/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp:836
+836	    if (++iteration > config.getMaxIterations() &&
+(gdb) s
+mlir::GreedyRewriteConfig::getMaxIterations (this=0x7ffe6240a890) at /data/workspace/llvm-project/mlir/include/mlir/Transforms/GreedyPatternRewriteDriver.h:76
+76	  int64_t getMaxIterations() const { return maxIterations; }
+(gdb) n
+(anonymous namespace)::RegionPatternRewriteDriver::simplify (this=0x7ffe6240a820, changed=0x7ffe6240aa6c) at /data/workspace/llvm-project/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp:836
+836	    if (++iteration > config.getMaxIterations() &&
+(gdb) l
+831	  bool continueRewrites = false;
+832	  int64_t iteration = 0;
+833	  MLIRContext *ctx = rewriter.getContext();
+834	  do {
+835	    // Check if the iteration limit was reached.
+836	    if (++iteration > config.getMaxIterations() &&
+837	        config.getMaxIterations() != GreedyRewriteConfig::kNoLimit)
+838	      break;
+839	
+840	    // New iteration: start with an empty worklist.
+(gdb) n
+841	    worklist.clear();
+(gdb) n
+845	    OperationFolder folder(ctx, this);
+(gdb) n
+854	    };
+(gdb) n
+856	    if (!config.getUseTopDownTraversal()) {
+(gdb) l
+851	        if (!folder.insertKnownConstant(op, constValue))
+852	          return true;
+853	      return false;
+854	    };
+855	
+856	    if (!config.getUseTopDownTraversal()) {
+857	      // Add operations to the worklist in postorder.
+858	      region.walk([&](Operation *op) {
+859	        if (!config.isConstantCSEEnabled() || !insertKnownConstant(op))
+860	          addToWorklist(op);
+(gdb) n
+858	      region.walk([&](Operation *op) {
+(gdb) n
+876	    ctx->executeAction<GreedyPatternRewriteIteration>(
+(gdb) b processWorklist  
+Breakpoint 3 at 0x561b52f05fe9: processWorklist. (2 locations)
+(gdb) c
+Continuing.
+
+Breakpoint 3, (anonymous namespace)::GreedyPatternRewriteDriver::processWorklist (this=0x7ffe6240a820) at /data/workspace/llvm-project/mlir/lib/Transforms/Utils/GreedyPatternRewriteDriver.cpp:441
+441	bool GreedyPatternRewriteDriver::processWorklist() {
+(gdb) p op
+$8 = {int64_t (llvm::AMDGPUMCExpr::VariantKind, int64_t, int64_t)} 0x561b49e285c1 <op(llvm::AMDGPUMCExpr::VariantKind, int64_t, int64_t)>
+(gdb) n
+443	  const char *logLineComment =
+(gdb) l
+438	#endif // MLIR_ENABLE_EXPENSIVE_PATTERN_API_CHECKS
+439	}
+440	
+441	bool GreedyPatternRewriteDriver::processWorklist() {
+442	#ifndef NDEBUG
+443	  const char *logLineComment =
+444	      "//===-------------------------------------------===//\n";
+445	
+446	  /// A utility function to log a process result for the given reason.
+447	  auto logResult = [&](StringRef result, const llvm::Twine &msg = {}) {
+(gdb) p result
+$9 = '\000' <repeats 113 times>
+(gdb) p worklist
+$10 = {list = std::vector of length 230, capacity 256 = {0x561b738540d0, 0x561b73853810, 0x561b73864fc0, 0x561b73866370, 0x561b73867ba0, 0x561b73868ad0, 0x561b7386c9f0, 0x561b7387dd40, 0x561b7386cf40, 
+    0x561b7386d490, 0x561b7386d9e0, 0x561b7386dab0, 0x561b7386e000, 0x561b7386e550, 0x561b7386e620, 0x561b7386e6f0, 0x561b7386ec40, 0x561b73868be0, 0x561b7384e910, 0x561b738573e0, 0x561b73850e70, 
+    0x561b73846c80, 0x561b73846ab0, 0x561b738702e0, 0x561b73871000, 0x561b73871180, 0x561b73868c30, 0x561b738713e0, 0x561b7384e960, 0x561b73871640, 0x561b73871800, 0x561b73831420, 0x561b73871930, 
+    0x561b738724d0, 0x561b73872580, 0x561b73872660, 0x561b73872710, 0x561b73872810, 0x561b73874f80, 0x561b73875080, 0x561b73875150, 0x561b73875200, 0x561b73875350, 0x561b7382cfe0, 0x561b738755b0, 
+    0x561b73857430, 0x561b73875810, 0x561b738759d0, 0x561b73875ab0, 0x561b73875bf0, 0x561b73875d10, 0x561b73875df0, 0x561b73875ea0, 0x561b73875fa0, 0x561b73876050, 0x561b73876150, 0x561b738762d0, 
+    0x561b73876440, 0x561b738765f0, 0x561b73850ec0, 0x561b73876850, 0x561b73846cd0, 0x561b73876ab0, 0x561b73846b00, 0x561b73876d10, 0x561b73877b10, 0x561b73877bf0, 0x561b738495e0, 0x561b737b9ae0, 
+    0x561b73877d80, 0x561b73877ee0, 0x561b73878470, 0x561b738785c0, 0x561b738786e0, 0x561b738787e0, 0x561b73878890, 0x561b73878990, 0x561b73878a40, 0x561b73878b40, 0x561b73878bf0, 0x561b73878cf0, 
+    0x561b73878da0, 0x561b73878ea0, 0x561b73879020, 0x561b7382cef0, 0x561b73879230, 0x561b738793f0, 0x561b73879580, 0x561b73879740, 0x561b73879820, 0x561b73879960, 0x561b73879a60, 0x561b73879bd0, 
+    0x561b73879cf0, 0x561b73879df0, 0x561b73879ea0, 0x561b73879fa0, 0x561b7387a050, 0x561b7387a150, 0x561b7387a220, 0x561b7387a2d0, 0x561b7387a450, 0x561b7387a610, 0x561b7387a7a0, 0x561b7387a960, 
+    0x561b7387aaf0, 0x561b7387acb0, 0x561b7387add0, 0x561b7387aef0, 0x561b7387afd0, 0x561b7387b080, 0x561b7387b160, 0x561b7387b210, 0x561b7387b310, 0x561b7387b870, 0x561b7387b970, 0x561b7387ba40, 
+    0x561b7387baf0, 0x561b7387bc40, 0x561b7387be00, 0x561b7387bfb0, 0x561b7387c170, 0x561b7387c300, 0x561b7387c4c0, 0x561b7387c5a0, 0x561b7387c6e0, 0x561b7387c800, 0x561b7387c8e0, 0x561b7387c990, 
+    0x561b7387ca90, 0x561b7387cb40, 0x561b7387cc40, 0x561b7387cdc0, 0x561b7387cf30, 0x561b73876e20, 0x561b73870420, 0x561b738705b0, 0x561b73870770, 0x561b73870950, 0x561b73876f50, 0x561b738770e0, 
+    0x561b738772a0, 0x561b73877380, 0x561b73877470, 0x561b738775b0, 0x561b73877710, 0x561b73877870, 0x561b73877980, 0x561b73880960, 0x561b73880a80, 0x561b73880b60, 0x561b73880c10, 0x561b73880d10, 
+    0x561b73880dc0, 0x561b73880ec0, 0x561b73880f70, 0x561b73881070, 0x561b73881120, 0x561b73881220, 0x561b738813a0, 0x561b73881510, 0x561b738816a0, 0x561b73881860, 0x561b738819f0, 0x561b73881bb0, 
+    0x561b73881c90, 0x561b73881dd0, 0x561b73881ed0, 0x561b73882040, 0x561b73882160, 0x561b73882260, 0x561b73882310, 0x561b73882410, 0x561b738824c0, 0x561b738825c0, 0x561b73883410, 0x561b73883500, 
+    0x561b738835b0, 0x561b73883730, 0x561b738838f0, 0x561b73883a80, 0x561b73883c40, 0x561b7384f370, 0x561b73883d50, 0x561b73883e50, 0x561b73883f30, 0x561b73883fe0, 0x561b738840e0, 0x561b738841b0, 
+    0x561b738842b0, 0x561b73884430, 0x561b738845f0, 0x561b738847a0, 0x561b73884960, 0x561b73884a30, 0x561b73884b30, 0x561b73884c10, 0x561b73884cc0, 0x561b73884da0, 0x561b73884f20...}, 
+  map = {<llvm::DenseMapBase<llvm::DenseMap<mlir::Operation*, unsigned int, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, unsigned int> >, mlir::Operation*, unsigned int, llvm::DenseMapInfo<mlir::Operation*, void>, llvm::detail::DenseMapPair<mlir::Operation*, unsigned int> >> = {<llvm::DebugEpochBase> = {Epoch = 231}, <No data fields>}, 
+    Buckets = 0x561b7389b360, NumEntries = 230, NumTombstones = 0, NumBuckets = 512}}
+(gdb) p op->getRegion(0)
+Attempt to extract a component of a value that is not a struct or union
+(gdb) p op->getRegion()
+Attempt to extract a component of a value that is not a struct or union
+(gdb) call op->dump()
+Attempt to extract a component of a value that is not a struct or union
+(gdb) info symbol 0x561b49e285c1
+op(llvm::AMDGPUMCExpr::VariantKind, long, long) in section .text of /data/workspace/llvm-project/build/bin/mlir-opt
+(gdb) p $10.list
+$11 = std::vector of length 230, capacity 256 = {0x561b738540d0, 0x561b73853810, 0x561b73864fc0, 0x561b73866370, 0x561b73867ba0, 0x561b73868ad0, 0x561b7386c9f0, 0x561b7387dd40, 0x561b7386cf40, 
+  0x561b7386d490, 0x561b7386d9e0, 0x561b7386dab0, 0x561b7386e000, 0x561b7386e550, 0x561b7386e620, 0x561b7386e6f0, 0x561b7386ec40, 0x561b73868be0, 0x561b7384e910, 0x561b738573e0, 0x561b73850e70, 
+  0x561b73846c80, 0x561b73846ab0, 0x561b738702e0, 0x561b73871000, 0x561b73871180, 0x561b73868c30, 0x561b738713e0, 0x561b7384e960, 0x561b73871640, 0x561b73871800, 0x561b73831420, 0x561b73871930, 
+  0x561b738724d0, 0x561b73872580, 0x561b73872660, 0x561b73872710, 0x561b73872810, 0x561b73874f80, 0x561b73875080, 0x561b73875150, 0x561b73875200, 0x561b73875350, 0x561b7382cfe0, 0x561b738755b0, 
+  0x561b73857430, 0x561b73875810, 0x561b738759d0, 0x561b73875ab0, 0x561b73875bf0, 0x561b73875d10, 0x561b73875df0, 0x561b73875ea0, 0x561b73875fa0, 0x561b73876050, 0x561b73876150, 0x561b738762d0, 
+  0x561b73876440, 0x561b738765f0, 0x561b73850ec0, 0x561b73876850, 0x561b73846cd0, 0x561b73876ab0, 0x561b73846b00, 0x561b73876d10, 0x561b73877b10, 0x561b73877bf0, 0x561b738495e0, 0x561b737b9ae0, 
+  0x561b73877d80, 0x561b73877ee0, 0x561b73878470, 0x561b738785c0, 0x561b738786e0, 0x561b738787e0, 0x561b73878890, 0x561b73878990, 0x561b73878a40, 0x561b73878b40, 0x561b73878bf0, 0x561b73878cf0, 
+  0x561b73878da0, 0x561b73878ea0, 0x561b73879020, 0x561b7382cef0, 0x561b73879230, 0x561b738793f0, 0x561b73879580, 0x561b73879740, 0x561b73879820, 0x561b73879960, 0x561b73879a60, 0x561b73879bd0, 
+  0x561b73879cf0, 0x561b73879df0, 0x561b73879ea0, 0x561b73879fa0, 0x561b7387a050, 0x561b7387a150, 0x561b7387a220, 0x561b7387a2d0, 0x561b7387a450, 0x561b7387a610, 0x561b7387a7a0, 0x561b7387a960, 
+  0x561b7387aaf0, 0x561b7387acb0, 0x561b7387add0, 0x561b7387aef0, 0x561b7387afd0, 0x561b7387b080, 0x561b7387b160, 0x561b7387b210, 0x561b7387b310, 0x561b7387b870, 0x561b7387b970, 0x561b7387ba40, 
+  0x561b7387baf0, 0x561b7387bc40, 0x561b7387be00, 0x561b7387bfb0, 0x561b7387c170, 0x561b7387c300, 0x561b7387c4c0, 0x561b7387c5a0, 0x561b7387c6e0, 0x561b7387c800, 0x561b7387c8e0, 0x561b7387c990, 
+  0x561b7387ca90, 0x561b7387cb40, 0x561b7387cc40, 0x561b7387cdc0, 0x561b7387cf30, 0x561b73876e20, 0x561b73870420, 0x561b738705b0, 0x561b73870770, 0x561b73870950, 0x561b73876f50, 0x561b738770e0, 
+  0x561b738772a0, 0x561b73877380, 0x561b73877470, 0x561b738775b0, 0x561b73877710, 0x561b73877870, 0x561b73877980, 0x561b73880960, 0x561b73880a80, 0x561b73880b60, 0x561b73880c10, 0x561b73880d10, 
+  0x561b73880dc0, 0x561b73880ec0, 0x561b73880f70, 0x561b73881070, 0x561b73881120, 0x561b73881220, 0x561b738813a0, 0x561b73881510, 0x561b738816a0, 0x561b73881860, 0x561b738819f0, 0x561b73881bb0, 
+  0x561b73881c90, 0x561b73881dd0, 0x561b73881ed0, 0x561b73882040, 0x561b73882160, 0x561b73882260, 0x561b73882310, 0x561b73882410, 0x561b738824c0, 0x561b738825c0, 0x561b73883410, 0x561b73883500, 
+  0x561b738835b0, 0x561b73883730, 0x561b738838f0, 0x561b73883a80, 0x561b73883c40, 0x561b7384f370, 0x561b73883d50, 0x561b73883e50, 0x561b73883f30, 0x561b73883fe0, 0x561b738840e0, 0x561b738841b0, 
+  0x561b738842b0, 0x561b73884430, 0x561b738845f0, 0x561b738847a0, 0x561b73884960, 0x561b73884a30, 0x561b73884b30, 0x561b73884c10, 0x561b73884cc0, 0x561b73884da0, 0x561b73884f20...}
+(gdb) p $10.list[0]
+$12 = (mlir::Operation *) 0x561b738540d0
+(gdb) p $10.list[100]
+$13 = (mlir::Operation *) 0x561b7387a2d0
+(gdb) info symbol $10.list[100]
+No symbol matches $10.list[100].
+(gdb) info symbol 0x561b7387a2d0
+No symbol matches 0x561b7387a2d0.
+(gdb) info symbol 0x561b49e285c1
+op(llvm::AMDGPUMCExpr::VariantKind, long, long) in section .text of /data/workspace/llvm-project/build/bin/mlir-opt
+(gdb) list *0x561b7387a2d0
+(gdb) p $10.list[1]
+$14 = (mlir::Operation *) 0x561b73853810
+(gdb) list *0x561b73853810
+(gdb) info symbol 0x561b73853810
+No symbol matches 0x561b73853810
+.
+(gdb) p $10.list[10]
+$15 = (mlir::Operation *) 0x561b7386d9e0
+(gdb) set $vec = $11
+set $i = 0
+while ($i < $vec.size())
+  set $op = (mlir::Operation*)$vec[$i]
+  if ($op != 0)
+    p $op->getName().getStringRef().str()
+  end
+  set $i = $i + 1
+end
+
+A syntax error in expression, near `set $i = 0
+while ($i < $vec.size())
+  set $op = (mlir::Operation*)$vec[$i]
+  if ($op != 0)
+    p $op->getName().getStringRef().str()
+  end
+  set $i = $i + 1
+end
+'.
+(gdb) 
+A syntax error in expression, near `set $i = 0
+while ($i < $vec.size())
+  set $op = (mlir::Operation*)$vec[$i]
+  if ($op != 0)
+    p $op->getName().getStringRef().str()
+  end
+  set $i = $i + 1
+end
+'.
+(gdb) p vec
+No symbol "vec" in current context.
+(gdb) p $vec
+$16 = void
+(gdb) python
+>vec = gdb.parse_and_eval("$11")
+>for i in range(int(vec['_M_impl']['_M_finish'] - vec['_M_impl']['_M_start'])):
+    op = vec['_M_impl']['_M_start'][i].cast(gdb.lookup_type('mlir::Operation').pointer())
+    if op:
+        print(op['name'])
+end
+>
+>
+>
+>
+>
+>end
+{impl = 0x561b73855260}
+{impl = 0x561b73855260}
+{impl = 0x561b73855260}
+{impl = 0x561b73855260}
+{impl = 0x561b73855260}
+{impl = 0x561b73855260}
+{impl = 0x561b73848700}
+{impl = 0x561b73869240}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73848700}
+{impl = 0x561b73855080}
+{impl = 0x561b73855080}
+{impl = 0x561b73855080}
+{impl = 0x561b73855080}
+{impl = 0x561b73855080}
+{impl = 0x561b73855080}
+{impl = 0x561b73853500}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738565d0}
+{impl = 0x561b73851eb0}
+{impl = 0x561b73853500}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73852230}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+--Type <RET> for more, q to quit, c to continue without paging--
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b737cfed0}
+{impl = 0x561b73852230}
+{impl = 0x561b73852230}
+{impl = 0x561b73852230}
+{impl = 0x561b7384bbb0}
+{impl = 0x561b73846dc0}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73852230}
+{impl = 0x561b738482c0}
+{impl = 0x561b7384ff30}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b73853500}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+--Type <RET> for more, q to quit, c to continue without paging--
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738565d0}
+{impl = 0x561b73851eb0}
+{impl = 0x561b73853500}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73852230}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b737cfed0}
+{impl = 0x561b73852230}
+{impl = 0x561b73852230}
+{impl = 0x561b73852230}
+{impl = 0x561b7384bbb0}
+{impl = 0x561b73846dc0}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+--Type <RET> for more, q to quit, c to continue without paging--
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73852230}
+{impl = 0x561b738482c0}
+{impl = 0x561b7384ff30}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738541f0}
+{impl = 0x561b73853500}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73852230}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b73853500}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73852230}
+{impl = 0x561b73852230}
+{impl = 0x561b73852230}
+--Type <RET> for more, q to quit, c to continue without paging--
+{impl = 0x561b7384bbb0}
+{impl = 0x561b73846dc0}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b738484e0}
+{impl = 0x561b7385c540}
+{impl = 0x561b73852230}
+{impl = 0x561b73852230}
+{impl = 0x561b73846dc0}
+{impl = 0x561b73855f80}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b737cfed0}
+{impl = 0x561b7385b400}
+{impl = 0x561b738694f0}
+Traceback (most recent call last):
+  File "<string>", line 6, in <module>
+NameError: name 'end' is not defined
+Error while executing Python code.
+(gdb) 
+(gdb) 
+(gdb) p *0x561b73855260
+$17 = 1588737152
+(gdb) p (mlir::Operation*)0x561b738540d0
+$18 = (mlir::Operation *) 0x561b738540d0
+(gdb) p *$18->dump()                    
+memref.global "private" constant @__constant_100xf32 : memref<100xf32> = dense_resource<torch_tensor_100_torch.float32> {alignment = 64 : i64}
+Attempt to take contents of a non-pointer value.
+(gdb) p *$18        
+$19 = {<llvm::ilist_node_with_parent<mlir::Operation, mlir::Block>> = {<llvm::ilist_node<mlir::Operation>> = {<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void> >> = {<llvm::ilist_node_base<true, void>> = {<llvm::ilist_detail::node_base_prevnext<llvm::ilist_node_base<true, void>, true>> = {PrevAndSentinel = {Value = {Data = "\300Z\204s\033V\000"}}, 
+            Next = 0x561b73853810}, <llvm::ilist_detail::node_base_parent<void>> = {<No data fields>}, <No data fields>}, <llvm::ilist_detail::node_parent_access<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void> >, void>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsBase> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, static kInvalidOrderIdx = 4294967295, static kOrderStride = 5, block = 0x561b73845aa0, location = {impl = {<mlir::Attribute> = {
+        impl = 0x561b7385b638}, <No data fields>}}, orderIndex = 4294967295, numResults = 0, numSuccs = 0, numRegions = 0, hasOperandStorage = false, propertiesStorageSize = 6 '\006', 
+  static propertiesCapacity = 2048, name = {impl = 0x561b73855260}, 
+  attrs = {<mlir::detail::StorageUserBase<mlir::DictionaryAttr, mlir::Attribute, mlir::detail::DictionaryAttrStorage, mlir::detail::AttributeUniquer>> = {<mlir::Attribute> = {
+        impl = 0x561b7383c628}, <No data fields>}, static name = {<llvm::StringRef> = {static npos = 18446744073709551615, Data = 0x561b594377a0 "builtin.dictionary", Length = 18}, <No data fields>}, 
+    static dialectName = {<llvm::StringRef> = {static npos = 18446744073709551615, Data = 0x561b5496f938 "builtin", Length = 7}, <No data fields>}}}
+(gdb) p (mlir::Operation*)0x561b7385b400
+$20 = (mlir::Operation *) 0x561b7385b400
+(gdb) p *$20
+$21 = {<llvm::ilist_node_with_parent<mlir::Operation, mlir::Block>> = {<llvm::ilist_node<mlir::Operation>> = {<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void> >> = {<llvm::ilist_node_base<true, void>> = {<llvm::ilist_detail::node_base_prevnext<llvm::ilist_node_base<true, void>, true>> = {PrevAndSentinel = {Value = {Data = "\b\f\262^\033V\000"}}, 
+            Next = 0x561b7385b4f0}, <llvm::ilist_detail::node_base_parent<void>> = {<No data fields>}, <No data fields>}, <llvm::ilist_detail::node_parent_access<llvm::ilist_node_impl<llvm::ilist_detail::node_options<mlir::Operation, true, false, void, false, void> >, void>> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::BlockOperand, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::Region, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsImpl<8, mlir::Operation, llvm::TrailingObjects<mlir::Operation, mlir::detail::OperandStorage, mlir::detail::OpProperties, mlir::BlockOperand, mlir::Region, mlir::OpOperand>, mlir::OpOperand>> = {<llvm::trailing_objects_internal::TrailingObjectsBase> = {<No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, <No data fields>}, static kInvalidOrderIdx = 4294967295, static kOrderStride = 5, block = 0x561b5ed11178 <mlir::detail::TypeIDResolver<mlir::cf::BranchOp, void>::id>, 
+  location = {impl = {<mlir::Attribute> = {impl = 0x561b7384e850}, <No data fields>}}, orderIndex = 1938149920, numResults = 22043, numSuccs = 4, numRegions = 7, hasOperandStorage = false, 
+  propertiesStorageSize = 0 '\000', static propertiesCapacity = 2048, name = {impl = 0x561b737f34f0}, 
+  attrs = {<mlir::detail::StorageUserBase<mlir::DictionaryAttr, mlir::Attribute, mlir::detail::DictionaryAttrStorage, mlir::detail::AttributeUniquer>> = {<mlir::Attribute> = {
+        impl = 0x561b7385b4b0}, <No data fields>}, static name = {<llvm::StringRef> = {static npos = 18446744073709551615, Data = 0x561b594377a0 "builtin.dictionary", Length = 18}, <No data fields>}, 
+    static dialectName = {<llvm::StringRef> = {static npos = 18446744073709551615, Data = 0x561b5496f938 "builtin", Length = 7}, <No data fields>}}}
+(gdb) call *$20->dump()
+
+Program received signal SIGSEGV, Segmentation fault.
+0x0000561b45673175 in mlir::OperationName::hasTrait (this=0x561b7385b430, traitID=...) at /data/workspace/llvm-project/mlir/include/mlir/IR/OperationSupport.h:280
+280	  bool hasTrait(TypeID traitID) const { return getImpl()->hasTrait(traitID); }
+The program being debugged was signaled while in a function called from GDB.
+GDB remains in the frame where the signal was received.
+To change this behavior use "set unwindonsignal on".
+Evaluation of the expression containing the function
+(mlir::Operation::dump()) will be abandoned.
+When the function is done executing, GDB will silently stop.
+(gdb) source dump_ops.py
+(gdb) dump_ops $11
+memref.global "private" constant @__constant_100xf32 : memref<100xf32> = dense_resource<torch_tensor_100_torch.float32> {alignment = 64 : i64}
+memref.global "private" constant @__constant_100x3200xf32 : memref<100x3200xf32> = dense_resource<torch_tensor_100_3200_torch.float32> {alignment = 64 : i64}
+memref.global "private" constant @__constant_32xf32 : memref<32xf32> = dense_resource<torch_tensor_32_torch.float32> {alignment = 64 : i64}
+memref.global "private" constant @__constant_32x16x3xf32 : memref<32x16x3xf32> = dense_resource<torch_tensor_32_16_3_torch.float32> {alignment = 64 : i64}
+memref.global "private" constant @__constant_16x1x3xf32 : memref<16x1x3xf32> = dense_resource<torch_tensor_16_1_3_torch.float32> {alignment = 64 : i64}
+memref.global "private" constant @__constant_16xf32 : memref<16xf32> = dense_resource<torch_tensor_16_torch.float32> {alignment = 64 : i64}
+%c3200 = arith.constant 3200 : index
+func.func @main(%arg0: memref<8x1x100xf32, strided<[?, ?, ?], offset: ?>>) -> memref<8x100xf32> {
+  %c3200 = arith.constant 3200 : index
+  %c32 = arith.constant 32 : index
+  %c3 = arith.constant 3 : index
+  %c100 = arith.constant 100 : index
+  %c16 = arith.constant 16 : index
+  %c102 = arith.constant 102 : index
+  %c1 = arith.constant 1 : index
+  %c8 = arith.constant 8 : index
+  %c0 = arith.constant 0 : index
+  %cst = arith.constant 0.000000e+00 : f32
+  %0 = memref.get_global @__constant_16xf32 : memref<16xf32>
+  %1 = memref.get_global @__constant_16x1x3xf32 : memref<16x1x3xf32>
+  %2 = memref.get_global @__constant_32x16x3xf32 : memref<32x16x3xf32>
+  %3 = memref.get_global @__constant_32xf32 : memref<32xf32>
+  %4 = memref.get_global @__constant_100x3200xf32 : memref<100x3200xf32>
+  %5 = memref.get_global @__constant_100xf32 : memref<100xf32>
+  %alloc = memref.alloc() {alignment = 64 : i64} : memref<8x1x102xf32>
+  cf.br ^bb1(%c0 : index)
+^bb1(%6: index):  // 2 preds: ^bb0, ^bb6
+  %7 = arith.cmpi slt, %6, %c8 : index
+  cf.cond_br %7, ^bb2(%c0 : index), ^bb7
+^bb2(%8: index):  // 2 preds: ^bb1, ^bb5
+  %9 = arith.cmpi slt, %8, %c1 : index
+  cf.cond_br %9, ^bb3(%c0 : index), ^bb6
+^bb3(%10: index):  // 2 preds: ^bb2, ^bb4
+  %11 = arith.cmpi slt, %10, %c102 : index
+  cf.cond_br %11, ^bb4, ^bb5
+^bb4:  // pred: ^bb3
+  memref.store %cst, %alloc[%6, %8, %10] : memref<8x1x102xf32>
+  %12 = arith.addi %10, %c1 : index
+  cf.br ^bb3(%12 : index)
+^bb5:  // pred: ^bb3
+  %13 = arith.addi %8, %c1 : index
+  cf.br ^bb2(%13 : index)
+^bb6:  // pred: ^bb2
+  %14 = arith.addi %6, %c1 : index
+  cf.br ^bb1(%14 : index)
+^bb7:  // pred: ^bb1
+  %subview = memref.subview %alloc[0, 0, 1] [8, 1, 100] [1, 1, 1] : memref<8x1x102xf32> to memref<8x1x100xf32, strided<[102, 102, 1], offset: 1>>
+  memref.copy %arg0, %subview : memref<8x1x100xf32, strided<[?, ?, ?], offset: ?>> to memref<8x1x100xf32, strided<[102, 102, 1], offset: 1>>
+  %alloc_0 = memref.alloc() {alignment = 64 : i64} : memref<8x16x100xf32>
+  cf.br ^bb8(%c0 : index)
+^bb8(%15: index):  // 2 preds: ^bb7, ^bb13
+  %16 = arith.cmpi slt, %15, %c8 : index
+  cf.cond_br %16, ^bb9(%c0 : index), ^bb14(%c0 : index)
+^bb9(%17: index):  // 2 preds: ^bb8, ^bb12
+  %18 = arith.cmpi slt, %17, %c16 : index
+  cf.cond_br %18, ^bb10(%c0 : index), ^bb13
+^bb10(%19: index):  // 2 preds: ^bb9, ^bb11
+  %20 = arith.cmpi slt, %19, %c100 : index
+  cf.cond_br %20, ^bb11, ^bb12
+^bb11:  // pred: ^bb10
+  %21 = memref.load %0[%17] : memref<16xf32>
+  memref.store %21, %alloc_0[%15, %17, %19] : memref<8x16x100xf32>
+  %22 = arith.addi %19, %c1 : index
+  cf.br ^bb10(%22 : index)
+^bb12:  // pred: ^bb10
+  %23 = arith.addi %17, %c1 : index
+  cf.br ^bb9(%23 : index)
+^bb13:  // pred: ^bb9
+  %24 = arith.addi %15, %c1 : index
+  cf.br ^bb8(%24 : index)
+^bb14(%25: index):  // 2 preds: ^bb8, ^bb23
+  %26 = arith.cmpi slt, %25, %c8 : index
+  cf.cond_br %26, ^bb15(%c0 : index), ^bb24(%c0 : index)
+^bb15(%27: index):  // 2 preds: ^bb14, ^bb22
+  %28 = arith.cmpi slt, %27, %c16 : index
+  cf.cond_br %28, ^bb16(%c0 : index), ^bb23
+^bb16(%29: index):  // 2 preds: ^bb15, ^bb21
+  %30 = arith.cmpi slt, %29, %c100 : index
+  cf.cond_br %30, ^bb17(%c0 : index), ^bb22
+^bb17(%31: index):  // 2 preds: ^bb16, ^bb20
+  %32 = arith.cmpi slt, %31, %c1 : index
+  cf.cond_br %32, ^bb18(%c0 : index), ^bb21
+^bb18(%33: index):  // 2 preds: ^bb17, ^bb19
+  %34 = arith.cmpi slt, %33, %c3 : index
+  cf.cond_br %34, ^bb19, ^bb20
+^bb19:  // pred: ^bb18
+  %35 = arith.addi %29, %33 : index
+  %36 = memref.load %alloc[%25, %31, %35] : memref<8x1x102xf32>
+  %37 = memref.load %1[%27, %31, %33] : memref<16x1x3xf32>
+  %38 = memref.load %alloc_0[%25, %27, %29] : memref<8x16x100xf32>
+  %39 = arith.mulf %36, %37 : f32
+  %40 = arith.addf %38, %39 : f32
+  memref.store %40, %alloc_0[%25, %27, %29] : memref<8x16x100xf32>
+  %41 = arith.addi %33, %c1 : index
+  cf.br ^bb18(%41 : index)
+^bb20:  // pred: ^bb18
+  %42 = arith.addi %31, %c1 : index
+  cf.br ^bb17(%42 : index)
+^bb21:  // pred: ^bb17
+  %43 = arith.addi %29, %c1 : index
+  cf.br ^bb16(%43 : index)
+^bb22:  // pred: ^bb16
+  %44 = arith.addi %27, %c1 : index
+  cf.br ^bb15(%44 : index)
+^bb23:  // pred: ^bb15
+  %45 = arith.addi %25, %c1 : index
+  cf.br ^bb14(%45 : index)
+^bb24(%46: index):  // 2 preds: ^bb14, ^bb29
+  %47 = arith.cmpi slt, %46, %c8 : index
+  cf.cond_br %47, ^bb25(%c0 : index), ^bb30
+^bb25(%48: index):  // 2 preds: ^bb24, ^bb28
+  %49 = arith.cmpi slt, %48, %c16 : index
+  cf.cond_br %49, ^bb26(%c0 : index), ^bb29
+^bb26(%50: index):  // 2 preds: ^bb25, ^bb27
+  %51 = arith.cmpi slt, %50, %c100 : index
+  cf.cond_br %51, ^bb27, ^bb28
+^bb27:  // pred: ^bb26
+  %52 = memref.load %alloc_0[%46, %48, %50] : memref<8x16x100xf32>
+  %53 = arith.cmpf ugt, %52, %cst : f32
+  %54 = arith.select %53, %52, %cst : f32
+  memref.store %54, %alloc_0[%46, %48, %50] : memref<8x16x100xf32>
+  %55 = arith.addi %50, %c1 : index
+  cf.br ^bb26(%55 : index)
+^bb28:  // pred: ^bb26
+  %56 = arith.addi %48, %c1 : index
+  cf.br ^bb25(%56 : index)
+^bb29:  // pred: ^bb25
+  %57 = arith.addi %46, %c1 : index
+  cf.br ^bb24(%57 : index)
+^bb30:  // pred: ^bb24
+  %alloc_1 = memref.alloc() {alignment = 64 : i64} : memref<8x16x102xf32>
+  cf.br ^bb31(%c0 : index)
+^bb31(%58: index):  // 2 preds: ^bb30, ^bb36
+  %59 = arith.cmpi slt, %58, %c8 : index
+  cf.cond_br %59, ^bb32(%c0 : index), ^bb37
+^bb32(%60: index):  // 2 preds: ^bb31, ^bb35
+  %61 = arith.cmpi slt, %60, %c16 : index
+  cf.cond_br %61, ^bb33(%c0 : index), ^bb36
+^bb33(%62: index):  // 2 preds: ^bb32, ^bb34
+  %63 = arith.cmpi slt, %62, %c102 : index
+  cf.cond_br %63, ^bb34, ^bb35
+^bb34:  // pred: ^bb33
+  memref.store %cst, %alloc_1[%58, %60, %62] : memref<8x16x102xf32>
+  %64 = arith.addi %62, %c1 : index
+  cf.br ^bb33(%64 : index)
+^bb35:  // pred: ^bb33
+  %65 = arith.addi %60, %c1 : index
+  cf.br ^bb32(%65 : index)
+^bb36:  // pred: ^bb32
+  %66 = arith.addi %58, %c1 : index
+  cf.br ^bb31(%66 : index)
+^bb37:  // pred: ^bb31
+  %subview_2 = memref.subview %alloc_1[0, 0, 1] [8, 16, 100] [1, 1, 1] : memref<8x16x102xf32> to memref<8x16x100xf32, strided<[1632, 102, 1], offset: 1>>
+  memref.copy %alloc_0, %subview_2 : memref<8x16x100xf32> to memref<8x16x100xf32, strided<[1632, 102, 1], offset: 1>>
+  %alloc_3 = memref.alloc() {alignment = 64 : i64} : memref<8x32x100xf32>
+  cf.br ^bb38(%c0 : index)
+^bb38(%67: index):  // 2 preds: ^bb37, ^bb43
+  %68 = arith.cmpi slt, %67, %c8 : index
+  cf.cond_br %68, ^bb39(%c0 : index), ^bb44(%c0 : index)
+^bb39(%69: index):  // 2 preds: ^bb38, ^bb42
+  %70 = arith.cmpi slt, %69, %c32 : index
+  cf.cond_br %70, ^bb40(%c0 : index), ^bb43
+^bb40(%71: index):  // 2 preds: ^bb39, ^bb41
+  %72 = arith.cmpi slt, %71, %c100 : index
+  cf.cond_br %72, ^bb41, ^bb42
+^bb41:  // pred: ^bb40
+  %73 = memref.load %3[%69] : memref<32xf32>
+  memref.store %73, %alloc_3[%67, %69, %71] : memref<8x32x100xf32>
+  %74 = arith.addi %71, %c1 : index
+  cf.br ^bb40(%74 : index)
+^bb42:  // pred: ^bb40
+  %75 = arith.addi %69, %c1 : index
+  cf.br ^bb39(%75 : index)
+^bb43:  // pred: ^bb39
+  %76 = arith.addi %67, %c1 : index
+  cf.br ^bb38(%76 : index)
+^bb44(%77: index):  // 2 preds: ^bb38, ^bb53
+  %78 = arith.cmpi slt, %77, %c8 : index
+  cf.cond_br %78, ^bb45(%c0 : index), ^bb54(%c0 : index)
+^bb45(%79: index):  // 2 preds: ^bb44, ^bb52
+  %80 = arith.cmpi slt, %79, %c32 : index
+  cf.cond_br %80, ^bb46(%c0 : index), ^bb53
+^bb46(%81: index):  // 2 preds: ^bb45, ^bb51
+  %82 = arith.cmpi slt, %81, %c100 : index
+  cf.cond_br %82, ^bb47(%c0 : index), ^bb52
+^bb47(%83: index):  // 2 preds: ^bb46, ^bb50
+  %84 = arith.cmpi slt, %83, %c16 : index
+  cf.cond_br %84, ^bb48(%c0 : index), ^bb51
+^bb48(%85: index):  // 2 preds: ^bb47, ^bb49
+  %86 = arith.cmpi slt, %85, %c3 : index
+  cf.cond_br %86, ^bb49, ^bb50
+^bb49:  // pred: ^bb48
+  %87 = arith.addi %81, %85 : index
+  %88 = memref.load %alloc_1[%77, %83, %87] : memref<8x16x102xf32>
+  %89 = memref.load %2[%79, %83, %85] : memref<32x16x3xf32>
+  %90 = memref.load %alloc_3[%77, %79, %81] : memref<8x32x100xf32>
+  %91 = arith.mulf %88, %89 : f32
+  %92 = arith.addf %90, %91 : f32
+  memref.store %92, %alloc_3[%77, %79, %81] : memref<8x32x100xf32>
+  %93 = arith.addi %85, %c1 : index
+  cf.br ^bb48(%93 : index)
+^bb50:  // pred: ^bb48
+  %94 = arith.addi %83, %c1 : index
+  cf.br ^bb47(%94 : index)
+^bb51:  // pred: ^bb47
+  %95 = arith.addi %81, %c1 : index
+  cf.br ^bb46(%95 : index)
+^bb52:  // pred: ^bb46
+  %96 = arith.addi %79, %c1 : index
+  cf.br ^bb45(%96 : index)
+^bb53:  // pred: ^bb45
+  %97 = arith.addi %77, %c1 : index
+  cf.br ^bb44(%97 : index)
+^bb54(%98: index):  // 2 preds: ^bb44, ^bb59
+  %99 = arith.cmpi slt, %98, %c8 : index
+  cf.cond_br %99, ^bb55(%c0 : index), ^bb60
+^bb55(%100: index):  // 2 preds: ^bb54, ^bb58
+  %101 = arith.cmpi slt, %100, %c32 : index
+  cf.cond_br %101, ^bb56(%c0 : index), ^bb59
+^bb56(%102: index):  // 2 preds: ^bb55, ^bb57
+  %103 = arith.cmpi slt, %102, %c100 : index
+  cf.cond_br %103, ^bb57, ^bb58
+^bb57:  // pred: ^bb56
+  %104 = memref.load %alloc_3[%98, %100, %102] : memref<8x32x100xf32>
+  %105 = arith.cmpf ugt, %104, %cst : f32
+  %106 = arith.select %105, %104, %cst : f32
+  memref.store %106, %alloc_3[%98, %100, %102] : memref<8x32x100xf32>
+  %107 = arith.addi %102, %c1 : index
+  cf.br ^bb56(%107 : index)
+^bb58:  // pred: ^bb56
+  %108 = arith.addi %100, %c1 : index
+  cf.br ^bb55(%108 : index)
+^bb59:  // pred: ^bb55
+  %109 = arith.addi %98, %c1 : index
+  cf.br ^bb54(%109 : index)
+^bb60:  // pred: ^bb54
+  %collapse_shape = memref.collapse_shape %alloc_3 [[0], [1, 2]] : memref<8x32x100xf32> into memref<8x3200xf32>
+  %alloc_4 = memref.alloc() {alignment = 64 : i64} : memref<3200x100xf32>
+  cf.br ^bb61(%c0 : index)
+^bb61(%110: index):  // 2 preds: ^bb60, ^bb64
+  %111 = arith.cmpi slt, %110, %c3200 : index
+  cf.cond_br %111, ^bb62(%c0 : index), ^bb65
+^bb62(%112: index):  // 2 preds: ^bb61, ^bb63
+  %113 = arith.cmpi slt, %112, %c100 : index
+  cf.cond_br %113, ^bb63, ^bb64
+^bb63:  // pred: ^bb62
+  %114 = memref.load %4[%112, %110] : memref<100x3200xf32>
+  memref.store %114, %alloc_4[%110, %112] : memref<3200x100xf32>
+  %115 = arith.addi %112, %c1 : index
+  cf.br ^bb62(%115 : index)
+^bb64:  // pred: ^bb62
+  %116 = arith.addi %110, %c1 : index
+  cf.br ^bb61(%116 : index)
+^bb65:  // pred: ^bb61
+  %alloc_5 = memref.alloc() {alignment = 64 : i64} : memref<8x100xf32>
+  cf.br ^bb66(%c0 : index)
+^bb66(%117: index):  // 2 preds: ^bb65, ^bb69
+  %118 = arith.cmpi slt, %117, %c8 : index
+  cf.cond_br %118, ^bb67(%c0 : index), ^bb70(%c0 : index)
+^bb67(%119: index):  // 2 preds: ^bb66, ^bb68
+  %120 = arith.cmpi slt, %119, %c100 : index
+  cf.cond_br %120, ^bb68, ^bb69
+^bb68:  // pred: ^bb67
+  memref.store %cst, %alloc_5[%117, %119] : memref<8x100xf32>
+  %121 = arith.addi %119, %c1 : index
+  cf.br ^bb67(%121 : index)
+^bb69:  // pred: ^bb67
+  %122 = arith.addi %117, %c1 : index
+  cf.br ^bb66(%122 : index)
+^bb70(%123: index):  // 2 preds: ^bb66, ^bb75
+  %124 = arith.cmpi slt, %123, %c8 : index
+  cf.cond_br %124, ^bb71(%c0 : index), ^bb76(%c0 : index)
+^bb71(%125: index):  // 2 preds: ^bb70, ^bb74
+  %126 = arith.cmpi slt, %125, %c100 : index
+  cf.cond_br %126, ^bb72(%c0 : index), ^bb75
+^bb72(%127: index):  // 2 preds: ^bb71, ^bb73
+  %128 = arith.cmpi slt, %127, %c3200 : index
+  cf.cond_br %128, ^bb73, ^bb74
+^bb73:  // pred: ^bb72
+  %129 = memref.load %collapse_shape[%123, %127] : memref<8x3200xf32>
+  %130 = memref.load %alloc_4[%127, %125] : memref<3200x100xf32>
+  %131 = memref.load %alloc_5[%123, %125] : memref<8x100xf32>
+  %132 = arith.mulf %129, %130 : f32
+  %133 = arith.addf %131, %132 : f32
+  memref.store %133, %alloc_5[%123, %125] : memref<8x100xf32>
+  %134 = arith.addi %127, %c1 : index
+  cf.br ^bb72(%134 : index)
+^bb74:  // pred: ^bb72
+  %135 = arith.addi %125, %c1 : index
+  cf.br ^bb71(%135 : index)
+^bb75:  // pred: ^bb71
+  %136 = arith.addi %123, %c1 : index
+  cf.br ^bb70(%136 : index)
+^bb76(%137: index):  // 2 preds: ^bb70, ^bb79
+  %138 = arith.cmpi slt, %137, %c8 : index
+  cf.cond_br %138, ^bb77(%c0 : index), ^bb80
+^bb77(%139: index):  // 2 preds: ^bb76, ^bb78
+  %140 = arith.cmpi slt, %139, %c100 : index
+  cf.cond_br %140, ^bb78, ^bb79
+^bb78:  // pred: ^bb77
+  %141 = memref.load %alloc_5[%137, %139] : memref<8x100xf32>
+  %142 = memref.load %5[%139] : memref<100xf32>
+  %143 = arith.addf %141, %142 : f32
+  memref.store %143, %alloc_5[%137, %139] : memref<8x100xf32>
+  %144 = arith.addi %139, %c1 : index
+  cf.br ^bb77(%144 : index)
+^bb79:  // pred: ^bb77
+  %145 = arith.addi %137, %c1 : index
+  cf.br ^bb76(%145 : index)
+^bb80:  // pred: ^bb76
+  return %alloc_5 : memref<8x100xf32>
+}
+%c32 = arith.constant 32 : index
+%c3 = arith.constant 3 : index
+%c100 = arith.constant 100 : index
+%c16 = arith.constant 16 : index
+%c102 = arith.constant 102 : index
+%c1 = arith.constant 1 : index
+%c8 = arith.constant 8 : index
+%c0 = arith.constant 0 : index
+%cst = arith.constant 0.000000e+00 : f32
+%0 = memref.get_global @__constant_16xf32 : memref<16xf32>
+%1 = memref.get_global @__constant_16x1x3xf32 : memref<16x1x3xf32>
+%2 = memref.get_global @__constant_32x16x3xf32 : memref<32x16x3xf32>
+%3 = memref.get_global @__constant_32xf32 : memref<32xf32>
+%4 = memref.get_global @__constant_100x3200xf32 : memref<100x3200xf32>
+%5 = memref.get_global @__constant_100xf32 : memref<100xf32>
+%alloc = memref.alloc() {alignment = 64 : i64} : memref<8x1x102xf32>
+cf.br ^bb1(%c0 : index)
+%7 = arith.cmpi slt, %6, %c8 : index
+cf.cond_br %7, ^bb2(%c0 : index), ^bb7
+%9 = arith.cmpi slt, %8, %c1 : index
+cf.cond_br %9, ^bb3(%c0 : index), ^bb6
+%11 = arith.cmpi slt, %10, %c102 : index
+cf.cond_br %11, ^bb4, ^bb5
+memref.store %cst, %alloc[%6, %8, %10] : memref<8x1x102xf32>
+%12 = arith.addi %10, %c1 : index
+cf.br ^bb3(%12 : index)
+%13 = arith.addi %8, %c1 : index
+cf.br ^bb2(%13 : index)
+%14 = arith.addi %6, %c1 : index
+cf.br ^bb1(%14 : index)
+%subview = memref.subview %alloc[0, 0, 1] [8, 1, 100] [1, 1, 1] : memref<8x1x102xf32> to memref<8x1x100xf32, strided<[102, 102, 1], offset: 1>>
+memref.copy %arg0, %subview : memref<8x1x100xf32, strided<[?, ?, ?], offset: ?>> to memref<8x1x100xf32, strided<[102, 102, 1], offset: 1>>
+%alloc_0 = memref.alloc() {alignment = 64 : i64} : memref<8x16x100xf32>
+cf.br ^bb8(%c0 : index)
+%16 = arith.cmpi slt, %15, %c8 : index
+cf.cond_br %16, ^bb9(%c0 : index), ^bb14(%c0 : index)
+%18 = arith.cmpi slt, %17, %c16 : index
+cf.cond_br %18, ^bb10(%c0 : index), ^bb13
+%20 = arith.cmpi slt, %19, %c100 : index
+cf.cond_br %20, ^bb11, ^bb12
+%21 = memref.load %0[%17] : memref<16xf32>
+memref.store %21, %alloc_0[%15, %17, %19] : memref<8x16x100xf32>
+%22 = arith.addi %19, %c1 : index
+cf.br ^bb10(%22 : index)
+%23 = arith.addi %17, %c1 : index
+cf.br ^bb9(%23 : index)
+%24 = arith.addi %15, %c1 : index
+cf.br ^bb8(%24 : index)
+%26 = arith.cmpi slt, %25, %c8 : index
+cf.cond_br %26, ^bb15(%c0 : index), ^bb24(%c0 : index)
+%28 = arith.cmpi slt, %27, %c16 : index
+cf.cond_br %28, ^bb16(%c0 : index), ^bb23
+%30 = arith.cmpi slt, %29, %c100 : index
+cf.cond_br %30, ^bb17(%c0 : index), ^bb22
+%32 = arith.cmpi slt, %31, %c1 : index
+cf.cond_br %32, ^bb18(%c0 : index), ^bb21
+%34 = arith.cmpi slt, %33, %c3 : index
+cf.cond_br %34, ^bb19, ^bb20
+%35 = arith.addi %29, %33 : index
+%36 = memref.load %alloc[%25, %31, %35] : memref<8x1x102xf32>
+%37 = memref.load %1[%27, %31, %33] : memref<16x1x3xf32>
+%38 = memref.load %alloc_0[%25, %27, %29] : memref<8x16x100xf32>
+%39 = arith.mulf %36, %37 : f32
+%40 = arith.addf %38, %39 : f32
+memref.store %40, %alloc_0[%25, %27, %29] : memref<8x16x100xf32>
+%41 = arith.addi %33, %c1 : index
+cf.br ^bb18(%41 : index)
+%42 = arith.addi %31, %c1 : index
+cf.br ^bb17(%42 : index)
+%43 = arith.addi %29, %c1 : index
+cf.br ^bb16(%43 : index)
+%44 = arith.addi %27, %c1 : index
+cf.br ^bb15(%44 : index)
+%45 = arith.addi %25, %c1 : index
+cf.br ^bb14(%45 : index)
+%47 = arith.cmpi slt, %46, %c8 : index
+cf.cond_br %47, ^bb25(%c0 : index), ^bb30
+%49 = arith.cmpi slt, %48, %c16 : index
+cf.cond_br %49, ^bb26(%c0 : index), ^bb29
+%51 = arith.cmpi slt, %50, %c100 : index
+cf.cond_br %51, ^bb27, ^bb28
+%52 = memref.load %alloc_0[%46, %48, %50] : memref<8x16x100xf32>
+%53 = arith.cmpf ugt, %52, %cst : f32
+%54 = arith.select %53, %52, %cst : f32
+memref.store %54, %alloc_0[%46, %48, %50] : memref<8x16x100xf32>
+%55 = arith.addi %50, %c1 : index
+cf.br ^bb26(%55 : index)
+%56 = arith.addi %48, %c1 : index
+cf.br ^bb25(%56 : index)
+%57 = arith.addi %46, %c1 : index
+cf.br ^bb24(%57 : index)
+%alloc_1 = memref.alloc() {alignment = 64 : i64} : memref<8x16x102xf32>
+cf.br ^bb31(%c0 : index)
+%59 = arith.cmpi slt, %58, %c8 : index
+cf.cond_br %59, ^bb32(%c0 : index), ^bb37
+%61 = arith.cmpi slt, %60, %c16 : index
+cf.cond_br %61, ^bb33(%c0 : index), ^bb36
+%63 = arith.cmpi slt, %62, %c102 : index
+cf.cond_br %63, ^bb34, ^bb35
+memref.store %cst, %alloc_1[%58, %60, %62] : memref<8x16x102xf32>
+%64 = arith.addi %62, %c1 : index
+cf.br ^bb33(%64 : index)
+%65 = arith.addi %60, %c1 : index
+cf.br ^bb32(%65 : index)
+%66 = arith.addi %58, %c1 : index
+cf.br ^bb31(%66 : index)
+%subview_2 = memref.subview %alloc_1[0, 0, 1] [8, 16, 100] [1, 1, 1] : memref<8x16x102xf32> to memref<8x16x100xf32, strided<[1632, 102, 1], offset: 1>>
+memref.copy %alloc_0, %subview_2 : memref<8x16x100xf32> to memref<8x16x100xf32, strided<[1632, 102, 1], offset: 1>>
+%alloc_3 = memref.alloc() {alignment = 64 : i64} : memref<8x32x100xf32>
+cf.br ^bb38(%c0 : index)
+%68 = arith.cmpi slt, %67, %c8 : index
+cf.cond_br %68, ^bb39(%c0 : index), ^bb44(%c0 : index)
+%70 = arith.cmpi slt, %69, %c32 : index
+cf.cond_br %70, ^bb40(%c0 : index), ^bb43
+%72 = arith.cmpi slt, %71, %c100 : index
+cf.cond_br %72, ^bb41, ^bb42
+%73 = memref.load %3[%69] : memref<32xf32>
+memref.store %73, %alloc_3[%67, %69, %71] : memref<8x32x100xf32>
+%74 = arith.addi %71, %c1 : index
+cf.br ^bb40(%74 : index)
+%75 = arith.addi %69, %c1 : index
+cf.br ^bb39(%75 : index)
+%76 = arith.addi %67, %c1 : index
+cf.br ^bb38(%76 : index)
+%78 = arith.cmpi slt, %77, %c8 : index
+cf.cond_br %78, ^bb45(%c0 : index), ^bb54(%c0 : index)
+%80 = arith.cmpi slt, %79, %c32 : index
+cf.cond_br %80, ^bb46(%c0 : index), ^bb53
+%82 = arith.cmpi slt, %81, %c100 : index
+cf.cond_br %82, ^bb47(%c0 : index), ^bb52
+%84 = arith.cmpi slt, %83, %c16 : index
+cf.cond_br %84, ^bb48(%c0 : index), ^bb51
+%86 = arith.cmpi slt, %85, %c3 : index
+cf.cond_br %86, ^bb49, ^bb50
+%87 = arith.addi %81, %85 : index
+%88 = memref.load %alloc_1[%77, %83, %87] : memref<8x16x102xf32>
+%89 = memref.load %2[%79, %83, %85] : memref<32x16x3xf32>
+%90 = memref.load %alloc_3[%77, %79, %81] : memref<8x32x100xf32>
+%91 = arith.mulf %88, %89 : f32
+%92 = arith.addf %90, %91 : f32
+memref.store %92, %alloc_3[%77, %79, %81] : memref<8x32x100xf32>
+%93 = arith.addi %85, %c1 : index
+cf.br ^bb48(%93 : index)
+%94 = arith.addi %83, %c1 : index
+cf.br ^bb47(%94 : index)
+%95 = arith.addi %81, %c1 : index
+cf.br ^bb46(%95 : index)
+%96 = arith.addi %79, %c1 : index
+cf.br ^bb45(%96 : index)
+%97 = arith.addi %77, %c1 : index
+cf.br ^bb44(%97 : index)
+%99 = arith.cmpi slt, %98, %c8 : index
+cf.cond_br %99, ^bb55(%c0 : index), ^bb60
+%101 = arith.cmpi slt, %100, %c32 : index
+cf.cond_br %101, ^bb56(%c0 : index), ^bb59
+%103 = arith.cmpi slt, %102, %c100 : index
+cf.cond_br %103, ^bb57, ^bb58
+%104 = memref.load %alloc_3[%98, %100, %102] : memref<8x32x100xf32>
+%105 = arith.cmpf ugt, %104, %cst : f32
+%106 = arith.select %105, %104, %cst : f32
+memref.store %106, %alloc_3[%98, %100, %102] : memref<8x32x100xf32>
+%107 = arith.addi %102, %c1 : index
+cf.br ^bb56(%107 : index)
+%108 = arith.addi %100, %c1 : index
+cf.br ^bb55(%108 : index)
+%109 = arith.addi %98, %c1 : index
+cf.br ^bb54(%109 : index)
+%collapse_shape = memref.collapse_shape %alloc_3 [[0], [1, 2]] : memref<8x32x100xf32> into memref<8x3200xf32>
+%alloc_4 = memref.alloc() {alignment = 64 : i64} : memref<3200x100xf32>
+cf.br ^bb61(%c0 : index)
+%111 = arith.cmpi slt, %110, %c3200 : index
+cf.cond_br %111, ^bb62(%c0 : index), ^bb65
+%113 = arith.cmpi slt, %112, %c100 : index
+cf.cond_br %113, ^bb63, ^bb64
+%114 = memref.load %4[%112, %110] : memref<100x3200xf32>
+memref.store %114, %alloc_4[%110, %112] : memref<3200x100xf32>
+%115 = arith.addi %112, %c1 : index
+cf.br ^bb62(%115 : index)
+%116 = arith.addi %110, %c1 : index
+cf.br ^bb61(%116 : index)
+%alloc_5 = memref.alloc() {alignment = 64 : i64} : memref<8x100xf32>
+cf.br ^bb66(%c0 : index)
+%118 = arith.cmpi slt, %117, %c8 : index
+cf.cond_br %118, ^bb67(%c0 : index), ^bb70(%c0 : index)
+%120 = arith.cmpi slt, %119, %c100 : index
+cf.cond_br %120, ^bb68, ^bb69
+memref.store %cst, %alloc_5[%117, %119] : memref<8x100xf32>
+%121 = arith.addi %119, %c1 : index
+cf.br ^bb67(%121 : index)
+%122 = arith.addi %117, %c1 : index
+cf.br ^bb66(%122 : index)
+%124 = arith.cmpi slt, %123, %c8 : index
+cf.cond_br %124, ^bb71(%c0 : index), ^bb76(%c0 : index)
+%126 = arith.cmpi slt, %125, %c100 : index
+cf.cond_br %126, ^bb72(%c0 : index), ^bb75
+%128 = arith.cmpi slt, %127, %c3200 : index
+cf.cond_br %128, ^bb73, ^bb74
+%129 = memref.load %collapse_shape[%123, %127] : memref<8x3200xf32>
+%130 = memref.load %alloc_4[%127, %125] : memref<3200x100xf32>
+%131 = memref.load %alloc_5[%123, %125] : memref<8x100xf32>
+%132 = arith.mulf %129, %130 : f32
+%133 = arith.addf %131, %132 : f32
+memref.store %133, %alloc_5[%123, %125] : memref<8x100xf32>
+%134 = arith.addi %127, %c1 : index
+cf.br ^bb72(%134 : index)
+%135 = arith.addi %125, %c1 : index
+cf.br ^bb71(%135 : index)
+%136 = arith.addi %123, %c1 : index
+cf.br ^bb70(%136 : index)
+%138 = arith.cmpi slt, %137, %c8 : index
+cf.cond_br %138, ^bb77(%c0 : index), ^bb80
+%140 = arith.cmpi slt, %139, %c100 : index
+cf.cond_br %140, ^bb78, ^bb79
+%141 = memref.load %alloc_5[%137, %139] : memref<8x100xf32>
+%142 = memref.load %5[%139] : memref<100xf32>
+%143 = arith.addf %141, %142 : f32
+memref.store %143, %alloc_5[%137, %139] : memref<8x100xf32>
+%144 = arith.addi %139, %c1 : index
+cf.br ^bb77(%144 : index)
+%145 = arith.addi %137, %c1 : index
+cf.br ^bb76(%145 : index)
+func.return %alloc_5 : memref<8x100xf32>
+(gdb) p op
+$22 = {int64_t (llvm::AMDGPUMCExpr::VariantKind, int64_t, int64_t)} 0x561b49e285c1 <op(llvm::AMDGPUMCExpr::VariantKind, int64_t, int64_t)>
+(gdb) p op->getName()
+Attempt to extract a comp
